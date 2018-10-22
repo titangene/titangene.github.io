@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+    
+    <entry>
+      <title>Hello World</title>
+      <link href="/article/hello-world.html"/>
+      <url>/article/hello-world.html</url>
+      
+        <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><a id="more"></a><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre><code class="bash">$ hexo new &quot;My New Post&quot;</code></pre><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre><code class="bash">$ hexo server</code></pre><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre><code class="bash">$ hexo generate</code></pre><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre><code class="bash">$ hexo deploy</code></pre><p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
+      
+      
+      
+    </entry>
+    
+    <entry>
+      <title>Hexo 加入 Disqus 討論區</title>
+      <link href="/article/hexo-disqus.html"/>
+      <url>/article/hexo-disqus.html</url>
+      
+        <content type="html"><![CDATA[<p>接續從零建置 Github Page + Hexo blog，這次來研究如何在 Hexo 加入 Disqus 討論區。</p><a id="more"></a><h2 id="建立-Disqus"><a href="#建立-Disqus" class="headerlink" title="建立 Disqus"></a>建立 Disqus</h2><p>至 <a href="https://disqus.com/" target="_blank" rel="noopener">Disqus</a> 首頁註冊帳號後並登入，接著點擊首頁的「GET STARTED」</p><p><img src="hexo-disqus/disqus-home-page.png" alt=""></p><p>選擇「I want to install Disqus on my site」選項</p><p><img src="hexo-disqus/disqus-on-my-site.png" alt=""></p><ul><li>Websit Name：自訂 short name，且是唯一，像我是設定 titangene-blog。short name 會在設定 Hexo 時需要</li><li>Category：類別，自行選擇</li><li>Language：語言，自行選擇</li></ul><p>填寫後點擊「Create Site」</p><p><img src="hexo-disqus/disqus-create-a-new-site.png" alt=""></p><h2 id="設定-Hexo"><a href="#設定-Hexo" class="headerlink" title="設定 Hexo"></a>設定 Hexo</h2><p>在根目錄內的 <code>_config.yml</code> 內設定：</p><pre><code class="yaml">disqus_shortname: your_disqus_short_name</code></pre><p>設定後就可以看到每篇文章下面都可以留言囉！</p><p><img src="hexo-disqus/disqus-hexo.png" alt=""></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Hexo </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Hexo </tag>
+            
+        </tags>
+      
+    </entry>
+    
+  
+  
+</search>
