@@ -120,6 +120,165 @@
   <section class="meta">
     
     <h2 class="title">
+      <a href="/article/flutter-custom-fonts.html">
+        Flutter 自訂字型
+      </a>
+    </h2>
+    
+    <time>
+      2018-10-29
+    </time>
+		
+    
+    <div class="cats">
+        <a href="/categories/native-app/">Native App</a>
+    </div>
+
+  </section>
+  <section class="article typo">
+	  <p><img src="flutter-install-on-windows/flutter.jpg" alt=""></p>
+<h2 id="將字型檔放入專案資料夾內"><a href="#將字型檔放入專案資料夾內" class="headerlink" title="將字型檔放入專案資料夾內"></a>將字型檔放入專案資料夾內</h2><p>此範例是放在 <code>./assets/fonts</code> 資料夾內：</p>
+<pre><code>assets/
+  fonts/
+    FiraCode-Medium.ttf
+    mononoki-Bold.ttf
+    mononoki-BoldItalic.ttf
+    mononoki-Italic.ttf
+    mononoki-Regular.ttf
+</code></pre><h2 id="在-pubspec-yaml-定義字型資訊"><a href="#在-pubspec-yaml-定義字型資訊" class="headerlink" title="在 pubspec.yaml 定義字型資訊"></a>在 <code>pubspec.yaml</code> 定義字型資訊</h2><pre><code class="yaml">flutter:
+  fonts:
+    - family: FiraCode
+      fonts:
+        - asset: assets/fonts/FiraCode-Medium.ttf
+    - family: Mononoki
+      fonts:
+        - asset: assets/fonts/mononoki-Regular.ttf
+        - asset: assets/fonts/mononoki-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/mononoki-Italic.ttf
+          style: italic
+        - asset: assets/fonts/mononoki-BoldItalic.ttf
+          weight: 700
+          style: italic
+</code></pre>
+<h2 id="設定預設字型"><a href="#設定預設字型" class="headerlink" title="設定預設字型"></a>設定預設字型</h2><p><img src="flutter-custom-fonts/flutter_set-default-font.png" alt=""></p>
+<pre><code class="dart">MaterialApp(
+  title: &#39;Custom Fonts&#39;,
+  theme: ThemeData(fontFamily: &#39;FiraCode&#39;),
+  home: MyHomePage(title: &#39;Custom Fonts&#39;),
+);
+</code></pre>
+<h2 id="在特定-Widget-設定字型"><a href="#在特定-Widget-設定字型" class="headerlink" title="在特定 Widget 設定字型"></a>在特定 Widget 設定字型</h2><p><img src="flutter-custom-fonts/flutter_set-the-font-on-a-specific-widget.png" alt=""></p>
+<pre><code class="dart">Text(
+  &#39;Custom Fonts&#39;,
+  style: TextStyle(
+    fontFamily: &#39;Mononoki&#39;,
+    fontSize: 30.0,
+    fontWeight: FontWeight.w700,
+    fontStyle: FontStyle.italic,
+  ),
+)
+</code></pre>
+<h2 id="完整範例程式碼"><a href="#完整範例程式碼" class="headerlink" title="完整範例程式碼"></a>完整範例程式碼</h2><p><img src="flutter-custom-fonts/flutter_custom-fonts_demo.png" alt=""></p>
+<pre><code class="dart">import &#39;package:flutter/material.dart&#39;;
+
+void main() =&gt; runApp(new MyApp());
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return new MaterialApp(
+      title: &#39;Custom Fonts&#39;,
+      theme: new ThemeData(
+        primarySwatch: Colors.blue,
+        fontFamily: &#39;FiraCode&#39;,
+      ),
+      home: new MyHomePage(title: &#39;Custom Fonts&#39;),
+    );
+  }
+}
+
+class MyHomePage extends StatelessWidget {
+  MyHomePage({Key key, this.title}) : super(key: key);
+
+  final String title;
+
+  @override
+  Widget build(BuildContext context) {
+    return new Scaffold(
+      appBar: new AppBar(
+        title: new Text(this.title),
+      ),
+      body: Column(
+        children: &lt;Widget&gt;[
+          new Text(
+            &#39;&lt;-- Custom Fonts -&gt;&gt;&#39;,
+            style: TextStyle(fontSize: 30.0),
+          ),
+          new Text(
+            &#39;Custom Fonts&#39;,
+            style: TextStyle(
+              fontFamily: &#39;Mononoki&#39;,
+              fontSize: 30.0,
+            ),
+          ),
+          new Text(
+            &#39;Custom Fonts&#39;,
+            style: TextStyle(
+              fontFamily: &#39;Mononoki&#39;,
+              fontSize: 30.0,
+              fontWeight: FontWeight.w700,
+            ),
+          ),
+          new Text(
+            &#39;Custom Fonts&#39;,
+            style: TextStyle(
+              fontFamily: &#39;Mononoki&#39;,
+              fontSize: 30.0,
+              fontStyle: FontStyle.italic,
+            ),
+          ),
+          new Text(
+            &#39;Custom Fonts&#39;,
+            style: TextStyle(
+              fontFamily: &#39;Mononoki&#39;,
+              fontSize: 30.0,
+              fontWeight: FontWeight.w700,
+              fontStyle: FontStyle.italic,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+</code></pre>
+<blockquote>
+<p>詳情可參考 <a href="https://flutter.io/cookbook/design/fonts/" target="_blank" rel="noopener">Using custom fonts - Flutter</a> 官方文件</p>
+</blockquote>
+
+
+    
+
+    
+	  <div class="full-width auto-padding tags">
+      
+        <a href="/tags/flutter/">Flutter</a>
+      
+        <a href="/tags/dart/">Dart</a>
+      
+	  </div>
+    
+  </section>
+</article>
+    </div>
+  
+    <div class="post-wrapper">
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
       <a href="/article/flutter-install-on-windows.html">
         Flutter 環境建置 (Windows)
       </a>
@@ -250,6 +409,13 @@
     <div class="content">
         
         <ul class="entry">
+        
+            <li>
+                <a itemprop="url" class="flat-box" href="/article/flutter-custom-fonts.html">
+                    <time>2018-10-29</time>
+                    <div class="name">Flutter 自訂字型</div>
+                </a>
+            </li>
         
             <li>
                 <a itemprop="url" class="flat-box" href="/article/flutter-install-on-windows.html">
