@@ -125,6 +125,85 @@
   <section class="meta">
     
     <h2 class="title">
+      <a href="/article/github-url-shortener.html">
+        GitHub 縮網址服務 Git.io
+      </a>
+    </h2>
+    
+    <time>
+      2018-11-01
+    </time>
+		
+    
+    <div class="cats">
+        <a href="/categories/other/">Other</a>
+    </div>
+
+  </section>
+  <section class="article typo">
+	  <p>最近發現原來 Github 也有提供縮網址 (URL Shortener) 服務「<a href="https://git.io/" target="_blank" rel="noopener">Git.io</a>」，它只適用於 <code>gist.github.com</code> 及 <code>github.com</code> 兩個 hostname。</p>
+<p>下列網址都可以透過 Git.io 來建立縮網址：</p>
+<ul>
+<li>Github 個人或組織專業 ( <code>https://github.com/&lt;github-id&gt;</code> )</li>
+<li>Github repository ( <code>https://github.com/&lt;github-id&gt;/&lt;repo-name&gt;</code> ) 或 repository 內目錄或檔案</li>
+<li>Gist ( <code>https://gist.github.com/&lt;github-id&gt;/&lt;gist-id&gt;</code> )</li>
+</ul>
+<p>Git.io 有兩種建立短網址的方法，下面會分別介紹：</p>
+<ul>
+<li>直接到 <a href="https://git.io/" target="_blank" rel="noopener">Git.io</a> 線上設定</li>
+<li>使用 <code>curl</code> 指令設定：<a href="https://blog.github.com/2011-11-10-git-io-github-url-shortener/" target="_blank" rel="noopener">Git.io: GitHub URL Shortener | GitHub Blog</a></li>
+</ul>
+<h2 id="Git-io-線上設定"><a href="#Git-io-線上設定" class="headerlink" title="Git.io 線上設定"></a><a href="https://git.io/" target="_blank" rel="noopener">Git.io</a> 線上設定</h2><p>最簡單的方法當然是直接打開 <a href="https://git.io/" target="_blank" rel="noopener">Git.io</a>，接著輸入網址並點擊「shorten」按鈕就會將你剛剛輸入的網址變成短網址，短網址的格式是 <code>git.io/xxx</code>。</p>
+<p>但缺點是無法自訂短網址名稱，預設是自動隨機英文 + 數字的字串。</p>
+<p><img src="github-url-shortener/github-url-shortener.png" alt=""></p>
+<h2 id="使用-curl-指令建立短網址"><a href="#使用-curl-指令建立短網址" class="headerlink" title="使用 curl 指令建立短網址"></a>使用 <code>curl</code> 指令建立短網址</h2><ul>
+<li><code>-i</code>、<code>--include</code>：顯示 HTTP response headers</li>
+<li><code>-F</code>、<code>--form &lt;name=content&gt;</code>：設定表單資料，<code>Content-Type</code> 會被設為 <code>multipart/form-data</code></li>
+</ul>
+<pre><code class="shell">$ curl -i https://git.io -F &quot;url=&lt;想縮短的網址&gt;&quot; -F &quot;code=&lt;自訂短網址名稱&gt;&quot;
+</code></pre>
+<p>例如我想將自己的 Github profile URL：<code>github.com/titangene</code> 縮短成 <code>git.io/titan</code>，就要執行下面指令：</p>
+<pre><code class="shell">$ curl -i https://git.io -F &quot;url=https://github.com/titangene&quot; -F &quot;code=titan&quot;
+HTTP/1.1 201 Created
+...
+Location: https://git.io/titan
+...
+
+$ curl -i https://git.io -F &quot;url=https://titangene.github.io/&quot; -F &quot;code=titan-blog&quot;
+</code></pre>
+<p>只要輸入下面指令就可以確認是否建立成功</p>
+<pre><code class="shell">$ curl -i https://git.io/titan
+HTTP/1.1 302 Found
+...
+Location: https://github.com/titangene
+...
+</code></pre>
+<h2 id="小插曲-縮網址不小心設定錯誤"><a href="#小插曲-縮網址不小心設定錯誤" class="headerlink" title="[小插曲] 縮網址不小心設定錯誤"></a>[小插曲] 縮網址不小心設定錯誤</h2><p>一開始在 Git.io 測試時，直接用自己的 Github profile URL ( <code>github.com/titangene</code> ) 來產生預設隨機英文 + 數字的短網址，想要修改成 <code>git.io/titan</code> 卻沒辦法！這是因為 Git.io 沒有直接提供修改短網址的功能。</p>
+<p>後來 Google 一下才發現只能聯繫 <a href="https://github.com/contact" target="_blank" rel="noopener">Github 客服</a>來幫忙刪除短網址，然後再自行重新設定。過了不到半天客服就回信幫我解決了！真是太感謝 Github 客服了！</p>
+
+
+    
+
+    
+	  <div class="full-width auto-padding tags">
+      
+        <a href="/tags/github/">Github</a>
+      
+        <a href="/tags/url/">URL</a>
+      
+        <a href="/tags/url-shortener/">URL Shortener</a>
+      
+	  </div>
+    
+  </section>
+</article>
+    </div>
+  
+    <div class="post-wrapper">
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
       <a href="/article/flutter-custom-fonts.html">
         Flutter 自訂字型
       </a>
@@ -299,6 +378,13 @@
     <div class="content">
         
         <ul class="entry">
+        
+            <li>
+                <a itemprop="url" class="flat-box" href="/article/github-url-shortener.html">
+                    <time>2018-11-01</time>
+                    <div class="name">GitHub 縮網址服務 Git.io</div>
+                </a>
+            </li>
         
             <li>
                 <a itemprop="url" class="flat-box" href="/article/flutter-custom-fonts.html">
