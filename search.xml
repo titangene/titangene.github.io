@@ -3,6 +3,35 @@
   
     
     <entry>
+      <title>用 Conda 建立虛擬環境和管理相依套件</title>
+      <link href="/article/create-a-virtual-environment-and-manage-dependencies-with-conda.html"/>
+      <url>/article/create-a-virtual-environment-and-manage-dependencies-with-conda.html</url>
+      
+        <content type="html"><![CDATA[<p><img src="create-a-virtual-environment-and-manage-dependencies-with-conda\python_anaconda.png" alt=""></p><p>學習如何利用 Conda 來建立不同需求所需的 Python 開發環境，並如何管理相依套件。</p><a id="more"></a><h2 id="Anaconda"><a href="#Anaconda" class="headerlink" title="Anaconda"></a>Anaconda</h2><p><img src="create-a-virtual-environment-and-manage-dependencies-with-conda/anaconda-logo.png" alt=""></p><p>Anaconda 是最受歡迎的 Python 資料科學 (Data Science) 平台，它特點就是本來就包含了各種數據分析、科學計算的相關套件 (例如：NumPy、SciPy、Matplotlib、SymPy、Pandas … 等)，而 Anaconda 的套件管理工具就是 conda。</p><h2 id="Conda"><a href="#Conda" class="headerlink" title="Conda"></a>Conda</h2><p><img src="create-a-virtual-environment-and-manage-dependencies-with-conda/conda-logo.png" alt=""></p><p>Conda 是一個開源的套件與環境管理的系統，可以在 Windows、macOS 和 Linux 上使用。可利用 Conda 來安裝、執行、更新套件以及其相依的套件，並且還可用來建立不同的開發環境 (例如：不同環境有不同的 Python 版本)。</p><!-- more --><h2 id="安裝-Anaconda"><a href="#安裝-Anaconda" class="headerlink" title="安裝 Anaconda"></a>安裝 Anaconda</h2><p>至 <a href="https://www.anaconda.com/download/" target="_blank" rel="noopener">Anaconda</a> 官網下載並安裝，建議選擇 Python 3.x 的版本。</p><h2 id="建立虛擬環境"><a href="#建立虛擬環境" class="headerlink" title="建立虛擬環境"></a>建立虛擬環境</h2><p>從指定套件列表中建立新的 conda 環境：</p><ul><li><code>-n</code>，<code>--name</code>：設定環境名稱</li></ul><pre><code class="shell">$ conda create -n &lt;environment&gt; &lt;package&gt;# 安裝整套 Anaconda$ conda create -n &lt;environment&gt; anaconda# 指定 Python 版本$ conda create -n &lt;environment&gt; python=3.6</code></pre><ul><li><code>-e</code>，<code>--envs</code>：列出已建立的環境</li></ul><pre><code class="shell"># 顯示虛擬環境列表，並顯示正在使用的虛擬環境$ conda info -e# conda environments:#base                  *  D:\Users\Titan\Anaconda3hello                    D:\Users\Titan\Anaconda3\envs\hello</code></pre><p>使用或 <code>activate</code> 至指定環境：</p><pre><code class="shell"># Windows$ activate &lt;environment&gt;# Linux and macOS$ source activate &lt;environment&gt;</code></pre><pre><code class="shell"># 顯示虛擬環境列表，並顯示正在使用的虛擬環境$ conda info -e# conda environments:#base                     D:\Users\Titan\Anaconda3hello                 *  D:\Users\Titan\Anaconda3\envs\hello</code></pre><blockquote><p><code>*</code> 代表目前正在使用的虛擬環境</p></blockquote><h2 id="離開虛擬環境"><a href="#離開虛擬環境" class="headerlink" title="離開虛擬環境"></a>離開虛擬環境</h2><p>如果要將現在環境改回預設值 <code>base</code> (離開目前環境) 可使用下面指令：</p><pre><code class="shell"># Windows$ deactivate# Linux and macOS$ source deactivate</code></pre><h2 id="利用-conda-安裝套件"><a href="#利用-conda-安裝套件" class="headerlink" title="利用 conda 安裝套件"></a>利用 conda 安裝套件</h2><pre><code class="shell">$ conda install &lt;package&gt;# 安裝多個套件$ conda install &lt;package-1&gt; &lt;package-2&gt;</code></pre><h2 id="查看資訊"><a href="#查看資訊" class="headerlink" title="查看資訊"></a>查看資訊</h2><p>查看 conda 目前版本</p><pre><code class="shell">$ conda -Vconda 4.5.11</code></pre><p>查看目前環境已安裝的套件</p><pre><code class="shell">$ conda list# packages in environment at D:\Users\Titan\Anaconda3:## Name                    Version                   Build  Channel...jupyter                   1.0.0                    py35_3jupyter_client            5.2.3                    py35_0jupyter_console           4.1.1                    py35_0jupyter_core              4.4.0            py35h629ba7f_0jupyterlab                0.32.1                    &lt;pip&gt;jupyterlab-launcher       0.10.5                    &lt;pip&gt;...</code></pre><p>查看 conda 是否有某套件：</p><pre><code class="shell">$ conda search &lt;package&gt;$ conda search pandasLoading channels: done# Name                  Version           Build  Channelpandas                    0.9.0      np16py27_0  pkgs/freepandas                    0.9.1      np16py27_0  pkgs/free...</code></pre><p>如果 conda 沒有該套件，可以使用 pip 來安裝套件：</p><pre><code class="shell"># 安裝套件$ pip install &lt;package&gt;# 更新套件$ pip install --upgrade &lt;package&gt;</code></pre><h2 id="刪除套件"><a href="#刪除套件" class="headerlink" title="刪除套件"></a>刪除套件</h2><pre><code class="shell"># 刪除環境內的套件$ conda remove -n &lt;environment&gt; &lt;package&gt;# 刪除目前環境內的套件$ conda remove &lt;package&gt;# 刪除多個套件$ conda remove &lt;package-1&gt; &lt;package-2&gt;</code></pre><h2 id="更新套件"><a href="#更新套件" class="headerlink" title="更新套件"></a>更新套件</h2><pre><code class="shell"># 更新 conda$ conda update conda# 更新 Anaconda$ conda update anaconda# 更新 Python$ conda update python# 更新特定套件$ conda update &lt;package&gt;</code></pre><h2 id="刪除虛擬環境"><a href="#刪除虛擬環境" class="headerlink" title="刪除虛擬環境"></a>刪除虛擬環境</h2><pre><code class="shell">$ conda env remove -n &lt;environment&gt;</code></pre><h3 id="更新-Python"><a href="#更新-Python" class="headerlink" title="更新 Python"></a>更新 Python</h3><h4 id="更新全域環境"><a href="#更新全域環境" class="headerlink" title="更新全域環境"></a>更新全域環境</h4><pre><code class="shell">$ conda update python$ conda update anaconda</code></pre><p>如果要更新 Python 的特定版本：</p><pre><code class="shell">$ conda install python==$pythonversion$</code></pre><h4 id="建立新環境-最佳方案"><a href="#建立新環境-最佳方案" class="headerlink" title="建立新環境 (最佳方案)"></a>建立新環境 (最佳方案)</h4><pre><code class="shell">$ conda create --name py36 python=3.6</code></pre><h4 id="取得-Python-的最新版本"><a href="#取得-Python-的最新版本" class="headerlink" title="取得 Python 的最新版本"></a>取得 Python 的最新版本</h4><pre><code class="shell">$ conda create --name py365 python=3.6.5 --channel conda-forge</code></pre><p>:::warning<br>注意：Conda 會更新該版本列表中的最高版本，因此 Python 2.7 更新到 2.x 中的最高版本，而 3.x 系列依此類推。<br>:::</p><h2 id="參考連結"><a href="#參考連結" class="headerlink" title="參考連結"></a>參考連結</h2><ul><li><a href="https://conda.io/docs/user-guide/tasks/manage-pkgs.html" target="_blank" rel="noopener">Managing packages | Conda documentation</a></li><li><a href="https://stackoverflow.com/questions/41535881/how-do-i-upgrade-to-python-3-6-with-conda" target="_blank" rel="noopener">macos - How do I upgrade to Python 3.6 with conda? - Stack Overflow</a></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> Python </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Anaconda </tag>
+            
+            <tag> Conda </tag>
+            
+            <tag> Virtual Environment </tag>
+            
+            <tag> Package Management </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>Windows Subsystem for Linux (WSL)</title>
       <link href="/article/windows-subsystem-for-linux.html"/>
       <url>/article/windows-subsystem-for-linux.html</url>

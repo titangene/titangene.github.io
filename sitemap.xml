@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://titangene.github.io/article/create-a-virtual-environment-and-manage-dependencies-with-conda.html</loc>
+    
+    <lastmod>2018-11-19T09:40:17.720Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://titangene.github.io/article/windows-subsystem-for-linux.html</loc>
     
-    <lastmod>2018-11-17T11:51:45.972Z</lastmod>
+    <lastmod>2018-11-19T09:38:00.509Z</lastmod>
     
   </url>
   
