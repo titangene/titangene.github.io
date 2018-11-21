@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head><meta name="generator" content="Hexo 3.8.0">
@@ -20,28 +21,29 @@
 <meta property="og:site_name" content="Titangene Blog">
 <meta property="og:description" content="Windows Subsystem for Linux (簡稱 WSL)，由 Microsoft 與 Canonical 公司合作開發，可直接在 Windows 10 中建立一個 Linux 子系統，原生執行 Linux，還可自行選擇你想安裝的 Linux 發行版，例如：Ubuntu、Kali Linux、SUSE。那下面就來介紹如何安裝和使用。">
 <meta property="og:locale" content="zh-tw">
-<meta property="og:image" content="https://titangene.github.io/article/windows-subsystem-for-linux/2018-11-17-19-04-25.png">
-<meta property="og:image" content="https://titangene.github.io/article/windows-subsystem-for-linux/2018-11-17-19-04-37.png">
-<meta property="og:image" content="https://titangene.github.io/article/windows-subsystem-for-linux/2018-11-17-19-04-47.png">
-<meta property="og:image" content="https://titangene.github.io/article/windows-subsystem-for-linux/2018-11-17-19-05-10.png">
-<meta property="og:image" content="https://titangene.github.io/article/windows-subsystem-for-linux/2018-11-17-19-05-23.png">
-<meta property="og:image" content="https://titangene.github.io/article/windows-subsystem-for-linux/2018-11-17-19-05-41.png">
-<meta property="og:image" content="https://titangene.github.io/article/windows-subsystem-for-linux/2018-11-17-19-06-06.png">
-<meta property="og:image" content="https://titangene.github.io/article/windows-subsystem-for-linux/2018-11-17-19-06-17.png">
-<meta property="og:image" content="https://titangene.github.io/article/windows-subsystem-for-linux/2018-11-17-19-06-28.png">
-<meta property="og:image" content="https://titangene.github.io/article/windows-subsystem-for-linux/2018-11-17-19-06-42.png">
-<meta property="og:image" content="https://titangene.github.io/article/windows-subsystem-for-linux/2018-11-17-19-06-53.png">
-<meta property="og:image" content="https://titangene.github.io/article/windows-subsystem-for-linux/2018-11-17-19-07-01.png">
-<meta property="og:image" content="https://titangene.github.io/article/windows-subsystem-for-linux/2018-11-17-19-07-14.png">
-<meta property="og:updated_time" content="2018-11-19T09:38:00.509Z">
+<meta property="og:image" content="https://titangene.github.io/images/cover/windows-subsystem-for-linux.png">
+<meta property="og:image" content="https://titangene.github.io/windows-subsystem-for-linux/2018-11-17-19-04-25.png">
+<meta property="og:image" content="https://titangene.github.io/windows-subsystem-for-linux/2018-11-17-19-04-37.png">
+<meta property="og:image" content="https://titangene.github.io/windows-subsystem-for-linux/2018-11-17-19-04-47.png">
+<meta property="og:image" content="https://titangene.github.io/windows-subsystem-for-linux/2018-11-17-19-05-10.png">
+<meta property="og:image" content="https://titangene.github.io/windows-subsystem-for-linux/2018-11-17-19-05-23.png">
+<meta property="og:image" content="https://titangene.github.io/windows-subsystem-for-linux/2018-11-17-19-05-41.png">
+<meta property="og:image" content="https://titangene.github.io/windows-subsystem-for-linux/2018-11-17-19-06-06.png">
+<meta property="og:image" content="https://titangene.github.io/windows-subsystem-for-linux/2018-11-17-19-06-17.png">
+<meta property="og:image" content="https://titangene.github.io/windows-subsystem-for-linux/2018-11-17-19-06-28.png">
+<meta property="og:image" content="https://titangene.github.io/windows-subsystem-for-linux/2018-11-17-19-06-42.png">
+<meta property="og:image" content="https://titangene.github.io/windows-subsystem-for-linux/2018-11-17-19-06-53.png">
+<meta property="og:image" content="https://titangene.github.io/windows-subsystem-for-linux/2018-11-17-19-07-01.png">
+<meta property="og:image" content="https://titangene.github.io/windows-subsystem-for-linux/2018-11-17-19-07-14.png">
+<meta property="og:updated_time" content="2018-11-21T10:55:46.267Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Windows Subsystem for Linux (WSL)">
 <meta name="twitter:description" content="Windows Subsystem for Linux (簡稱 WSL)，由 Microsoft 與 Canonical 公司合作開發，可直接在 Windows 10 中建立一個 Linux 子系統，原生執行 Linux，還可自行選擇你想安裝的 Linux 發行版，例如：Ubuntu、Kali Linux、SUSE。那下面就來介紹如何安裝和使用。">
-<meta name="twitter:image" content="https://titangene.github.io/article/windows-subsystem-for-linux/2018-11-17-19-04-25.png">
-    
+<meta name="twitter:image" content="https://titangene.github.io/images/cover/windows-subsystem-for-linux.png">
+
   <link href="https://fonts.googleapis.com/css?family=Inconsolata|Titillium+Web" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
-  <link href="//cdn.bootcss.com/node-waves/0.7.5/waves.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/node-waves/0.7.5/waves.min.css" rel="stylesheet">
   <link rel="stylesheet" href="/style.css">
   <script>
     function setLoadingBarProgress(num) {
@@ -56,7 +58,7 @@
 </div>
 
 
-  <script>setLoadingBarProgress(20)</script> 
+  <script>setLoadingBarProgress(20)</script>
   <header class="l_header">
 	<div class="wrapper">
 		<div class="nav-main container container--flex">
@@ -150,7 +152,8 @@
 	
 	<section class="article typo">
   	<div class="article-entry" itemprop="articleBody">
-    	<p>Windows Subsystem for Linux (簡稱 WSL)，由 Microsoft 與 Canonical 公司合作開發，可直接在 Windows 10 中建立一個 Linux 子系統，原生執行 Linux，還可自行選擇你想安裝的 Linux 發行版，例如：Ubuntu、Kali Linux、SUSE。那下面就來介紹如何安裝和使用。</p>
+    	<p><img src="/images/cover/windows-subsystem-for-linux.png" alt=""></p>
+<p>Windows Subsystem for Linux (簡稱 WSL)，由 Microsoft 與 Canonical 公司合作開發，可直接在 Windows 10 中建立一個 Linux 子系統，原生執行 Linux，還可自行選擇你想安裝的 Linux 發行版，例如：Ubuntu、Kali Linux、SUSE。那下面就來介紹如何安裝和使用。</p>
 <a id="more"></a>
 <h2 id="啟用-Windows-Subsystem-for-Linux"><a href="#啟用-Windows-Subsystem-for-Linux" class="headerlink" title="啟用 Windows Subsystem for Linux"></a>啟用 Windows Subsystem for Linux</h2><p>使用系統管理者權限開啟 PowerShell，並執行下面命令啟用 <code>Windows Subsystem for Linux</code> 功能：</p>
 <pre><code class="shell">$ Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux
@@ -163,15 +166,15 @@
     + CategoryInfo          : NotSpecified: (:) [Enable-WindowsOptionalFeature], COMException
     + FullyQualifiedErrorId : Microsoft.Dism.Commands.EnableWindowsOptionalFeatureCommand
 </code></pre>
-<p><img src="windows-subsystem-for-linux/2018-11-17-19-04-25.png" alt=""></p>
+<p><img src="/windows-subsystem-for-linux/2018-11-17-19-04-25.png" alt=""></p>
 <p>接著等他跑一下…：</p>
-<p><img src="windows-subsystem-for-linux/2018-11-17-19-04-37.png" alt=""></p>
+<p><img src="/windows-subsystem-for-linux/2018-11-17-19-04-37.png" alt=""></p>
 <p>接著他會問是否要重啟電腦，因為預設是 Yes，所以可以直接按 <code>Enter</code>：</p>
-<p><img src="windows-subsystem-for-linux/2018-11-17-19-04-47.png" alt=""></p>
+<p><img src="/windows-subsystem-for-linux/2018-11-17-19-04-47.png" alt=""></p>
 <p>其實上面指令就等於去「控制台 &gt; 程式集 &gt; 開啟或關閉 Windows 功能」開啟「適用於 Linux 的 Windows 子系統」。</p>
-<p><img src="windows-subsystem-for-linux/2018-11-17-19-05-10.png" alt=""></p>
+<p><img src="/windows-subsystem-for-linux/2018-11-17-19-05-10.png" alt=""></p>
 <h2 id="安裝-Linux-發行版"><a href="#安裝-Linux-發行版" class="headerlink" title="安裝 Linux 發行版"></a>安裝 Linux 發行版</h2><p>系統組建 (build) 必須要 Windows build 16215 或更新版本。若要想知道系統組建，可至 Windows 的「設定」內的「關於」即可查看。</p>
-<p><img src="windows-subsystem-for-linux/2018-11-17-19-05-23.png" alt=""></p>
+<p><img src="/windows-subsystem-for-linux/2018-11-17-19-05-23.png" alt=""></p>
 <p>你可以選擇你想安裝的 Linux 發行版：</p>
 <ul>
 <li><a href="https://www.microsoft.com/zh-tw/p/ubuntu-1604-lts/9pjn388hp8c9" target="_blank" rel="noopener">Ubuntu 16.04 LTS</a></li>
@@ -181,7 +184,7 @@
 <li><a href="https://www.microsoft.com/zh-tw/p/suse-linux-enterprise-server-12/9p32mwbh6cns" target="_blank" rel="noopener">SUSE Linux Enterprise Server 12</a></li>
 <li><a href="https://blogs.msdn.microsoft.com/commandline/2018/03/05/kali-linux-for-wsl/" target="_blank" rel="noopener">Kali Linux</a></li>
 </ul>
-<p><img src="windows-subsystem-for-linux/2018-11-17-19-05-41.png" alt=""></p>
+<p><img src="/windows-subsystem-for-linux/2018-11-17-19-05-41.png" alt=""></p>
 <p>如果在安裝後直接開啟 Ubuntu，就會顯示 <code>Error: 0x8007007e</code> 錯誤就代表你沒有啟用 <code>Windows Subsystem for Linux</code> 功能，詳情請參考上面：</p>
 <pre><code class="shell">The WSL optional component is not enabled. Please enable it and try again.
 See https://aka.ms/wslinstall for details.
@@ -195,20 +198,20 @@ Please create a default UNIX user account. The username does not need to match y
 For more information visit: https://aka.ms/wslusers
 Enter new UNIX username:
 </code></pre>
-<p><img src="windows-subsystem-for-linux/2018-11-17-19-06-06.png" alt=""></p>
+<p><img src="/windows-subsystem-for-linux/2018-11-17-19-06-06.png" alt=""></p>
 <p>接著是設定此使用者的密碼，這邊的使用者與你的 Windows 使用者名稱和密碼沒有任何關係。詳情可參考官方的 <a href="https://docs.microsoft.com/zh-tw/windows/wsl/user-support" target="_blank" rel="noopener">Linux User Account and Permissions | Microsoft Docs</a> 文件。</p>
 <p>如果顯示 <code>$</code> 就代表設定完成囉！</p>
-<p><img src="windows-subsystem-for-linux/2018-11-17-19-06-17.png" alt=""></p>
+<p><img src="/windows-subsystem-for-linux/2018-11-17-19-06-17.png" alt=""></p>
 <p>執行 <code>lsb_release -a</code> 指令就會看到 Linux 的系統版本：</p>
-<p><img src="windows-subsystem-for-linux/2018-11-17-19-06-28.png" alt=""></p>
+<p><img src="/windows-subsystem-for-linux/2018-11-17-19-06-28.png" alt=""></p>
 <h2 id="在其他終端使用-Bash"><a href="#在其他終端使用-Bash" class="headerlink" title="在其他終端使用 Bash"></a>在其他終端使用 Bash</h2><p>如果在使用 CMD 、 PowerShell 或其他終端 (例如我常用的 Cmder) 時想用 bash shell，可使用 <code>bash</code> 指令就可以啟動新的 Ubuntu shell：</p>
 <pre><code class="shell">$ bash
 </code></pre>
-<p><img src="windows-subsystem-for-linux/2018-11-17-19-06-42.png" alt=""></p>
-<p><img src="windows-subsystem-for-linux/2018-11-17-19-06-53.png" alt=""></p>
-<p><img src="windows-subsystem-for-linux/2018-11-17-19-07-01.png" alt=""></p>
+<p><img src="/windows-subsystem-for-linux/2018-11-17-19-06-42.png" alt=""></p>
+<p><img src="/windows-subsystem-for-linux/2018-11-17-19-06-53.png" alt=""></p>
+<p><img src="/windows-subsystem-for-linux/2018-11-17-19-07-01.png" alt=""></p>
 <h2 id="存取目錄"><a href="#存取目錄" class="headerlink" title="存取目錄"></a>存取目錄</h2><p>如果想存取 <code>D:\project</code>，在此環境下的路徑就是 <code>/mnt/d/project</code>。</p>
-<p><img src="windows-subsystem-for-linux/2018-11-17-19-07-14.png" alt=""></p>
+<p><img src="/windows-subsystem-for-linux/2018-11-17-19-07-14.png" alt=""></p>
 <h2 id="小結"><a href="#小結" class="headerlink" title="小結"></a>小結</h2><p>如果有在跨平台開發或維運的朋友，這個功能應該是一直以來的願望吧？讓你在 Windows 上可以直接處理事情，不用再多開 VM 來使用，不只省資源，也省硬碟空間，重點是不用等 VM 開機…</p>
 <h2 id="參考連結"><a href="#參考連結" class="headerlink" title="參考連結"></a>參考連結</h2><ul>
 <li><a href="https://docs.microsoft.com/zh-tw/windows/wsl/install-win10" target="_blank" rel="noopener">Install the Linux Subsystem on Windows 10 | Microsoft Docs</a></li>
@@ -295,10 +298,16 @@ Enter new UNIX username:
 </section>
 
   
-<section class="m_widget">
-    <div class="fb-page" data-href="https://www.facebook.com/titangene.blog/" data-tabs="timeline" data-width="250" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
+<section class="m_widget facebook_page">
+    <div class="fb-page" data-href="https://www.facebook.com/titangene.blog/" data-width="250" data-small-header="false" data-adapt-container-width="false" data-hide-cover="false" data-show-facepile="true">
         <blockquote cite="https://www.facebook.com/titangene.blog/" class="fb-xfbml-parse-ignore">
-            <a href="https://www.facebook.com/titangene.blog/">Titangene Blog</a>
+            <p>
+                <a href="https://www.facebook.com/titangene.blog/" class="social facebook" target="_blank">
+                    <span class="icon icon-facebook"></span>
+                </a>
+            </p>
+            <p><a href="https://www.facebook.com/titangene.blog/">Titangene Blog</a></p>
+            <p>Loading...</p>
         </blockquote>
     </div>
 </section>
@@ -310,6 +319,13 @@ Enter new UNIX username:
     <div class="content">
         
         <ul class="entry">
+        
+            <li>
+                <a itemprop="url" class="flat-box" href="/article/vscode-jupyter-python.html">
+                    <time>2018-11-19</time>
+                    <div class="name">在 VS Code 上使用 Jupyter Notebook</div>
+                </a>
+            </li>
         
             <li>
                 <a itemprop="url" class="flat-box" href="/article/create-a-virtual-environment-and-manage-dependencies-with-conda.html">
@@ -336,13 +352,6 @@ Enter new UNIX username:
                 <a itemprop="url" class="flat-box" href="/article/flutter-custom-fonts.html">
                     <time>2018-10-29</time>
                     <div class="name">Flutter 自訂字型</div>
-                </a>
-            </li>
-        
-            <li>
-                <a itemprop="url" class="flat-box" href="/article/flutter-install-on-windows.html">
-                    <time>2018-10-23</time>
-                    <div class="name">Flutter 環境建置 (Windows)</div>
                 </a>
             </li>
         
@@ -404,9 +413,9 @@ Enter new UNIX username:
 </script>
 
 
-<script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
-<script src="//cdn.bootcss.com/node-waves/0.7.5/waves.min.js"></script>
-<script src="//cdn.bootcss.com/scrollReveal.js/3.3.2/scrollreveal.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/node-waves/0.7.5/waves.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/scrollReveal.js/3.3.2/scrollreveal.min.js"></script>
 <script src="/js/jquery.fitvids.js"></script>
 <script>
 	var GOOGLE_CUSTOM_SEARCH_API_KEY = "";

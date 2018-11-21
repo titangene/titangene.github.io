@@ -2,44 +2,51 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://titangene.github.io/article/create-a-virtual-environment-and-manage-dependencies-with-conda.html</loc>
-    
-    <lastmod>2018-11-19T09:40:17.720Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://titangene.github.io/article/windows-subsystem-for-linux.html</loc>
     
-    <lastmod>2018-11-19T09:38:00.509Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://titangene.github.io/article/github-url-shortener.html</loc>
-    
-    <lastmod>2018-10-31T17:13:59.735Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://titangene.github.io/article/flutter-custom-fonts.html</loc>
-    
-    <lastmod>2018-10-29T03:47:31.849Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://titangene.github.io/article/flutter-install-on-windows.html</loc>
-    
-    <lastmod>2018-10-23T17:20:59.290Z</lastmod>
+    <lastmod>2018-11-21T10:55:46.267Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://titangene.github.io/article/hexo-disqus.html</loc>
     
-    <lastmod>2018-10-22T22:08:31.818Z</lastmod>
+    <lastmod>2018-11-21T10:41:54.750Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://titangene.github.io/article/github-url-shortener.html</loc>
+    
+    <lastmod>2018-11-21T10:19:18.405Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://titangene.github.io/article/flutter-install-on-windows.html</loc>
+    
+    <lastmod>2018-11-21T10:00:09.542Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://titangene.github.io/article/flutter-custom-fonts.html</loc>
+    
+    <lastmod>2018-11-21T09:59:28.231Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://titangene.github.io/article/create-a-virtual-environment-and-manage-dependencies-with-conda.html</loc>
+    
+    <lastmod>2018-11-21T09:59:07.856Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://titangene.github.io/article/vscode-jupyter-python.html</loc>
+    
+    <lastmod>2018-11-21T08:59:06.440Z</lastmod>
     
   </url>
   

@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head><meta name="generator" content="Hexo 3.8.0">
@@ -20,19 +21,20 @@
 <meta property="og:site_name" content="Titangene Blog">
 <meta property="og:description" content="接續從零建置 Github Page + Hexo blog，這次來研究如何在 Hexo 加入 Disqus 討論區。">
 <meta property="og:locale" content="zh-tw">
-<meta property="og:image" content="https://titangene.github.io/article/hexo-disqus/disqus-home-page.png">
-<meta property="og:image" content="https://titangene.github.io/article/hexo-disqus/disqus-on-my-site.png">
-<meta property="og:image" content="https://titangene.github.io/article/hexo-disqus/disqus-create-a-new-site.png">
-<meta property="og:image" content="https://titangene.github.io/article/hexo-disqus/disqus-hexo.png">
-<meta property="og:updated_time" content="2018-10-22T22:08:31.818Z">
+<meta property="og:image" content="https://titangene.github.io/images/cover/hexo-disqus.png">
+<meta property="og:image" content="https://titangene.github.io/images/hexo-disqus/disqus-home-page.png">
+<meta property="og:image" content="https://titangene.github.io/images/hexo-disqus/disqus-on-my-site.png">
+<meta property="og:image" content="https://titangene.github.io/images/hexo-disqus/disqus-create-a-new-site.png">
+<meta property="og:image" content="https://titangene.github.io/images/hexo-disqus/disqus-hexo.png">
+<meta property="og:updated_time" content="2018-11-21T10:41:54.750Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo 加入 Disqus 討論區">
 <meta name="twitter:description" content="接續從零建置 Github Page + Hexo blog，這次來研究如何在 Hexo 加入 Disqus 討論區。">
-<meta name="twitter:image" content="https://titangene.github.io/article/hexo-disqus/disqus-home-page.png">
-    
+<meta name="twitter:image" content="https://titangene.github.io/images/cover/hexo-disqus.png">
+
   <link href="https://fonts.googleapis.com/css?family=Inconsolata|Titillium+Web" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
-  <link href="//cdn.bootcss.com/node-waves/0.7.5/waves.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/node-waves/0.7.5/waves.min.css" rel="stylesheet">
   <link rel="stylesheet" href="/style.css">
   <script>
     function setLoadingBarProgress(num) {
@@ -47,7 +49,7 @@
 </div>
 
 
-  <script>setLoadingBarProgress(20)</script> 
+  <script>setLoadingBarProgress(20)</script>
   <header class="l_header">
 	<div class="wrapper">
 		<div class="nav-main container container--flex">
@@ -132,7 +134,7 @@
 	
     
     <div class="cats">
-        <a href="/categories/hexo/">Hexo</a>
+        <a href="/categories/blog/">Blog</a>
     </div>
 
 	</section>
@@ -141,24 +143,25 @@
 	
 	<section class="article typo">
   	<div class="article-entry" itemprop="articleBody">
-    	<p>接續從零建置 Github Page + Hexo blog，這次來研究如何在 Hexo 加入 Disqus 討論區。</p>
+    	<p><img src="/images/cover/hexo-disqus.png" alt=""></p>
+<p>接續從零建置 Github Page + Hexo blog，這次來研究如何在 Hexo 加入 Disqus 討論區。</p>
 <a id="more"></a>
 <h2 id="建立-Disqus"><a href="#建立-Disqus" class="headerlink" title="建立 Disqus"></a>建立 Disqus</h2><p>至 <a href="https://disqus.com/" target="_blank" rel="noopener">Disqus</a> 首頁註冊帳號後並登入，接著點擊首頁的「GET STARTED」</p>
-<p><img src="hexo-disqus/disqus-home-page.png" alt=""></p>
+<p><img src="/images/hexo-disqus/disqus-home-page.png" alt=""></p>
 <p>選擇「I want to install Disqus on my site」選項</p>
-<p><img src="hexo-disqus/disqus-on-my-site.png" alt=""></p>
+<p><img src="/images/hexo-disqus/disqus-on-my-site.png" alt=""></p>
 <ul>
 <li>Websit Name：自訂 short name，且是唯一，像我是設定 titangene-blog。short name 會在設定 Hexo 時需要</li>
 <li>Category：類別，自行選擇</li>
 <li>Language：語言，自行選擇</li>
 </ul>
 <p>填寫後點擊「Create Site」</p>
-<p><img src="hexo-disqus/disqus-create-a-new-site.png" alt=""></p>
+<p><img src="/images/hexo-disqus/disqus-create-a-new-site.png" alt=""></p>
 <h2 id="設定-Hexo"><a href="#設定-Hexo" class="headerlink" title="設定 Hexo"></a>設定 Hexo</h2><p>在根目錄內的 <code>_config.yml</code> 內設定：</p>
 <pre><code class="yaml">disqus_shortname: your_disqus_short_name
 </code></pre>
 <p>設定後就可以看到每篇文章下面都可以留言囉！</p>
-<p><img src="hexo-disqus/disqus-hexo.png" alt=""></p>
+<p><img src="/images/hexo-disqus/disqus-hexo.png" alt=""></p>
 
   	</div>
 	  
@@ -231,10 +234,16 @@
 </section>
 
   
-<section class="m_widget">
-    <div class="fb-page" data-href="https://www.facebook.com/titangene.blog/" data-tabs="timeline" data-width="250" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
+<section class="m_widget facebook_page">
+    <div class="fb-page" data-href="https://www.facebook.com/titangene.blog/" data-width="250" data-small-header="false" data-adapt-container-width="false" data-hide-cover="false" data-show-facepile="true">
         <blockquote cite="https://www.facebook.com/titangene.blog/" class="fb-xfbml-parse-ignore">
-            <a href="https://www.facebook.com/titangene.blog/">Titangene Blog</a>
+            <p>
+                <a href="https://www.facebook.com/titangene.blog/" class="social facebook" target="_blank">
+                    <span class="icon icon-facebook"></span>
+                </a>
+            </p>
+            <p><a href="https://www.facebook.com/titangene.blog/">Titangene Blog</a></p>
+            <p>Loading...</p>
         </blockquote>
     </div>
 </section>
@@ -246,6 +255,13 @@
     <div class="content">
         
         <ul class="entry">
+        
+            <li>
+                <a itemprop="url" class="flat-box" href="/article/vscode-jupyter-python.html">
+                    <time>2018-11-19</time>
+                    <div class="name">在 VS Code 上使用 Jupyter Notebook</div>
+                </a>
+            </li>
         
             <li>
                 <a itemprop="url" class="flat-box" href="/article/create-a-virtual-environment-and-manage-dependencies-with-conda.html">
@@ -272,13 +288,6 @@
                 <a itemprop="url" class="flat-box" href="/article/flutter-custom-fonts.html">
                     <time>2018-10-29</time>
                     <div class="name">Flutter 自訂字型</div>
-                </a>
-            </li>
-        
-            <li>
-                <a itemprop="url" class="flat-box" href="/article/flutter-install-on-windows.html">
-                    <time>2018-10-23</time>
-                    <div class="name">Flutter 環境建置 (Windows)</div>
                 </a>
             </li>
         
@@ -340,9 +349,9 @@
 </script>
 
 
-<script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
-<script src="//cdn.bootcss.com/node-waves/0.7.5/waves.min.js"></script>
-<script src="//cdn.bootcss.com/scrollReveal.js/3.3.2/scrollreveal.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/node-waves/0.7.5/waves.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/scrollReveal.js/3.3.2/scrollreveal.min.js"></script>
 <script src="/js/jquery.fitvids.js"></script>
 <script>
 	var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
