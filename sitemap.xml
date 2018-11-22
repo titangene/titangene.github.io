@@ -2,51 +2,58 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://titangene.github.io/article/windows-subsystem-for-linux.html</loc>
-    
-    <lastmod>2018-11-21T10:55:46.267Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://titangene.github.io/article/hexo-disqus.html</loc>
-    
-    <lastmod>2018-11-21T10:41:54.750Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://titangene.github.io/article/github-url-shortener.html</loc>
-    
-    <lastmod>2018-11-21T10:19:18.405Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://titangene.github.io/article/flutter-install-on-windows.html</loc>
-    
-    <lastmod>2018-11-21T10:00:09.542Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://titangene.github.io/article/flutter-custom-fonts.html</loc>
     
-    <lastmod>2018-11-21T09:59:28.231Z</lastmod>
+    <lastmod>2018-11-22T08:54:12.243Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://titangene.github.io/article/create-a-virtual-environment-and-manage-dependencies-with-conda.html</loc>
     
-    <lastmod>2018-11-21T09:59:07.856Z</lastmod>
+    <lastmod>2018-11-22T08:54:06.815Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://titangene.github.io/article/flutter-install-on-windows.html</loc>
+    
+    <lastmod>2018-11-22T08:51:51.961Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://titangene.github.io/article/github-url-shortener.html</loc>
+    
+    <lastmod>2018-11-22T08:46:18.166Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://titangene.github.io/article/hexo-disqus.html</loc>
+    
+    <lastmod>2018-11-22T08:44:40.824Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://titangene.github.io/article/vscode-jupyter-python.html</loc>
     
-    <lastmod>2018-11-21T08:59:06.440Z</lastmod>
+    <lastmod>2018-11-22T08:44:10.656Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://titangene.github.io/article/windows-subsystem-for-linux.html</loc>
+    
+    <lastmod>2018-11-22T08:43:43.616Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://titangene.github.io/article/python-selenium.html</loc>
+    
+    <lastmod>2018-11-22T08:37:36.725Z</lastmod>
     
   </url>
   
