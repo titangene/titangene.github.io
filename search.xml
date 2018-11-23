@@ -3,46 +3,6 @@
   
     
     <entry>
-      <title>Python Selenium 學習筆記</title>
-      <link href="/article/python-selenium.html"/>
-      <url>/article/python-selenium.html</url>
-      
-        <content type="html"><![CDATA[<p>Python</p><a id="more"></a><h2 id="安裝-Selenium"><a href="#安裝-Selenium" class="headerlink" title="安裝 Selenium"></a>安裝 Selenium</h2><pre><code class="shell">$ pip install selenium# or$ conda install -c conda-forge selenium</code></pre><h2 id="下載-webdriver"><a href="#下載-webdriver" class="headerlink" title="下載 webdriver"></a>下載 webdriver</h2><ul><li>Firefox web driver：<a href="https://github.com/mozilla/geckodriver/releases/" target="_blank" rel="noopener">https://github.com/mozilla/geckodriver/releases/</a></li><li>Chrome web driver：<a href="https://sites.google.com/a/chromium.org/chromedriver/" target="_blank" rel="noopener">https://sites.google.com/a/chromium.org/chromedriver/</a></li></ul><p>如要下載其他瀏覽器的 web driver，可至 <a href="https://www.seleniumhq.org/about/platforms.jsp" target="_blank" rel="noopener">Platforms Supported by Selenium</a> 此頁面下載。</p><p>將 webdriver 放在你想放的目錄內，可以選擇放在 global 或 local：</p><ul><li>global：為了要讓所有專案都可以使用，需要為 webdriver 設定環境變數。像我是放在 <code>D:\dev\webdriver</code> 此目錄中。</li><li>local：放在該專案目錄中，在程式碼中需要指定 webdriver 的路徑位置，因為考慮到每個專案所使用的 webdriver 版本不同，需要各別管理。</li></ul><h3 id="為-webdriver-設定環境變數"><a href="#為-webdriver-設定環境變數" class="headerlink" title="為 webdriver 設定環境變數"></a>為 webdriver 設定環境變數</h3><p>將 webdriver 的所在目錄設定在 <code>Path</code> 環境目錄</p><p><img src="../images/python-selenium/python-selenium_set-env.png" alt=""></p><h2 id="使用-Selenium"><a href="#使用-Selenium" class="headerlink" title="使用 Selenium"></a>使用 Selenium</h2><pre><code class="python">from selenium import webdriver</code></pre><p>使用 chrome 或 firefox 的 driver</p><pre><code class="python">driver = webdriver.Firefox()driver = webdriver.Chrome()</code></pre><p>指定 webdriver 的位置</p><pre><code class="python">driver = webdriver.Firefox(executable_path=&#39;D:\dev\webdriver\geckodriver&#39;)driver = webdriver.Chrome(executable_path=&#39;D:\dev\webdriver\chromedriver&#39;)</code></pre><p>開啟某網頁</p><pre><code class="python">driver.get(&#39;https://www.google.com.tw&#39;)</code></pre><p>回傳頁面的標題，方便確認目前 driver 跑到哪一頁面</p><pre><code class="python">driver.title</code></pre><p>瀏覽器的上一頁和下一頁</p><pre><code class="python">driver.back()driver.forward()</code></pre><p>螢幕截圖</p><pre><code class="python">driver.save_screenshot(&#39;screenshot.png&#39;)</code></pre><p>回傳網頁原始碼，之後就可以利用 BeautifulSoup 來解析 HTML 原始碼</p><pre><code class="python">driver.page_source</code></pre><p>移動並點擊至指定文字的某連結</p><pre><code class="python">driver.find_element_by_link_text(&#39;你想找的文字連結&#39;)driver.find_element_by_partial_link_text(&#39;部分連結文字&#39;)driver.find_elements_by_link_text(&#39;你想找的文字連結&#39;)driver.find_elements_by_partial_link_text(&#39;部分連結文字&#39;)</code></pre><p>點擊指定 element</p><pre><code class="python">element = driver.find_element_by_link_text(&#39;你想找的文字連結&#39;)element.click()</code></pre><p>在輸入欄位輸入文字</p><pre><code class="python">element = driver.find_element_by_name(&#39;search&#39;)element.send_keys(&#39;some text&#39;)</code></pre><p>清空輸入欄位內的文字</p><pre><code class="python">element.clear()</code></pre><p>找 element</p><pre><code class="python"># 用各種方式找一個 elementdriver.find_element_by_id()driver.find_element_by_name()driver.find_element_by_xpath()driver.find_element_by_tag_name()driver.find_element_by_class_name()driver.find_element_by_css_selector()# 用各種方式找多個 elementdriver.find_elements_by_name()driver.find_elements_by_xpath()driver.find_elements_by_tag_name()driver.find_elements_by_class_name()driver.find_elements_by_css_selector()</code></pre><p>執行最後記得要關閉 webdriver</p><pre><code class="python">driver.close()</code></pre><h2 id="爬蟲範例"><a href="#爬蟲範例" class="headerlink" title="爬蟲範例"></a>爬蟲範例</h2><pre><code class="python">from selenium import webdriverdriver = webdriver.Chrome(executable_path=&#39;D:\dev\webdriver\chromedriver&#39;)driver.get(&#39;https://www.google.com.tw&#39;)print(driver.title)   # Googlesearch_element = driver.find_element_by_name(&#39;q&#39;)search_element.send_keys(&#39;python&#39;)search_element.submit()print(driver.title)   # python - Google 搜尋</code></pre><h2 id="參考連結"><a href="#參考連結" class="headerlink" title="參考連結"></a>參考連結</h2><ul><li><a href="https://hk.saowen.com/a/7644c8e3c82a21827c1fc25737e0588a5842275e6f88095df5ad60cf546a8558" target="_blank" rel="noopener">Python+selenium鼠標、鍵盤事件 - 掃文資訊</a></li><li><a href="https://selenium-python-zh.readthedocs.io/en/latest/waits.html" target="_blank" rel="noopener">5. 等待頁面加載完成(Waits) — Selenium-Python中文文檔 2 documentation</a></li></ul>]]></content>
-      
-      
-      
-    </entry>
-    
-    <entry>
-      <title>在 VS Code 上使用 Jupyter Notebook</title>
-      <link href="/article/vscode-jupyter-python.html"/>
-      <url>/article/vscode-jupyter-python.html</url>
-      
-        <content type="html"><![CDATA[<p><img src="../images/cover/vscode-jupyter-python.png" alt=""></p><p>學習如何在 VS Code 內獲得 Jupyter 的開發體驗。</p><a id="more"></a><p>Jupyter (以前稱為 IPython) 是一個開源專案，可以讓你簡單的將 Markdown 和可執行的 Python code 一起寫在 Notebook 上，透過將文件或程式碼分成不同段落，以便於在各段落中查看各別的執行結果，而且還可直接查看資料視覺化。因此 Jupyter 讓很多 Python 的開發者愛不釋手。</p><p>以前要使用 Jupyter Notebook 或 Jupyter Lab，都需要另外開啟 terminal 執行 <code>jupyter notebook</code> 或 <code>jupyter lab</code> 指令才能開始使用 Jupyter 開發 Python (或是透過 shell script 來執行)，無法在常用的 VS Code 內獲得 Jupyter 的開發體驗 (最多只能安裝擴充功能來預覽 <code>.ipynb</code> 檔)。</p><p>最近在 VS Code 中終於達成可以像 Jupyter 那樣的分段執行，而且不是使用以前常用的 <code>.ipynb</code> 檔，而是使用 <code>.py</code>。那要如何使用呢？</p><p>需要準備：</p><ul><li>Jupyter 套件<ul><li>建議用 Conda 安裝，所以需要先安裝 Anaconda</li><li>建立一個新的虛擬環境</li><li>可參考 <a href="https://titangene.github.io/create-a-virtual-environment-and-manage-dependencies-with-conda.html">用 Conda 建立虛擬環境和管理相依套件</a>)</li></ul></li><li>VS Code<ul><li>extension：<a href="https://marketplace.visualstudio.com/items?itemName=ms-python.python" target="_blank" rel="noopener">Python</a></li><li>指定 Python 虛擬環境</li></ul></li></ul>]]></content>
-      
-      
-      <categories>
-          
-          <category> Python </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> Visual Studio Code </tag>
-            
-            <tag> Editor </tag>
-            
-            <tag> Jupyter </tag>
-            
-            <tag> Markdown </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    <entry>
       <title>用 Conda 建立虛擬環境和管理相依套件</title>
       <link href="/article/create-a-virtual-environment-and-manage-dependencies-with-conda.html"/>
       <url>/article/create-a-virtual-environment-and-manage-dependencies-with-conda.html</url>
