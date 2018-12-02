@@ -19,13 +19,15 @@
       
         <tags>
             
+            <tag> Python </tag>
+            
+            <tag> Python Requests </tag>
+            
             <tag> Crawler </tag>
             
             <tag> Windows </tag>
             
             <tag> Windows 工作排程 </tag>
-            
-            <tag> Python Requests </tag>
             
         </tags>
       
@@ -47,6 +49,8 @@
       
       
         <tags>
+            
+            <tag> Python </tag>
             
             <tag> Anaconda </tag>
             
@@ -79,11 +83,13 @@
       
         <tags>
             
-            <tag> WSL </tag>
+            <tag> Linux </tag>
             
             <tag> Ubuntu </tag>
             
             <tag> Windows 10 </tag>
+            
+            <tag> WSL </tag>
             
         </tags>
       
@@ -137,6 +143,10 @@
             
             <tag> Dart </tag>
             
+            <tag> Native App </tag>
+            
+            <tag> Font </tag>
+            
         </tags>
       
     </entry>
@@ -162,6 +172,8 @@
             
             <tag> Dart </tag>
             
+            <tag> Native App </tag>
+            
         </tags>
       
     </entry>
@@ -184,6 +196,8 @@
         <tags>
             
             <tag> Hexo </tag>
+            
+            <tag> Blog </tag>
             
         </tags>
       
