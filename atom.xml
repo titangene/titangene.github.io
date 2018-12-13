@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://titangene.github.io/"/>
-  <updated>2018-12-01T05:38:25.364Z</updated>
+  <updated>2018-12-13T11:12:18.383Z</updated>
   <id>https://titangene.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Python - 日誌 (logging) 模組</title>
+    <link href="https://titangene.github.io/article/python-logging.html"/>
+    <id>https://titangene.github.io/article/python-logging.html</id>
+    <published>2018-12-13T10:32:46.000Z</published>
+    <updated>2018-12-13T11:12:18.383Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="../images/cover/python.png" alt=""></p><p>開發 Python 時，很常使用 <code>print()</code> 來輸出變數以方便 debug，但要部署時，不需要這些訊息，需要自己手動去註解或刪除那些放在各處的 <code>print()</code>。而 Python 內建提供了 <code>logging</code> 模組可以用來取代 <code>print()</code>，<code>logging</code> 除了可以輸出訊息，也可以將訊息儲存至日誌檔保存。下面紀錄如何使用 <code>logging</code> 模組。</p><a id="more"></a><h2 id="載入-logging-模組"><a href="#載入-logging-模組" class="headerlink" title="載入 logging 模組"></a>載入 logging 模組</h2><pre><code class="python">import logging</code></pre><h2 id="logging-等級"><a href="#logging-等級" class="headerlink" title="logging 等級"></a>logging 等級</h2><p><code>logging</code> 模組預先定義了 6 種等級以及對應的 log 輸出函數 (除了 <code>logging.NOTSET</code> 沒有對應的輸出函數)：</p><table><thead><tr><th>等級</th><th>等級數值</th><th>輸出函數</th><th>說明</th></tr></thead><tbody><tr><td>NOTSET</td><td>0</td><td>無對應的輸出函數</td><td>未設定</td></tr><tr><td>DEBUG</td><td>10</td><td><code>logging.debug()</code></td><td>除錯</td></tr><tr><td>INFO</td><td>20</td><td><code>logging.info()</code></td><td>訊息</td></tr><tr><td>WARNING</td><td>30</td><td><code>logging.warning()</code></td><td>警告</td></tr><tr><td>ERROR</td><td>40</td><td><code>logging.error()</code></td><td>錯誤</td></tr><tr><td>CRITICAL</td><td>50</td><td><code>logging.critical()</code></td><td>嚴重錯誤</td></tr></tbody></table><p>若要查詢各等級的數值，可直接呼叫該等級：</p><pre><code class="python">import loggingprint(logging.NOTSET)   # 0print(logging.DEBUG)    # 10print(logging.INFO)     # 20print(logging.WARNING)  # 30print(logging.ERROR)    # 40print(logging.CRITICAL) # 50</code></pre><p>若要用等級數值來查詢是哪個等級的訊息，可使用 <code>logging.getLevelName(level)</code>：</p><pre><code class="python">import loggingprint(logging.getLevelName(0))    # NOTSETprint(logging.getLevelName(10))   # DEBUGprint(logging.getLevelName(20))   # INFOprint(logging.getLevelName(30))   # WARNINGprint(logging.getLevelName(40))   # ERRORprint(logging.getLevelName(50))   # CRITICAL</code></pre><h2 id="輸出-logging"><a href="#輸出-logging" class="headerlink" title="輸出 logging"></a>輸出 logging</h2><p><code>logging</code> 模組預設等級為 <code>WARNING</code>，大於或等於 <code>WARNING</code> 等級的訊息才會被記錄：</p><pre><code class="python">import logginglogging.debug(&#39;debug message&#39;)logging.info(&#39;info message&#39;)logging.warning(&#39;warning message&#39;)logging.error(&#39;error message&#39;)logging.critical(&#39;critical message&#39;)</code></pre><p>下面是輸出結果，可以看到比 <code>WARNING</code> 等級還要低的訊息有 <code>DEBUG</code> 和 <code>INFO</code> 就不會被輸出：</p><pre><code class="shell">WARNING:root:warning messageERROR:root:error messageCRITICAL:root:critical message</code></pre><p>若將等級設為 <code>DEBUG</code>，就會將所有等級的訊息都輸出：</p><pre><code class="python">import logginglogging.basicConfig(level=logging.DEBUG)logging.debug(&#39;debug message&#39;)logging.info(&#39;info message&#39;)logging.warning(&#39;warning message&#39;)logging.error(&#39;error message&#39;)logging.critical(&#39;critical message&#39;)</code></pre><p>下面是輸出結果，預設的訊息輸出格式是 <code>%(levelname)s:%(name)s:%(message)s</code> (後面會介紹如何自訂輸出格式)：</p><pre><code class="shell">DEBUG:root:debug messageINFO:root:info messageWARNING:root:warning messageERROR:root:error messageCRITICAL:root:critical message</code></pre><h3 id="自訂-logging-輸出格式"><a href="#自訂-logging-輸出格式" class="headerlink" title="自訂 logging 輸出格式"></a>自訂 logging 輸出格式</h3><p>預設的訊息輸出格式只有 <code>levelname</code>、<code>name</code>、<code>message</code>，下面是其他相關的資訊：</p><table><thead><tr><th>格式化字串</th><th>說明</th></tr></thead><tbody><tr><td><code>%(asctime)s</code></td><td>日期時間, 格式為 <code>YYYY-MM-DD HH:mm:SS,ms</code>，例如：2018-12-13 17:20:30,567</td></tr><tr><td><code>%(filename)s</code></td><td>模組檔名</td></tr><tr><td><code>%(funcName)s</code></td><td>函數名稱</td></tr><tr><td><code>%(levelname)s</code></td><td>日誌的等級名稱</td></tr><tr><td><code>%(levelno)s</code></td><td>日誌的等級數值</td></tr><tr><td><code>%(lineno)d</code></td><td>呼叫日誌函數所在的行數</td></tr><tr><td><code>%(message)s</code></td><td>訊息</td></tr><tr><td><code>%(module)s</code></td><td>模組名稱</td></tr><tr><td><code>%(name)s</code></td><td>logger 的名稱</td></tr><tr><td><code>%(pathname)s</code></td><td>檔案的完整路徑 (如果可用)</td></tr><tr><td><code>%(process)d</code></td><td>process ID (如果可用)</td></tr><tr><td><code>%(thread)d</code></td><td>執行緒 ID (如果可用)</td></tr><tr><td><code>%(threradName)s</code></td><td>執行緒名稱</td></tr></tbody></table><p>可將這些資訊加入 <code>logging.basicConfig()</code> 內的 <code>format</code> 參數：</p><pre><code class="python">FORMAT = &#39;%(asctime)s %(levelname)s: %(message)s&#39;logging.basicConfig(level=logging.DEBUG, format=FORMAT)logging.debug(&#39;debug message&#39;)logging.info(&#39;info message&#39;)logging.warning(&#39;warning message&#39;)logging.error(&#39;error message&#39;)logging.critical(&#39;critical message&#39;)</code></pre><p>下面是自訂訊息的輸出結果：</p><pre><code class="shell">2018-12-13 17:40:34,604 DEBUG: debug message2018-12-13 17:40:34,604 INFO: info message2018-12-13 17:40:34,604 WARNING: warning message2018-12-13 17:40:34,604 ERROR: error message2018-12-13 17:40:34,608 CRITICAL: critical message</code></pre><h2 id="儲存-logging"><a href="#儲存-logging" class="headerlink" title="儲存 logging"></a>儲存 logging</h2><p>只要在 <code>logging.basicConfig()</code> 內的 <code>filename</code> 參數設定要儲存的日誌檔名，就可以將 logging 儲存：</p><pre><code class="python">FORMAT = &#39;%(asctime)s %(levelname)s: %(message)s&#39;logging.basicConfig(level=logging.DEBUG, filename=&#39;myLog.log&#39;, filemode=&#39;w&#39;, format=FORMAT)logging.debug(&#39;debug message&#39;)logging.info(&#39;info message&#39;)logging.warning(&#39;warning message&#39;)logging.error(&#39;error message&#39;)logging.critical(&#39;critical message&#39;)</code></pre><p>預設 <code>filemode</code> 參數是設為 <code>a</code>，代表 append (附加) 的意思，每次執行程式時，Logging 會將新的訊息加在舊的訊息後面，不會覆蓋舊的訊息。若要改成新訊息覆蓋就訊息，那可以將 <code>filemode</code> 參數設為 <code>w</code>，代表 write 的意思。</p><p>下面是剛剛執行後儲存的 <code>myLog.log</code> 日誌檔：</p><pre><code class="log">2018-12-13 17:47:18,686 DEBUG: debug message2018-12-13 17:47:18,687 INFO: info message2018-12-13 17:47:18,687 WARNING: warning message2018-12-13 17:47:18,687 ERROR: error message2018-12-13 17:47:18,687 CRITICAL: critical message</code></pre><blockquote><p>詳情可參考官方文件 <a href="https://docs.python.org/3/library/logging.html" target="_blank" rel="noopener">Logging facility for Python — Python documentation</a>。</p></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;../images/cover/python.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;&lt;p&gt;開發 Python 時，很常使用 &lt;code&gt;print()&lt;/code&gt; 來輸出變數以方便 debug，但要部署時，不需要這些訊息，需要自己手動去註解或刪除那些放在各處的 &lt;code&gt;print()&lt;/code&gt;。而 Python 內建提供了 &lt;code&gt;logging&lt;/code&gt; 模組可以用來取代 &lt;code&gt;print()&lt;/code&gt;，&lt;code&gt;logging&lt;/code&gt; 除了可以輸出訊息，也可以將訊息儲存至日誌檔保存。下面紀錄如何使用 &lt;code&gt;logging&lt;/code&gt; 模組。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Python" scheme="https://titangene.github.io/categories/python/"/>
+    
+    
+      <category term="Python" scheme="https://titangene.github.io/tags/python/"/>
+    
+      <category term="Logging" scheme="https://titangene.github.io/tags/logging/"/>
+    
+  </entry>
   
   <entry>
     <title>設定 Windows 工作排程定期執行 Python 爬蟲程式</title>
@@ -150,9 +174,9 @@
       <category term="Native App" scheme="https://titangene.github.io/categories/native-app/"/>
     
     
-      <category term="Flutter" scheme="https://titangene.github.io/tags/flutter/"/>
-    
       <category term="Dart" scheme="https://titangene.github.io/tags/dart/"/>
+    
+      <category term="Flutter" scheme="https://titangene.github.io/tags/flutter/"/>
     
       <category term="Native App" scheme="https://titangene.github.io/tags/native-app/"/>
     
@@ -178,9 +202,9 @@
       <category term="Native App" scheme="https://titangene.github.io/categories/native-app/"/>
     
     
-      <category term="Flutter" scheme="https://titangene.github.io/tags/flutter/"/>
-    
       <category term="Dart" scheme="https://titangene.github.io/tags/dart/"/>
+    
+      <category term="Flutter" scheme="https://titangene.github.io/tags/flutter/"/>
     
       <category term="Native App" scheme="https://titangene.github.io/tags/native-app/"/>
     
