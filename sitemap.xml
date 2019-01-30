@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://titangene.github.io/article/docker-mssql-server-for-linux.html</loc>
+    
+    <lastmod>2019-01-30T15:24:31.812Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://titangene.github.io/article/flutter-loading-images.html</loc>
     
     <lastmod>2019-01-29T15:52:00.015Z</lastmod>
@@ -16,7 +23,7 @@
   </url>
   
   <url>
-    <loc>https://titangene.github.io/article/set-up-windows-task-scheduler-to-periodically-execute-python-crawler.html</loc>
+    <loc>https://titangene.github.io/article/flutter-install-on-windows.html</loc>
     
     <lastmod>2018-12-31T15:36:56.000Z</lastmod>
     
@@ -30,14 +37,14 @@
   </url>
   
   <url>
-    <loc>https://titangene.github.io/article/python-logging.html</loc>
+    <loc>https://titangene.github.io/article/hexo-disqus.html</loc>
     
     <lastmod>2018-12-31T15:36:56.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://titangene.github.io/article/hexo-disqus.html</loc>
+    <loc>https://titangene.github.io/article/github-url-shortener.html</loc>
     
     <lastmod>2018-12-31T15:36:56.000Z</lastmod>
     
@@ -46,28 +53,28 @@
   <url>
     <loc>https://titangene.github.io/article/flutter-custom-fonts.html</loc>
     
-    <lastmod>2018-12-01T05:40:40.355Z</lastmod>
+    <lastmod>2018-12-31T15:36:56.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://titangene.github.io/article/flutter-install-on-windows.html</loc>
+    <loc>https://titangene.github.io/article/python-logging.html</loc>
     
-    <lastmod>2018-12-01T05:40:27.852Z</lastmod>
+    <lastmod>2018-12-31T15:36:56.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://titangene.github.io/article/set-up-windows-task-scheduler-to-periodically-execute-python-crawler.html</loc>
+    
+    <lastmod>2018-12-31T15:36:56.000Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://titangene.github.io/article/windows-subsystem-for-linux.html</loc>
     
-    <lastmod>2018-12-01T05:38:54.771Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://titangene.github.io/article/github-url-shortener.html</loc>
-    
-    <lastmod>2018-11-22T08:46:18.166Z</lastmod>
+    <lastmod>2018-12-31T15:36:56.000Z</lastmod>
     
   </url>
   
