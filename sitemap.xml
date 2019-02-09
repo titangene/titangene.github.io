@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://titangene.github.io/article/flutter-custom-fonts.html</loc>
+    
+    <lastmod>2019-02-09T03:36:22.688Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://titangene.github.io/article/hexo-copy-code-snippet-to-clipboard.html</loc>
     
     <lastmod>2019-02-09T02:37:16.804Z</lastmod>
@@ -75,13 +82,6 @@
     <loc>https://titangene.github.io/article/flutter-loading-images.html</loc>
     
     <lastmod>2019-01-29T15:52:00.015Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://titangene.github.io/article/flutter-custom-fonts.html</loc>
-    
-    <lastmod>2018-12-31T15:36:56.000Z</lastmod>
     
   </url>
   
