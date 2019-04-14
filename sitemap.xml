@@ -2,9 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://titangene.github.io/article/gcp-vm-nignx-web-server.html</loc>
+    
+    <lastmod>2019-04-13T15:54:41.685Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://titangene.github.io/article/python-crawler-note.html</loc>
     
-    <lastmod>2019-02-28T09:32:58.663Z</lastmod>
+    <lastmod>2019-04-13T15:35:15.766Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://titangene.github.io/article/flutter-install-on-windows.html</loc>
+    
+    <lastmod>2019-04-01T08:54:05.998Z</lastmod>
     
   </url>
   
@@ -68,13 +82,6 @@
     <loc>https://titangene.github.io/article/docker-mssql-server-for-linux.html</loc>
     
     <lastmod>2019-02-07T11:20:51.282Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://titangene.github.io/article/flutter-install-on-windows.html</loc>
-    
-    <lastmod>2019-02-01T13:36:56.743Z</lastmod>
     
   </url>
   
