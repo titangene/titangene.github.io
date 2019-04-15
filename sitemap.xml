@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://titangene.github.io/article/getting-started-with-gcp.html</loc>
+    
+    <lastmod>2019-04-15T14:19:59.349Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://titangene.github.io/article/gcp-vm-nignx-web-server.html</loc>
     
-    <lastmod>2019-04-14T02:16:18.563Z</lastmod>
+    <lastmod>2019-04-15T14:13:46.290Z</lastmod>
     
   </url>
   
