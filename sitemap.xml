@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://titangene.github.io/article/gcp-network-and-http-load-balancer.html</loc>
+    
+    <lastmod>2019-04-24T14:21:10.799Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://titangene.github.io/article/getting-started-with-google-k8s-engine.html</loc>
     
-    <lastmod>2019-04-19T09:29:14.429Z</lastmod>
+    <lastmod>2019-04-20T05:36:27.958Z</lastmod>
     
   </url>
   
