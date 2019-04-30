@@ -2,16 +2,114 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://titangene.github.io/article/gcp-network-and-http-load-balancer.html</loc>
+    <loc>https://titangene.github.io/article/create-a-virtual-environment-and-manage-dependencies-with-conda.html</loc>
     
-    <lastmod>2019-04-24T14:21:10.799Z</lastmod>
+    <lastmod>2019-04-30T15:58:05.687Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://titangene.github.io/article/docker-mssql-server-for-linux.html</loc>
+    
+    <lastmod>2019-04-30T15:57:59.868Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://titangene.github.io/article/flutter-custom-fonts.html</loc>
+    
+    <lastmod>2019-04-30T15:57:38.523Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://titangene.github.io/article/flutter-install-on-windows.html</loc>
+    
+    <lastmod>2019-04-30T15:57:33.487Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://titangene.github.io/article/flutter-loading-images.html</loc>
+    
+    <lastmod>2019-04-30T15:57:23.428Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://titangene.github.io/article/gcp-vm-nignx-web-server.html</loc>
+    
+    <lastmod>2019-04-30T15:57:08.765Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://titangene.github.io/article/gcp-vm-windows-server.html</loc>
+    
+    <lastmod>2019-04-30T15:56:57.523Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://titangene.github.io/article/getting-started-with-google-k8s-engine.html</loc>
     
-    <lastmod>2019-04-20T05:36:27.958Z</lastmod>
+    <lastmod>2019-04-30T15:55:59.726Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://titangene.github.io/article/python-crawler-note.html</loc>
+    
+    <lastmod>2019-04-30T15:55:09.896Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://titangene.github.io/article/python-logging.html</loc>
+    
+    <lastmod>2019-04-30T15:55:01.854Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://titangene.github.io/article/set-up-windows-task-scheduler-to-periodically-execute-python-crawler.html</loc>
+    
+    <lastmod>2019-04-30T15:54:19.642Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://titangene.github.io/article/windows-subsystem-for-linux.html</loc>
+    
+    <lastmod>2019-04-30T15:53:45.703Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://titangene.github.io/article/hexo-copy-code-snippet-to-clipboard.html</loc>
+    
+    <lastmod>2019-04-30T15:38:34.184Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://titangene.github.io/article/hexo-disqus.html</loc>
+    
+    <lastmod>2019-04-30T15:38:22.157Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://titangene.github.io/article/hexo-markdown-it.html</loc>
+    
+    <lastmod>2019-04-30T15:37:42.866Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://titangene.github.io/article/gcp-network-and-http-load-balancer.html</loc>
+    
+    <lastmod>2019-04-24T14:21:10.799Z</lastmod>
     
   </url>
   
@@ -23,13 +121,6 @@
   </url>
   
   <url>
-    <loc>https://titangene.github.io/article/gcp-vm-windows-server.html</loc>
-    
-    <lastmod>2019-04-16T12:16:24.204Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://titangene.github.io/article/getting-started-with-gcp.html</loc>
     
     <lastmod>2019-04-16T12:05:50.221Z</lastmod>
@@ -37,100 +128,9 @@
   </url>
   
   <url>
-    <loc>https://titangene.github.io/article/gcp-vm-nignx-web-server.html</loc>
-    
-    <lastmod>2019-04-16T12:02:42.132Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://titangene.github.io/article/python-crawler-note.html</loc>
-    
-    <lastmod>2019-04-13T15:35:15.766Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://titangene.github.io/article/flutter-install-on-windows.html</loc>
-    
-    <lastmod>2019-04-01T08:54:05.998Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://titangene.github.io/article/flutter-custom-fonts.html</loc>
-    
-    <lastmod>2019-02-09T03:36:22.688Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://titangene.github.io/article/hexo-copy-code-snippet-to-clipboard.html</loc>
-    
-    <lastmod>2019-02-09T02:37:16.804Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://titangene.github.io/article/hexo-markdown-it.html</loc>
-    
-    <lastmod>2019-02-08T14:14:56.125Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://titangene.github.io/article/hexo-disqus.html</loc>
-    
-    <lastmod>2019-02-07T11:20:56.153Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://titangene.github.io/article/github-url-shortener.html</loc>
     
     <lastmod>2019-02-07T11:20:54.891Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://titangene.github.io/article/windows-subsystem-for-linux.html</loc>
-    
-    <lastmod>2019-02-07T11:20:52.820Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://titangene.github.io/article/create-a-virtual-environment-and-manage-dependencies-with-conda.html</loc>
-    
-    <lastmod>2019-02-07T11:20:51.916Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://titangene.github.io/article/python-logging.html</loc>
-    
-    <lastmod>2019-02-07T11:20:51.642Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://titangene.github.io/article/docker-mssql-server-for-linux.html</loc>
-    
-    <lastmod>2019-02-07T11:20:51.282Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://titangene.github.io/article/set-up-windows-task-scheduler-to-periodically-execute-python-crawler.html</loc>
-    
-    <lastmod>2019-02-01T13:35:53.183Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://titangene.github.io/article/flutter-loading-images.html</loc>
-    
-    <lastmod>2019-01-29T15:52:00.015Z</lastmod>
     
   </url>
   
