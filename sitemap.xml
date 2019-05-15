@@ -2,9 +2,37 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://titangene.github.io/article/networking-in-docker-compose.html</loc>
+    
+    <lastmod>2019-05-15T12:53:39.439Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://titangene.github.io/article/hexo-disqus.html</loc>
+    
+    <lastmod>2019-05-12T07:25:56.244Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://titangene.github.io/article/create-a-virtual-environment-and-manage-dependencies-with-conda.html</loc>
     
-    <lastmod>2019-04-30T15:58:05.687Z</lastmod>
+    <lastmod>2019-05-12T07:21:26.188Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://titangene.github.io/article/windows-subsystem-for-linux.html</loc>
+    
+    <lastmod>2019-04-30T16:01:29.511Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://titangene.github.io/article/getting-started-with-google-k8s-engine.html</loc>
+    
+    <lastmod>2019-04-30T16:00:09.450Z</lastmod>
     
   </url>
   
@@ -51,13 +79,6 @@
   </url>
   
   <url>
-    <loc>https://titangene.github.io/article/getting-started-with-google-k8s-engine.html</loc>
-    
-    <lastmod>2019-04-30T15:55:59.726Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://titangene.github.io/article/python-crawler-note.html</loc>
     
     <lastmod>2019-04-30T15:55:09.896Z</lastmod>
@@ -79,23 +100,9 @@
   </url>
   
   <url>
-    <loc>https://titangene.github.io/article/windows-subsystem-for-linux.html</loc>
-    
-    <lastmod>2019-04-30T15:53:45.703Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://titangene.github.io/article/hexo-copy-code-snippet-to-clipboard.html</loc>
     
     <lastmod>2019-04-30T15:38:34.184Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://titangene.github.io/article/hexo-disqus.html</loc>
-    
-    <lastmod>2019-04-30T15:38:22.157Z</lastmod>
     
   </url>
   
