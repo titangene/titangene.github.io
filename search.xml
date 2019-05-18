@@ -3,6 +3,33 @@
   
     
     <entry>
+      <title>套用自訂 HackMD 暗主題</title>
+      <link href="/article/hackmd-dark-theme.html"/>
+      <url>/article/hackmd-dark-theme.html</url>
+      
+        <content type="html"><![CDATA[<p><img src="../images/cover/hackmd-dark-theme.jpg" alt=""></p><p>HackMD 是我常用的寫作平台，因官方沒有提供暗主題的瀏覽模式，所以我就刻了自訂的暗主題，也將自訂主題<a href="https://github.com/titangene/hackmd-dark-theme" target="_blank" rel="noopener">開源在 GitHub</a>，歡迎大家發 PR 給我，並記得幫我按個 ⭐️ 星。</p><a id="more"></a><p>應該有很多人在瀏覽器安裝 <a href="https://chrome.google.com/webstore/detail/dark-reader/eimadpbcbfnmbkopoojfekhnkhdbieeh" target="_blank" rel="noopener">Dark reader</a> 這個擴充功能吧？通常使用的原因大多是想把畫面變成深色瀏覽模式，比較保護眼睛。但是有些網站使用這個擴充功能之後，有些顏色不是你習慣或喜歡的，尤其是在個人常用的網站上會感覺沒那麼習慣。</p><p>而 <a href="https://hackmd.io/" target="_blank" rel="noopener">HackMD</a> 是我常用來寫技術筆記的寫作平台，尤其是程式碼的 highlight，我個人偏好 VS Code 預設的暗主題 (Dark+ 這個主題)，所以我就在網頁上加上自己自訂的 CSS 去改成我想要的主題。</p><p>那如何將自定的 CSS 加在指定的網站上呢？原本我是用 <a href="https://userstyles.org/" target="_blank" rel="noopener">Stylish</a> 來管理自訂的網頁樣式，但後來因為<a href="https://forum.userstyles.org/discussion/53233/announcement-to-the-community" target="_blank" rel="noopener">一些原因這個擴充功能多了在背景上傳資訊的功能</a> (雖然官方說不會上傳個資)，於是我就改用 <a href="https://github.com/openstyles/stylus" target="_blank" rel="noopener">Stylus</a> 來管理樣式。Stylus 是 Stylish 的分支，刪除了任何與分析、回傳資料的功能。</p><h2 id="如何使用主題"><a class="header-anchor" href="#如何使用主題"></a>如何使用主題</h2><ol><li>在瀏覽器安裝 <a href="https://github.com/openstyles/stylus" target="_blank" rel="noopener">Stylus</a> 擴充功能，Stylus 目前提供這幾種瀏覽器版本的擴充功能：<ul><li><a href="https://chrome.google.com/webstore/detail/stylus/clngdbkpkpeebahjckkjfobafhncgmne" target="_blank" rel="noopener">Chrome</a></li><li><a href="https://addons.mozilla.org/zh-TW/firefox/addon/styl-us/" target="_blank" rel="noopener">Firefox</a></li><li><a href="https://addons.opera.com/zh-tw/extensions/details/stylus/" target="_blank" rel="noopener">Opera</a></li></ul></li><li>下載我自定的 <a href="https://userstyles.org/styles/147272/hackmd-dark-theme" target="_blank" rel="noopener">HackMD dark theme</a> 至 Stylus</li></ol><p><img src="../images/hackmd-dark-theme/install-style.png" alt=""></p><ol start="3"><li>下載樣式後會自動套用，開啟 HackMD 就會看到介面變成暗主題囉！如果是之前就開啟的 HackMD 頁面，有時會需要重新整理頁面才會套用暗主題。</li></ol><p>就是這麼簡單 😄。</p><p>這邊要另外說明一下，雖然剛剛提到因為 Stylish 有收集資料的問題，所以我改用 Stylus 來管理自定樣式，但是要將自定的樣是分享給別人使用，還是要註冊 <a href="https://userstyles.org/" target="_blank" rel="noopener">Stylish</a> 官方平台的帳號，將要分享的樣式上傳至這個平台，讓其他人可以下載使用。</p><p>不過如果只是下載別人的主題是不需要註冊帳號，所以不用擔因。</p><h2 id="原始碼"><a class="header-anchor" href="#原始碼"></a>原始碼</h2><p>這就是我自定 HackMD 樣式的原始碼：<a href="https://github.com/titangene/hackmd-dark-theme" target="_blank" rel="noopener">titangene/hackmd-dark-theme</a></p><p>如果發現需修正的地方，歡迎發 pull request 給我 😎。<br>如果喜歡，記得幫我按個 ⭐️ 星，Thanks。</p><h2 id="畫面截圖"><a class="header-anchor" href="#畫面截圖"></a>畫面截圖</h2><h3 id="overview"><a class="header-anchor" href="#overview"></a>Overview</h3><p><img src="../images/hackmd-dark-theme/overview.png" alt=""></p><h3 id="recent"><a class="header-anchor" href="#recent"></a>Recent</h3><p><img src="../images/hackmd-dark-theme/recent.png" alt=""></p><h3 id="view-mode"><a class="header-anchor" href="#view-mode"></a>View mode</h3><p><img src="../images/hackmd-dark-theme/view.png" alt=""></p><h3 id="book-mode"><a class="header-anchor" href="#book-mode"></a>Book mode</h3><p><img src="../images/hackmd-dark-theme/book-mode.png" alt=""></p><h3 id="slide-mode"><a class="header-anchor" href="#slide-mode"></a>Slide mode</h3><p><img src="../images/hackmd-dark-theme/slide.png" alt=""></p><h3 id="emoji-todo-list-code-block-highlight"><a class="header-anchor" href="#emoji-todo-list-code-block-highlight"></a>Emoji &amp; Todo list &amp; Code block highlight</h3><p><img src="../images/hackmd-dark-theme/emoji_todo-list_code-block.png" alt=""></p><h3 id="github-gist"><a class="header-anchor" href="#github-gist"></a>Github Gist</h3><p><img src="../images/hackmd-dark-theme/gist.png" alt=""></p><h3 id="latex-uml"><a class="header-anchor" href="#latex-uml"></a>LaTeX &amp; UML</h3><p><img src="../images/hackmd-dark-theme/latex_uml.png" alt=""></p><h3 id="table"><a class="header-anchor" href="#table"></a>Table</h3><p><img src="../images/hackmd-dark-theme/table.png" alt=""></p><h3 id="toc-table-of-contents"><a class="header-anchor" href="#toc-table-of-contents"></a>ToC (Table of Contents)</h3><p><img src="../images/hackmd-dark-theme/toc.png" alt=""></p><h3 id="history"><a class="header-anchor" href="#history"></a>History</h3><p><img src="../images/hackmd-dark-theme/history.png" alt=""></p><h3 id="permission"><a class="header-anchor" href="#permission"></a>Permission</h3><p><img src="../images/hackmd-dark-theme/permission.png" alt=""></p><h3 id="comment"><a class="header-anchor" href="#comment"></a>Comment</h3><p><img src="../images/hackmd-dark-theme/comment.png" alt=""></p><h2 id="小結"><a class="header-anchor" href="#小結"></a>小結</h2><p>其實這個 side project 我在 2017 年 8 月就開始做了，期間做了一些不定期的更新，這次的更新算是所有我發現想改的部分 (洞) 都填好了 (有可能我眼殘沒發現的部分也需要改 XD，歡迎大家發 PR 給我)，包括最近 HackMD 官方推出的可分享文件給指定帳號的功能，我也把介面變成暗主題了。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Blog </category>
+          
+          <category> CSS </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Markdown </tag>
+            
+            <tag> Dark Theme </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>透過 Docker Compose 設定 network</title>
       <link href="/article/networking-in-docker-compose.html"/>
       <url>/article/networking-in-docker-compose.html</url>
@@ -289,9 +316,9 @@
       
         <tags>
             
-            <tag> Hexo </tag>
-            
             <tag> Markdown </tag>
+            
+            <tag> Hexo </tag>
             
         </tags>
       
