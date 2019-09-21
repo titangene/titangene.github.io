@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://titangene.github.io/article/python-crawler-note.html</loc>
+    
+    <lastmod>2019-09-21T01:59:47.478Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://titangene.github.io/article/css-selector-5.html</loc>
+    
+    <lastmod>2019-09-21T00:34:24.969Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://titangene.github.io/article/css-selector-4.html</loc>
     
     <lastmod>2019-09-21T00:27:26.967Z</lastmod>
@@ -124,13 +138,6 @@
     <loc>https://titangene.github.io/article/gcp-vm-windows-server.html</loc>
     
     <lastmod>2019-04-30T15:56:57.523Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://titangene.github.io/article/python-crawler-note.html</loc>
-    
-    <lastmod>2019-04-30T15:55:09.896Z</lastmod>
     
   </url>
   
