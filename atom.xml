@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://titangene.github.io/"/>
-  <updated>2019-09-21T00:34:24.969Z</updated>
+  <updated>2019-09-21T00:27:26.967Z</updated>
   <id>https://titangene.github.io/</id>
   
   <author>
@@ -15,28 +15,6 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>重新認識 CSS - CSS Selector (5)</title>
-    <link href="https://titangene.github.io/article/css-selector-5.html"/>
-    <id>https://titangene.github.io/article/css-selector-5.html</id>
-    <published>2019-09-21T10:36:42.000Z</published>
-    <updated>2019-09-21T00:34:24.969Z</updated>
-    
-    <content type="html"><![CDATA[<p><img src="../images/cover/css.png" alt=""></p><p>Selector (選擇器) 可用來選擇 HTML 和 XML 文件中的節點，並將樣式屬性綁定到文件 (HTML 和 XML) 中的元素上。當選擇器與某元素 match 的時候，就可以對選到的元素進行 CSS 樣式設定。本篇會介紹 structural pseudo-class (偽類)，包括 <code>:root</code>、<code>nth-child</code>、<code>nth-of-type</code> …等 selector。</p><a id="more"></a><h2 id="前言"><a class="header-anchor" href="#前言"></a>前言</h2><blockquote><p>「重新認識 CSS」這個系列名稱的由來就如其名，我想要重新認識它。雖然以前就有學過 CSS，但這次想從 CSS Spec 中學到最原始的定義和內容，更加了解 CSS 的原理，讓我在切版的時候可以更加確定自己在做什麼，我踩到的雷只是因為我不夠了解它才會炸開。</p><p>在這 30 天的內容中，會將 Spec 內看到的資料整理成這個系列，也希望正在學 CSS 的各位可以更加了解它。另外我也會同時將文章發至我的 Blog，如果想直接看文內的程式碼 Demo 畫面，可以到我的 Blog 來看 😃。</p><p>本文同步發表於 iT 邦幫忙：<a href="https://ithelp.ithome.com.tw/articles/10218197" target="_blank" rel="noopener">重新認識 CSS - CSS Selector (5)</a></p><p>「重新認識 CSS」系列文章發文於：</p><ul><li><a href="https://ithelp.ithome.com.tw/users/20117586/ironman/2617" target="_blank" rel="noopener">iT 邦幫忙</a></li><li><a href="https://titangene.github.io/tags/it-%E9%90%B5%E4%BA%BA%E8%B3%BD/">Titangene Blog</a></li></ul></blockquote>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;img src=&quot;../images/cover/css.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;&lt;p&gt;Selector (選擇器) 可用來選擇 HTML 和 XML 文件中的節點，並將樣式屬性綁定到文件 (HTML 和 XML) 中的元素上。當選擇器與某元素 match 的時候，就可以對選到的元素進行 CSS 樣式設定。本篇會介紹 structural pseudo-class (偽類)，包括 &lt;code&gt;:root&lt;/code&gt;、&lt;code&gt;nth-child&lt;/code&gt;、&lt;code&gt;nth-of-type&lt;/code&gt; …等 selector。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="CSS" scheme="https://titangene.github.io/categories/css/"/>
-    
-    
-      <category term="IT 鐵人賽" scheme="https://titangene.github.io/tags/it-%E9%90%B5%E4%BA%BA%E8%B3%BD/"/>
-    
-  </entry>
   
   <entry>
     <title>重新認識 CSS - CSS Selector (4)</title>
@@ -503,6 +481,36 @@
     
     
       <category term="Logging" scheme="https://titangene.github.io/tags/logging/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>設定 Windows 工作排程定期執行 Python 爬蟲程式</title>
+    <link href="https://titangene.github.io/article/set-up-windows-task-scheduler-to-periodically-execute-python-crawler.html"/>
+    <id>https://titangene.github.io/article/set-up-windows-task-scheduler-to-periodically-execute-python-crawler.html</id>
+    <published>2018-12-01T04:55:00.000Z</published>
+    <updated>2019-04-30T15:54:19.642Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="../images/cover/python_crawler.png" alt=""></p><p>如何將 Python 爬蟲程式定期執行？使用 Windows 的使用者可以選擇「工作排程器」來解決。</p><a id="more"></a><p>最近有些資料想透過爬蟲來擷取，而且希望可以定期 (例如：每 10 分鐘一次) 自動執行爬蟲程式，因此就有了這篇筆記。下面介紹如何以 Windows 工作排程器來定期執行爬蟲程式。</p><h2 id="目標"><a class="header-anchor" href="#目標"></a>目標</h2><p>每 10 分鐘自動執行 Python 爬蟲程式，將爬蟲抓到的最新降雨量資料存入 CSV 檔內收集。</p><h2 id="準備"><a class="header-anchor" href="#準備"></a>準備</h2><ul><li>Windows</li><li>Python 環境：建議安裝 Anaconda，可參考 <a href="./create-a-virtual-environment-and-manage-dependencies-with-conda.html">用 Conda 建立虛擬環境和管理相依套件</a></li><li>Python 套件 (這是本篇爬蟲範例所需的相依套件，可依各自需求來選擇)<ul><li><a href="https://pandas.pydata.org/" target="_blank" rel="noopener">Pandas</a></li><li><a href="http://www.numpy.org/" target="_blank" rel="noopener">Numpy</a></li><li><a href="http://docs.python-requests.org/en/master/" target="_blank" rel="noopener">Requests</a></li></ul></li></ul><h2 id="python-爬蟲程式原始碼"><a class="header-anchor" href="#python-爬蟲程式原始碼"></a>Python 爬蟲程式原始碼</h2><p>source code: <a href="https://github.com/titangene/cwb-opendata-crawler-demo/blob/master/crawler.py" target="_blank" rel="noopener">titangene/cwb-opendata-crawler-demo/crawler.py</a></p><p>簡單說明一下程式的執行步驟：</p><ol><li>利用 Python 的 <a href="http://docs.python-requests.org/en/master/" target="_blank" rel="noopener">Requests</a> 套件來建立 HTTP 的 GET 請求，從中央氣象局提供的開放資料 API 中取得資料，回傳的格式是 JSON</li><li>解析 API 回傳的 JSON 資料，並將 JSON 轉成 <a href="https://pandas.pydata.org/" target="_blank" rel="noopener">Pandas</a> 的 <code>DataFrame</code> 型別的資料格式</li><li>將 <code>DataFrame</code> 儲存成 CSV 檔保存資料</li></ol><blockquote><p>若想了解中央氣象局開放資料的相關內容，詳情可參考 <a href="https://opendata.cwb.gov.tw/devManual/insrtuction" target="_blank" rel="noopener">中央氣象局開放資料 - 開發指南</a>。</p></blockquote><h2 id="python-爬蟲程式的批次檔"><a class="header-anchor" href="#python-爬蟲程式的批次檔"></a>Python 爬蟲程式的批次檔</h2><p>建立一個副檔名為 <code>.bat</code> 的批次檔，批次檔是用來執行 Python 爬蟲程式，因此就能讓 Windows 工作排程器在定期時間自動執行批次檔，以達成自動化執行爬蟲的目的。</p><p>下面就來說明批次檔每行都做了甚麼：</p><ul><li>第一行：切到指定目錄</li><li>第二行：指定 Python 虛擬環境 (可參考 <a href="./create-a-virtual-environment-and-manage-dependencies-with-conda.html">用 Conda 建立虛擬環境和管理相依套件</a>。如果要在全域環境下執行就不需要這行)</li><li>第三行：執行 Python 爬蟲程式</li><li>第四行：若想查看 Python 爬蟲程式執行過程中所輸出 (也就是執行 <code>print</code> 方法的部分) 內容，就需要取消這行的註解<ul><li><code>REM</code>：單行註解</li><li><code>pause</code>：用來暫停批次檔的執行</li></ul></li></ul><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell">cd /d D:/Project/Python/cwb-opendata-crawler<br>call activate dev<br>call python crawler.py<br>REM pause<br></code></pre></td></tr></table></figure><p>source code: <a href="https://github.com/titangene/cwb-opendata-crawler-demo/blob/master/crawler.bat" target="_blank" rel="noopener">titangene/cwb-opendata-crawler-demo/crawler.bat</a></p><h2 id="windows-工作排程器-簡介"><a class="header-anchor" href="#windows-工作排程器-簡介"></a>Windows 工作排程器 簡介</h2><p>可預先設定工作在特定時間或指定時間時，會自動執行程式或批次檔以達成工作自動化。下圖為 Windows 10 的工作排程器介面：</p><p><img src="../images/set-up-windows-task-scheduler-to-periodically-execute-python-crawler/2018-11-30_13-46-33.png" alt=""></p><h2 id="建立工作-設定定期執行爬蟲程式"><a class="header-anchor" href="#建立工作-設定定期執行爬蟲程式"></a>建立工作，設定定期執行爬蟲程式</h2><p>開啟 Windows 的「工作排程器」，點擊右上角的「建立工作」</p><p><img src="../images/set-up-windows-task-scheduler-to-periodically-execute-python-crawler/2018-11-30_13-47-29.png" alt=""></p><p>自訂工作名稱，若有權限需求可勾選「以最高權限執行」選項</p><p><img src="../images/set-up-windows-task-scheduler-to-periodically-execute-python-crawler/2018-11-30_13-48-27.png" alt=""></p><p>接著新增「觸發程序」</p><p><img src="../images/set-up-windows-task-scheduler-to-periodically-execute-python-crawler/2018-11-30_22-13-47.png" alt=""></p><p>設定工作的開始時間，並選擇「僅一次」，以及設定工作要每隔多久就執行一次，並且要持續多久時間</p><p><img src="../images/set-up-windows-task-scheduler-to-periodically-execute-python-crawler/2018-11-30_13-49-02.png" alt=""></p><p>然後新增「動作」</p><p><img src="../images/set-up-windows-task-scheduler-to-periodically-execute-python-crawler/2018-11-30_22-14-07.png" alt=""></p><p>設定要自動執行的程式，這邊選擇的就是剛剛提到的 <a href="#Python-%E7%88%AC%E8%9F%B2%E7%A8%8B%E5%BC%8F%E7%9A%84%E6%89%B9%E6%AC%A1%E6%AA%94">批次檔</a> (<a href="https://github.com/titangene/cwb-opendata-crawler-demo/blob/master/crawler.bat" target="_blank" rel="noopener">原始碼</a>)</p><p><img src="../images/set-up-windows-task-scheduler-to-periodically-execute-python-crawler/2018-11-30_13-49-54.png" alt=""></p><p>如果設定好了就可以按確定完成建立工作，此時就會看到在「工作排程器程式庫」內的工作清單中，多了剛剛新增的工作</p><p><img src="../images/set-up-windows-task-scheduler-to-periodically-execute-python-crawler/2018-11-30_13-46-05.png" alt=""></p><h2 id="成果"><a class="header-anchor" href="#成果"></a>成果</h2><p>可以看到爬蟲程式會在定期自動執行，執行的時候會跳出一個 <code>cmd</code> 視窗。若剛剛提到的 <a href="#Python-%E7%88%AC%E8%9F%B2%E7%A8%8B%E5%BC%8F%E7%9A%84%E6%89%B9%E6%AC%A1%E6%AA%94">批次檔</a> 內沒有將 <code>REM pause</code> 這行註解，就會看到爬蟲程式執行完成後，不會自動關閉 <code>cmd</code> 視窗，這是為了可以立即看到該次爬蟲執行過程中輸出的訊息。</p><p><img src="../images/set-up-windows-task-scheduler-to-periodically-execute-python-crawler/2018-12-01_00-19-10.png" alt=""></p><p>下圖就是自動執行爬蟲所抓到的資料：</p><p><img src="../images/set-up-windows-task-scheduler-to-periodically-execute-python-crawler/2018-12-01_09-14-48.png" alt=""></p><blockquote><p>完整 source code：<a href="https://github.com/titangene/cwb-opendata-crawler-demo" target="_blank" rel="noopener">titangene/cwb-opendata-crawler-demo</a></p></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;../images/cover/python_crawler.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;&lt;p&gt;如何將 Python 爬蟲程式定期執行？使用 Windows 的使用者可以選擇「工作排程器」來解決。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Windows" scheme="https://titangene.github.io/categories/windows/"/>
+    
+      <category term="Python" scheme="https://titangene.github.io/categories/windows/python/"/>
+    
+      <category term="Crawler" scheme="https://titangene.github.io/categories/windows/python/crawler/"/>
+    
+      <category term="OS" scheme="https://titangene.github.io/categories/windows/python/crawler/os/"/>
+    
+    
+      <category term="Python Requests" scheme="https://titangene.github.io/tags/python-requests/"/>
+    
+      <category term="Windows 工作排程" scheme="https://titangene.github.io/tags/windows-%E5%B7%A5%E4%BD%9C%E6%8E%92%E7%A8%8B/"/>
     
   </entry>
   
