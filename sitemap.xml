@@ -2,16 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://titangene.github.io/article/python-crawler-note.html</loc>
+    <loc>https://titangene.github.io/article/css-selector-5.html</loc>
     
-    <lastmod>2019-09-21T01:59:47.478Z</lastmod>
+    <lastmod>2019-09-21T11:41:31.008Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://titangene.github.io/article/css-selector-4.html</loc>
     
-    <lastmod>2019-09-21T00:27:26.967Z</lastmod>
+    <lastmod>2019-09-21T11:08:41.215Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://titangene.github.io/article/python-crawler-note.html</loc>
+    
+    <lastmod>2019-09-21T01:59:47.478Z</lastmod>
     
   </url>
   
