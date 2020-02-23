@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://titangene.github.io/article/git-auto-crlf.html</loc>
+    
+    <lastmod>2020-02-23T15:41:56.009Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://titangene.github.io/article/git--blob-object.html</loc>
     
-    <lastmod>2020-02-16T15:59:29.411Z</lastmod>
+    <lastmod>2020-02-23T14:56:45.420Z</lastmod>
     
   </url>
   
