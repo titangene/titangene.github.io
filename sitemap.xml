@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://titangene.github.io/article/git-tree-object.html</loc>
+    
+    <lastmod>2020-03-01T15:57:02.681Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://titangene.github.io/article/git-auto-crlf.html</loc>
     
     <lastmod>2020-02-23T15:41:56.009Z</lastmod>
