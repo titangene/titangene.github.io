@@ -2,16 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://titangene.github.io/article/git--blob-object.html</loc>
+    <loc>https://titangene.github.io/article/git-branch-ref.html</loc>
     
-    <lastmod>2020-03-16T03:20:40.166Z</lastmod>
+    <lastmod>2020-03-22T15:57:09.514Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://titangene.github.io/article/git-commit-object.html</loc>
     
-    <lastmod>2020-03-15T16:00:54.139Z</lastmod>
+    <lastmod>2020-03-22T15:51:58.243Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://titangene.github.io/article/git--blob-object.html</loc>
+    
+    <lastmod>2020-03-16T03:20:40.166Z</lastmod>
     
   </url>
   
