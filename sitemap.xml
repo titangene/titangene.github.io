@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://titangene.github.io/article/git-detached-head.html</loc>
+    
+    <lastmod>2020-04-12T15:53:25.472Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://titangene.github.io/article/git-tag-object.html</loc>
     
-    <lastmod>2020-04-05T16:32:37.765Z</lastmod>
+    <lastmod>2020-04-05T17:12:26.687Z</lastmod>
     
   </url>
   
