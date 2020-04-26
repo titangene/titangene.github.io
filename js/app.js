@@ -205,4 +205,9 @@ var customSearch;
 		}
 	});
 
+	$('.post-list').masonry({
+		itemSelector: '.post-wrapper',
+		percentPosition: true,
+		transitionDuration: 0
+	});
 })(jQuery);
