@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://titangene.github.io/article/npm-and-yarn-cheatsheet.html</loc>
+    
+    <lastmod>2020-04-26T10:32:10.705Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://titangene.github.io/article/nvm.html</loc>
     
     <lastmod>2020-04-19T15:55:41.307Z</lastmod>
