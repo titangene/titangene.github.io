@@ -4,6 +4,37 @@
   
     
     <entry>
+      <title>Sass：@use rule</title>
+      <link href="/article/sass-use-rule.html"/>
+      <url>/article/sass-use-rule.html</url>
+      
+        <content type="html"><![CDATA[<p><img src="../images/cover/sass.jpg" alt=""></p><p>若要模組化 Sass，最常用的就是 <code>@import</code> 規則。但在 <a href="https://titangene.github.io/article/dart-sass.html">Dart Sass</a> 推出了一個新功能：模組系統，可用 <code>@use</code> 規則，並透過 namespace 來引入其他 stylesheet 中的成員。</p><a id="more"></a><h1 id="Overview"><a class="header-anchor" href="#Overview"></a>Overview</h1><ul><li>載入其他 Sass stylesheet 中的 mixin、函數和變數，並將多個 stylesheet 中的 CSS 組合在一起</li><li>不管用 <code>@use</code> 載入幾次的任何樣式，都只會在編譯的 CSS 輸出中出現一次</li><li><code>@use</code> 必須放在所有規則之前 (除了 <code>@forward</code> 和變數宣告之外)</li><li>便於了解成員是從哪些檔案載入的</li><li>不用像使用 <code>@import</code> 時那樣，需把命名寫清楚，因為可透過 <code>@use</code> 提供的 namespace 來避免命名衝突</li></ul><div class="info"><p>只要使用 <code>@use</code> 引入的檔案，stylesheet 就會被全部引入，不管有無另外使用。</p></div><h1 id="語法"><a class="header-anchor" href="#語法"></a>語法</h1><figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs scss"><span class="hljs-keyword">@use</span> <span class="hljs-string">"&lt;url&gt;"</span>;<br><br><span class="hljs-keyword">@use</span> <span class="hljs-string">"&lt;url&gt;"</span> as &lt;namespace&gt;;<br><span class="hljs-keyword">@use</span> <span class="hljs-string">"&lt;url&gt;"</span> as *;<br><br><span class="hljs-keyword">@use</span> <span class="hljs-string">"&lt;url&gt;"</span> with (<br>  &lt;variable&gt;: &lt;value&gt;,<br>  &lt;variable&gt;: &lt;value&gt;<br>);<br></code></pre></td></tr></table></figure><h1 id="載入成員"><a class="header-anchor" href="#載入成員"></a>載入成員</h1><ul><li>用 <code>@use</code> 載入的 stylesheet 稱為「modules (模組)」。</li><li>使用 <code>@use</code> 時，可透過 namespace 來存取另一個模組中的變數、函數和 mixin：<ul><li>變數：<code>&lt;namespace&gt;.&lt;variable&gt;</code></li><li>函數：<code>&lt;namespace&gt;.&lt;function&gt;()</code></li><li>mixin：<code>@include &lt;namespace&gt;.&lt;mixin&gt;()</code></li></ul></li><li>預設的 <code>&lt;namespace&gt;</code> 就是模組 URL 的檔名 (不包含 <code>_</code> 底線前綴和副檔名)</li><li>用 <code>@use</code> 載入的成員有存取範圍，只有載入它們的 stylesheet 才能存取<ul><li>若其他 stylesheet 想存取這些成員，就必須自己寫 <code>@use</code> 載入</li></ul></li></ul><p>例如：用 <code>@use</code> 引入的 <code>styles/base/_color.scss</code> 檔案會像下面這樣，而此模組的 namespace 就是 <code>color</code>：</p><figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs scss"><span class="hljs-comment">// styles/base/_color.scss</span><br><span class="hljs-variable">$blue</span>: <span class="hljs-number">#2979ff</span>;<br></code></pre></td></tr></table></figure><figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs scss"><span class="hljs-comment">// styles/_tool.scss</span><br><span class="hljs-keyword">@mixin</span> rounded &#123;<br>  <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">3px</span>;<br>&#125;<br><br><span class="hljs-keyword">@function</span> px2em(<span class="hljs-variable">$pixel</span>, <span class="hljs-variable">$font-size-base</span>: <span class="hljs-number">16px</span>) &#123;<br>  <span class="hljs-keyword">@return</span> (<span class="hljs-variable">$pixel</span> / <span class="hljs-variable">$font-size-base</span>) * <span class="hljs-number">1em</span>;<br>&#125;<br></code></pre></td></tr></table></figure><figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs scss"><span class="hljs-comment">// styles/main.scss</span><br><span class="hljs-keyword">@use</span> <span class="hljs-string">"base/color"</span>;<br><span class="hljs-keyword">@use</span> <span class="hljs-string">"tool"</span>;<br><br><span class="hljs-selector-class">.button</span> &#123;<br>  <span class="hljs-attribute">padding</span>: <span class="hljs-number">10px</span>;<br>  <span class="hljs-attribute">color</span>: color.<span class="hljs-variable">$blue</span>;<br>  <span class="hljs-attribute">font-size</span>: tool.px2em(<span class="hljs-number">32px</span>);<br>  <span class="hljs-keyword">@include</span> tool.rounded;<br>&#125;<br></code></pre></td></tr></table></figure><p>輸出：</p><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-class">.button</span> &#123;<br>  <span class="hljs-attribute">padding</span>: <span class="hljs-number">10px</span>;<br>  <span class="hljs-attribute">color</span>: <span class="hljs-number">#2979ff</span>;<br>  <span class="hljs-attribute">font-size</span>: <span class="hljs-number">2em</span>;<br>  <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">3px</span>;<br>&#125;<br></code></pre></td></tr></table></figure><h1 id="設定-namespace"><a class="header-anchor" href="#設定-namespace"></a>設定 namespace</h1><p>語法：</p><figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs scss"><span class="hljs-keyword">@use</span> <span class="hljs-string">"&lt;url&gt;"</span> as &lt;namespace&gt;;<br><span class="hljs-keyword">@use</span> <span class="hljs-string">"&lt;url&gt;"</span> as *;<br></code></pre></td></tr></table></figure><p>自訂 namespace (很像設定 alias) 的情境：</p><ul><li>載入相同檔名的多個模組 (例如：第三方 library 和我的檔名相同)</li><li>讓模組的名稱變短</li></ul><figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs scss"><span class="hljs-comment">// src/_mycolor.scss</span><br><span class="hljs-variable">$blue</span>: <span class="hljs-number">#2979ff</span>;<br></code></pre></td></tr></table></figure><figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs scss"><span class="hljs-comment">// src/main.scss</span><br><span class="hljs-keyword">@use</span> <span class="hljs-string">"src/mycolor"</span> as color;<br><br><span class="hljs-selector-class">.button</span> &#123;<br>  <span class="hljs-attribute">color</span>: color.<span class="hljs-variable">$blue</span>;<br>&#125;<br></code></pre></td></tr></table></figure><p>輸出：</p><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-class">.button</span> &#123;<br>  <span class="hljs-attribute">color</span>: <span class="hljs-number">#2979ff</span>;<br>&#125;<br></code></pre></td></tr></table></figure><p>也可用 <code>*</code> 來載入沒有 namespace 的模組，但建議使用在自己寫的 stylesheet 或 <a href="https://sass-lang.com/documentation/modules" target="_blank" rel="noopener">Sass 提供的內建模組</a>，以避免引入名稱衝突的成員：</p><p>例如：</p><figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs scss"><span class="hljs-keyword">@use</span> <span class="hljs-string">'sass:math'</span> as *;<br><br><span class="hljs-variable">$half</span>: percentage(<span class="hljs-number">1</span>/<span class="hljs-number">2</span>);<br><br><span class="hljs-selector-class">.button</span> &#123;<br>  <span class="hljs-attribute">border-radius</span>: <span class="hljs-variable">$half</span>;<br>&#125;<br></code></pre></td></tr></table></figure><p>輸出：</p><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-class">.button</span> &#123;<br>  <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">50%</span>;<br>&#125;<br></code></pre></td></tr></table></figure><h1 id="私有成員"><a class="header-anchor" href="#私有成員"></a>私有成員</h1><p>若你不想讓你定義的所有成員都可在 stylesheet 之外使用，就可在成員名稱的前面加上 <code>-</code> 或 <code>_</code>，來讓它們變成私有成員。</p><figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs scss"><span class="hljs-comment">// styles/_corner.scss</span><br>$_radius: <span class="hljs-number">3px</span>;<br><br><span class="hljs-keyword">@mixin</span> rounded &#123;<br>  <span class="hljs-attribute">border-radius</span>: $_radius;<br>&#125;<br></code></pre></td></tr></table></figure><figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs scss"><span class="hljs-comment">// styles/main.scss</span><br><span class="hljs-keyword">@use</span> <span class="hljs-string">"corner"</span>;<br><br><span class="hljs-selector-class">.button</span> &#123;<br>  <span class="hljs-attribute">border-radius</span>: corner.rounded;<br>  <span class="hljs-attribute">padding</span>: corner.$_radius;  <span class="hljs-comment">// Error</span><br>&#125;<br></code></pre></td></tr></table></figure><p>編譯會報錯：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">$</span><span class="bash"> npx sass styles:dict/styles</span><br>Error: Private members can't be accessed from outside their modules.<br>  ╷<br>5 │   padding: corner.$_radius;<br>  │            ^^^^^^^^^^^^^^^<br>  ╵<br>  src/scss/main.scss 5:12  root stylesheet<br></code></pre></td></tr></table></figure><h1 id="配置模組"><a class="header-anchor" href="#配置模組"></a>配置模組</h1><p>stylesheet 可用 <a href="https://sass-lang.com/documentation/variables#default-values" target="_blank" rel="noopener"><code>!default</code> flag</a> 來定義變數，會被新的值給覆蓋。</p><p>若要載入帶有配置的模組，可用以下語法：</p><figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs scss"><span class="hljs-keyword">@use</span> <span class="hljs-string">"&lt;url&gt;"</span> with (<br>  &lt;variable&gt;: &lt;value&gt;,<br>  &lt;variable&gt;: &lt;value&gt;<br>);<br></code></pre></td></tr></table></figure><p>配置的值會覆蓋變數的預設值。</p><p>例如：</p><figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs scss"><span class="hljs-comment">// styles/base/_color.scss</span><br><span class="hljs-variable">$blue</span>: <span class="hljs-number">#2979ff</span> !default;<br><span class="hljs-variable">$red</span>: <span class="hljs-number">#f44336</span> !default;<br><br><span class="hljs-variable">$primary</span>: <span class="hljs-variable">$blue</span>;<br><span class="hljs-variable">$secondary</span>: <span class="hljs-variable">$red</span>;<br></code></pre></td></tr></table></figure><figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs scss"><span class="hljs-comment">// styles/main.scss</span><br><span class="hljs-keyword">@use</span> <span class="hljs-string">"base/color"</span> with (<br>  <span class="hljs-variable">$blue</span>: <span class="hljs-number">#00f</span>,<br>  <span class="hljs-variable">$red</span>: <span class="hljs-number">#f00</span><br>);<br><br><span class="hljs-selector-class">.button-primary</span> &#123;<br>  <span class="hljs-attribute">background-color</span>: color.<span class="hljs-variable">$primary</span>;<br>&#125;<br><br><span class="hljs-selector-class">.button-secondary</span> &#123;<br>  <span class="hljs-attribute">background-color</span>: color.<span class="hljs-variable">$secondary</span>;<br>&#125;<br></code></pre></td></tr></table></figure><p>輸出：</p><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-class">.button-primary</span> &#123;<br>  <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#00f</span>;<br>&#125;<br><br><span class="hljs-selector-class">.button-secondary</span> &#123;<br>  <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#f00</span>;<br>&#125;<br></code></pre></td></tr></table></figure><p>資料來源：</p><ul><li><a href="https://sass-lang.com/documentation/at-rules/use#configuring-modules" target="_blank" rel="noopener">Sass: @use</a></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> Web Dev </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Dart </tag>
+            
+            <tag> w3HexSchool </tag>
+            
+            <tag> Sass </tag>
+            
+            <tag> CSS </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Dart Sass 介紹 (使用與安裝)</title>
       <link href="/article/dart-sass.html"/>
       <url>/article/dart-sass.html</url>
@@ -123,9 +154,9 @@
       
         <tags>
             
-            <tag> w3HexSchool </tag>
-            
             <tag> 深入 Git </tag>
+            
+            <tag> w3HexSchool </tag>
             
         </tags>
       
@@ -150,9 +181,9 @@
       
         <tags>
             
-            <tag> w3HexSchool </tag>
-            
             <tag> 深入 Git </tag>
+            
+            <tag> w3HexSchool </tag>
             
         </tags>
       
@@ -177,9 +208,9 @@
       
         <tags>
             
-            <tag> w3HexSchool </tag>
-            
             <tag> 深入 Git </tag>
+            
+            <tag> w3HexSchool </tag>
             
         </tags>
       
@@ -204,9 +235,9 @@
       
         <tags>
             
-            <tag> w3HexSchool </tag>
-            
             <tag> 深入 Git </tag>
+            
+            <tag> w3HexSchool </tag>
             
         </tags>
       
@@ -231,9 +262,9 @@
       
         <tags>
             
-            <tag> w3HexSchool </tag>
-            
             <tag> 深入 Git </tag>
+            
+            <tag> w3HexSchool </tag>
             
         </tags>
       
@@ -258,9 +289,9 @@
       
         <tags>
             
-            <tag> w3HexSchool </tag>
-            
             <tag> 深入 Git </tag>
+            
+            <tag> w3HexSchool </tag>
             
         </tags>
       
@@ -285,9 +316,9 @@
       
         <tags>
             
-            <tag> w3HexSchool </tag>
-            
             <tag> 深入 Git </tag>
+            
+            <tag> w3HexSchool </tag>
             
         </tags>
       
@@ -337,9 +368,9 @@
       
         <tags>
             
-            <tag> w3HexSchool </tag>
-            
             <tag> 深入 Git </tag>
+            
+            <tag> w3HexSchool </tag>
             
         </tags>
       
@@ -1468,9 +1499,9 @@
       
         <tags>
             
-            <tag> Markdown </tag>
-            
             <tag> Hexo </tag>
+            
+            <tag> Markdown </tag>
             
         </tags>
       
