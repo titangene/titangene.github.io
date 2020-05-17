@@ -4,6 +4,37 @@
   
     
     <entry>
+      <title>Sass：@import rule</title>
+      <link href="/article/sass-import-rule.html"/>
+      <url>/article/sass-import-rule.html</url>
+      
+        <content type="html"><![CDATA[<p><img src="../images/cover/sass.jpg" alt=""></p><p>Sass 的 <code>@import</code> rule 可以引入 Sass 和 CSS stylesheet、提供對 mixin、function 和變數的存取，並且還能將多個 stylesheet 的 CSS 組合在一起。例如：<code>main.scss</code> 內使用 <code>@import</code> 引入 Sass 和 CSS 檔，在編譯 Sass 後，就只會產生一個 <code>main.css</code> 檔。</p><a id="more"></a><p>而 CSS 本身提供的 <code>@import</code> rule 會讓瀏覽器在呈現頁面時，有幾個 CSS 檔案是透過 <code>@import</code> 引入的，就要發出幾個 HTTP request，這與 Sass <code>@import</code> rule 的行為不同。</p><h2 id="同時引入多個檔案"><a class="header-anchor" href="#同時引入多個檔案"></a>同時引入多個檔案</h2><p>雖然 Sass 和 CSS 的引入語法相同，但 Sass 可以用逗號分隔，一次引入多個檔案，不需要每個檔案都各別用一行 <code>@import</code> 引入：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sass">&#x2F;&#x2F; _button.scss<br>.button &#123; color: #aaa; &#125;<br></code></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sass">&#x2F;&#x2F; _nav.scss<br>.nav &#123; color: #bbb; &#125;<br></code></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs sass">&#x2F;&#x2F; main.scss<br>@import &#39;button&#39;, &#39;nav&#39;;<br><br>main &#123; color: #000; &#125;<br></code></pre></td></tr></table></figure><p>輸出：</p><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-class">.button</span> &#123; <span class="hljs-attribute">color</span>: <span class="hljs-number">#aaa</span>; &#125;<br><span class="hljs-selector-class">.nav</span> &#123; <span class="hljs-attribute">color</span>: <span class="hljs-number">#bbb</span>; &#125;<br><span class="hljs-selector-tag">main</span> &#123; <span class="hljs-attribute">color</span>: <span class="hljs-number">#000</span>; &#125;<br></code></pre></td></tr></table></figure><p>當 Sass 引入檔案時，會對該檔案進行估算，很像是將內容直接抄在你使用 <code>@import</code> 的位置上。</p><p>在 <code>@import</code> 之前定義的任何 mixin、function 或變數 (甚至來自其他 <code>@import</code> 的) 都可以在你引入的 stylesheet 中使用他們。</p><h2 id="不要重複引入"><a class="header-anchor" href="#不要重複引入"></a>不要重複引入</h2><p>所以若對同一個檔案引入多次，就會造成編譯出來的 CSS 檔案內，會有重複的 stylesheet。例如：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs sass">&#x2F;&#x2F; main.scss<br>@import &#39;button&#39;;<br>@import &#39;button&#39;;<br><br>main &#123; color: #000; &#125;<br></code></pre></td></tr></table></figure><p>輸出：</p><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-class">.button</span> &#123; <span class="hljs-attribute">color</span>: <span class="hljs-number">#aaa</span>; &#125;<br><span class="hljs-selector-class">.button</span> &#123; <span class="hljs-attribute">color</span>: <span class="hljs-number">#aaa</span>; &#125;<br><span class="hljs-selector-tag">main</span> &#123; <span class="hljs-attribute">color</span>: <span class="hljs-number">#000</span>; &#125;<br></code></pre></td></tr></table></figure><p>除非你重複引入的檔案內，只有像是 mixin、function 或變數等不會產生樣式規則的東西，就不會產生重複的內容。</p><h2 id="引入不用寫副檔名"><a class="header-anchor" href="#引入不用寫副檔名"></a>引入不用寫副檔名</h2><p>另外，使用 Sass 的 <code>@import</code> rule 時，不用寫檔案的副檔名，因為 Sass 會自動幫你引入。</p><p>例如：當你引入 <code>@import &quot;a&quot;</code> 時，Sass 會自動引入 <code>a.scss</code>、<code>a.sass</code> 或 <code>a.css</code>。但 CSS 本身提供的 <code>@import</code> rule 記得要寫檔案的副檔名才能正確的引入。</p><h2 id="引入路徑"><a class="header-anchor" href="#引入路徑"></a>引入路徑</h2><ul><li>在引入 partials (以 <code>_</code> 為開頭的檔案) 時，不用寫 <code>_</code> 就能引入，且該檔案不會被編譯</li><li>引入檔案時可省略 <code>./</code> 相對引入</li><li>在使用 Sass CLI 時，若有提供 <code>--load-path</code> 或 <code>-I</code> option，就可以簡化引入的路徑<ul><li>詳情可參閱我之前寫的 <a href="https://titangene.github.io/article/dart-sass.html#load-path%EF%BC%8C-I">Dart Sass 介紹 (使用與安裝)</a></li><li>但引入時，Sass 會先解析相對於當前檔案的路徑，若沒有找到時，才會引入相對於 <code>--load-path</code> 提供的路徑內的檔案</li></ul></li></ul><p>例如：在 <code>node_modules/bootstrap/scss</code> 目錄內正好有名為 <code>_button.scss</code> 的檔案，而我引入了 <code>@import 'buttons'</code>：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sass">&#x2F;&#x2F; src&#x2F;_buttons.scss<br>.button &#123; color: blue; &#125;<br></code></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs sass">&#x2F;&#x2F; src&#x2F;main.scss<br>@import &#39;buttons&#39;;<br><br>main &#123; color: #000; &#125;<br></code></pre></td></tr></table></figure><p>編譯 Sass (注意，我使用了 <code>--load-path</code> option，指定了 Bootstrap 內的路徑)：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">$</span><span class="bash"> sass --load-path=node_modules/bootstrap/scss src/main.scss</span><br></code></pre></td></tr></table></figure><p>但輸出的結果表名，我引入的 <code>@import 'buttons'</code> 指的是 <code>src/_buttons.scss</code> 這個檔案，而不是 <code>node_modules/bootstrap/scss</code> 目錄內的 <code>_button.scss</code> 這個檔案：</p><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-class">.button</span> &#123; <span class="hljs-attribute">color</span>: blue; &#125;<br><span class="hljs-selector-tag">main</span> &#123; <span class="hljs-attribute">color</span>: <span class="hljs-number">#000</span>; &#125;<br></code></pre></td></tr></table></figure><p>因為在 <code>src</code> 目錄內，<code>_buttons.scss</code> 相對於 <code>main.scss</code>，所以不會引用到 Bootstrap 內的檔案。</p><h2 id="index-檔案"><a class="header-anchor" href="#index-檔案"></a>index 檔案</h2><p>若在資料夾 (例如：<code>base</code> 資料夾) 內建立 <code>_index.scss</code> 或 <code>_index.sass</code> 檔案，而 index 檔案內引入了該資料夾內的其他檔案 (例如：<code>_code.scss</code> 和 <code>_list.scss</code> ) 時，則可直接透過 <code>@import</code> 該資料夾來引入那些檔案。</p><p>目錄結構：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">$</span><span class="bash"> tree</span><br>.<br>├── base<br>│   ├── _code.scss<br>│   ├── _index.scss<br>│   └── _list.scss<br>└── main.scss<br></code></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sass">&#x2F;&#x2F; base&#x2F;_code.scss<br>code &#123; padding: 4px; &#125;<br></code></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sass">&#x2F;&#x2F; base&#x2F;_list.scss<br>ul &#123; padding: 0; &#125;<br></code></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sass">&#x2F;&#x2F; base&#x2F;_index.scss<br>@import &#39;code&#39;, &#39;list&#39;;<br></code></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs sass">&#x2F;&#x2F; main.scss<br>@import &#39;base&#39;;<br><br>main &#123; color: #000; &#125;<br></code></pre></td></tr></table></figure><p>輸出：</p><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-tag">code</span> &#123; <span class="hljs-attribute">padding</span>: <span class="hljs-number">4px</span>; &#125;<br><span class="hljs-selector-tag">ul</span> &#123; <span class="hljs-attribute">padding</span>: <span class="hljs-number">0</span>; &#125;<br><span class="hljs-selector-tag">main</span> &#123; <span class="hljs-attribute">color</span>: <span class="hljs-number">#000</span>; &#125;<br></code></pre></td></tr></table></figure><h2 id="巢狀引入"><a class="header-anchor" href="#巢狀引入"></a>巢狀引入</h2><p>也可以巢狀引入，但要注意的是在巢狀引入 (nested import) 中定義的 mixin、function 或變數都還是全域定義的：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sass">&#x2F;&#x2F; _button.scss<br>.button &#123; color: #aaa; &#125;<br></code></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs sass">&#x2F;&#x2F; main.scss<br>main &#123;<br>  @import &#39;a&#39;;<br>&#125;<br></code></pre></td></tr></table></figure><p>輸出：</p><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-tag">main</span> <span class="hljs-selector-class">.button</span> &#123; <span class="hljs-attribute">color</span>: <span class="hljs-number">#aaa</span>; &#125;<br></code></pre></td></tr></table></figure><p>若是巢狀引入的檔案內有使用 parent selectors (也就是 <code>&amp;</code> )，則會引用 stylesheet 巢狀在其中的選擇器 (估算的方式類似 mixin)，例如：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs sass">&#x2F;&#x2F; _theme.scss<br>ul li &#123;<br>  padding-left: 16px;<br><br>  [dir&#x3D;rtl] &amp; &#123;<br>    padding-left: 0;<br>    padding-right: 16px;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs sass">&#x2F;&#x2F; style.scss<br>.theme-sample &#123;<br>  @import &#39;theme&#39;;<br>&#125;<br></code></pre></td></tr></table></figure><p>輸出：</p><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-class">.theme-sample</span> <span class="hljs-selector-tag">ul</span> <span class="hljs-selector-tag">li</span> &#123;<br>  <span class="hljs-attribute">padding-left</span>: <span class="hljs-number">16px</span>;<br>&#125;<br><span class="hljs-selector-attr">[dir=rtl]</span> <span class="hljs-selector-class">.theme-sample</span> <span class="hljs-selector-tag">ul</span> <span class="hljs-selector-tag">li</span> &#123;<br>  <span class="hljs-attribute">padding-left</span>: <span class="hljs-number">0</span>;<br>  <span class="hljs-attribute">padding-right</span>: <span class="hljs-number">16px</span>;<br>&#125;<br></code></pre></td></tr></table></figure><h2 id="引入-CSS"><a class="header-anchor" href="#引入-CSS"></a>引入 CSS</h2><p>Sass 的 <code>@import</code> rule 除了可以引入 <code>.scss</code> 和 <code>.sass</code> 檔，也可以引入 <code>.css</code> 檔。</p><p>但要記得在引入 <code>.css</code> 檔時，不可以像 <code>@import 'file.css';</code> 這樣明確的寫你引入了 <code>.css</code> 檔，而是要忽略副檔名。因為當你明確的寫 <code>.css</code> 副檔名時，代表你想用 <a href="https://sass-lang.com/documentation/at-rules/import#plain-css-imports" target="_blank" rel="noopener">CSS 原本的 <code>@import</code> rule</a>。</p><p>以下這些引入方式都是 CSS 原本的 <code>@import</code> rule：</p><ul><li>以 <code>.css</code> 為結尾的 URL</li><li>以 <code>http://</code> 或 <code>https://</code> 為開頭的 URL</li><li>用 <code>url()</code> 來引入 URL</li><li>具有 media query 的引入</li></ul><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs sass">@import &quot;theme.css&quot;;<br>@import &quot;http:&#x2F;&#x2F;fonts.googleapis.com&#x2F;css?family&#x3D;Droid+Sans&quot;;<br>@import url(theme);<br>@import &quot;landscape&quot; screen and (orientation: landscape);<br></code></pre></td></tr></table></figure><h2 id="Interpolation"><a class="header-anchor" href="#Interpolation"></a>Interpolation</h2><p>雖然 Sass imports 不能使用 <a href="https://sass-lang.com/documentation/interpolation" target="_blank" rel="noopener">interpolation</a>，但 CSS 原本的 <code>@import</code> 是可以的。這樣就可以動態生成引入的 URL，例如：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs sass">@mixin google-font($family) &#123;<br>  @import url(&quot;http:&#x2F;&#x2F;fonts.googleapis.com&#x2F;css?family&#x3D;#&#123;$family&#125;&quot;);<br>&#125;<br><br>@include google-font(&quot;Droid Sans&quot;);<br></code></pre></td></tr></table></figure><p>輸出：</p><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-keyword">@import</span> url(<span class="hljs-string">"http://fonts.googleapis.com/css?family=Droid Sans"</span>);<br></code></pre></td></tr></table></figure><p>資料來源：<a href="https://sass-lang.com/documentation/at-rules/import" target="_blank" rel="noopener">Sass: @import</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Web Dev </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> w3HexSchool </tag>
+            
+            <tag> Sass </tag>
+            
+            <tag> CSS </tag>
+            
+            <tag> Dart Sass </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Sass：@use rule</title>
       <link href="/article/sass-use-rule.html"/>
       <url>/article/sass-use-rule.html</url>
@@ -55,13 +86,13 @@
             
             <tag> w3HexSchool </tag>
             
+            <tag> CLI </tag>
+            
             <tag> Sass </tag>
             
             <tag> CSS </tag>
             
             <tag> Dart Sass </tag>
-            
-            <tag> CLI </tag>
             
         </tags>
       
@@ -156,9 +187,9 @@
       
         <tags>
             
-            <tag> 深入 Git </tag>
-            
             <tag> w3HexSchool </tag>
+            
+            <tag> 深入 Git </tag>
             
         </tags>
       
@@ -183,9 +214,9 @@
       
         <tags>
             
-            <tag> 深入 Git </tag>
-            
             <tag> w3HexSchool </tag>
+            
+            <tag> 深入 Git </tag>
             
         </tags>
       
@@ -210,9 +241,9 @@
       
         <tags>
             
-            <tag> 深入 Git </tag>
-            
             <tag> w3HexSchool </tag>
+            
+            <tag> 深入 Git </tag>
             
         </tags>
       
@@ -237,9 +268,9 @@
       
         <tags>
             
-            <tag> 深入 Git </tag>
-            
             <tag> w3HexSchool </tag>
+            
+            <tag> 深入 Git </tag>
             
         </tags>
       
@@ -264,9 +295,9 @@
       
         <tags>
             
-            <tag> 深入 Git </tag>
-            
             <tag> w3HexSchool </tag>
+            
+            <tag> 深入 Git </tag>
             
         </tags>
       
@@ -291,9 +322,9 @@
       
         <tags>
             
-            <tag> 深入 Git </tag>
-            
             <tag> w3HexSchool </tag>
+            
+            <tag> 深入 Git </tag>
             
         </tags>
       
@@ -318,9 +349,9 @@
       
         <tags>
             
-            <tag> 深入 Git </tag>
-            
             <tag> w3HexSchool </tag>
+            
+            <tag> 深入 Git </tag>
             
         </tags>
       
@@ -370,9 +401,9 @@
       
         <tags>
             
-            <tag> 深入 Git </tag>
-            
             <tag> w3HexSchool </tag>
+            
+            <tag> 深入 Git </tag>
             
         </tags>
       

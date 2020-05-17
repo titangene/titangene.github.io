@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://titangene.github.io/article/sass-import-rule.html</loc>
+    
+    <lastmod>2020-05-17T15:53:41.487Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://titangene.github.io/article/dart-sass.html</loc>
     
     <lastmod>2020-05-10T23:03:26.624Z</lastmod>
