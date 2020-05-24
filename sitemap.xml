@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://titangene.github.io/article/jest-build-test-env.html</loc>
+    
+    <lastmod>2020-05-24T15:50:19.198Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://titangene.github.io/article/sass-import-rule.html</loc>
     
     <lastmod>2020-05-17T15:53:41.487Z</lastmod>
