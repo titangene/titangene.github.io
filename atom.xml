@@ -35,46 +35,15 @@
       <category term="Testing" scheme="https://titangene.github.io/categories/testing/"/>
     
     
-      <category term="w3HexSchool" scheme="https://titangene.github.io/tags/w3hexschool/"/>
-    
       <category term="Jest" scheme="https://titangene.github.io/tags/jest/"/>
     
       <category term="Unit Testing" scheme="https://titangene.github.io/tags/unit-testing/"/>
+    
+      <category term="w3HexSchool" scheme="https://titangene.github.io/tags/w3hexschool/"/>
     
       <category term="JavaScript" scheme="https://titangene.github.io/tags/javascript/"/>
     
       <category term="Babel" scheme="https://titangene.github.io/tags/babel/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Jest：建置測試環境 (包含 Babel)</title>
-    <link href="https://titangene.github.io/article/jest-typescript.html"/>
-    <id>https://titangene.github.io/article/jest-typescript.html</id>
-    <published>2020-05-24T15:50:20.000Z</published>
-    <updated>2020-05-31T13:56:39.116Z</updated>
-    
-    <content type="html"><![CDATA[<p><img src="../images/cover/jest.jpg" alt=""></p><p>最近在學習單元測試，而 Jest 是在前端蠻常見的測試框架，可透過建立測試來確保自己寫的程式碼是否符合需求，而且當改動程式碼時，才能確保是否因不小心而產生的 bug，測試能讓我更有信心的去重構程式碼。</p><a id="more"></a><p>資料來源：</p><ul><li><a href="https://jestjs.io/docs/en/getting-started" target="_blank" rel="noopener">Getting Started · Jest</a></li><li><a href="https://jestjs.io/docs/en/cli" target="_blank" rel="noopener">Jest CLI Options · Jest</a></li><li><a href="https://jestjs.io/docs/en/configuration" target="_blank" rel="noopener">Configuring Jest · Jest</a></li></ul>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;img src=&quot;../images/cover/jest.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;&lt;p&gt;最近在學習單元測試，而 Jest 是在前端蠻常見的測試框架，可透過建立測試來確保自己寫的程式碼是否符合需求，而且當改動程式碼時，才能確保是否因不小心而產生的 bug，測試能讓我更有信心的去重構程式碼。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="Testing" scheme="https://titangene.github.io/categories/testing/"/>
-    
-    
-      <category term="w3HexSchool" scheme="https://titangene.github.io/tags/w3hexschool/"/>
-    
-      <category term="Jest" scheme="https://titangene.github.io/tags/jest/"/>
-    
-      <category term="TypeScript" scheme="https://titangene.github.io/tags/typescript/"/>
-    
-      <category term="Node.js" scheme="https://titangene.github.io/tags/node-js/"/>
-    
-      <category term="Unit Testing" scheme="https://titangene.github.io/tags/unit-testing/"/>
     
   </entry>
   
@@ -188,9 +157,9 @@
       <category term="Web Dev" scheme="https://titangene.github.io/categories/web-dev/"/>
     
     
-      <category term="w3HexSchool" scheme="https://titangene.github.io/tags/w3hexschool/"/>
-    
       <category term="Node.js" scheme="https://titangene.github.io/tags/node-js/"/>
+    
+      <category term="w3HexSchool" scheme="https://titangene.github.io/tags/w3hexschool/"/>
     
       <category term="JavaScript" scheme="https://titangene.github.io/tags/javascript/"/>
     
@@ -223,9 +192,9 @@
       <category term="Web Dev" scheme="https://titangene.github.io/categories/web-dev/"/>
     
     
-      <category term="w3HexSchool" scheme="https://titangene.github.io/tags/w3hexschool/"/>
-    
       <category term="Node.js" scheme="https://titangene.github.io/tags/node-js/"/>
+    
+      <category term="w3HexSchool" scheme="https://titangene.github.io/tags/w3hexschool/"/>
     
       <category term="JavaScript" scheme="https://titangene.github.io/tags/javascript/"/>
     
@@ -547,6 +516,29 @@
     <summary type="html">
     
       &lt;p&gt;&lt;img src=&quot;../images/cover/css.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;&lt;p&gt;本篇將介紹 CSS 的 &lt;code&gt;visibility&lt;/code&gt; 屬性。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="CSS" scheme="https://titangene.github.io/categories/css/"/>
+    
+    
+      <category term="IT 鐵人賽" scheme="https://titangene.github.io/tags/it-%E9%90%B5%E4%BA%BA%E8%B3%BD/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>重新認識 CSS - overflow</title>
+    <link href="https://titangene.github.io/article/css-overflow.html"/>
+    <id>https://titangene.github.io/article/css-overflow.html</id>
+    <published>2019-10-12T13:20:42.000Z</published>
+    <updated>2020-02-09T14:58:18.000Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="../images/cover/css.png" alt=""></p><p>本篇將介紹 CSS 的 <code>overflow</code> 屬性。</p><a id="more"></a><h2 id="前言"><a class="header-anchor" href="#前言"></a>前言</h2><blockquote><p>「重新認識 CSS」這個系列名稱的由來就如其名，我想要重新認識它。雖然以前就有學過 CSS，但這次想從 CSS Spec 中學到最原始的定義和內容，更加了解 CSS 的原理，讓我在切版的時候可以更加確定自己在做什麼，我踩到的雷只是因為我不夠了解它才會炸開。</p><p>在這 30 天的內容中，會將 Spec 內看到的資料整理成這個系列，也希望正在學 CSS 的各位可以更加了解它。另外我也會同時將文章發至我的 Blog，如果想直接看文內的程式碼 Demo 畫面，可以到我的 Blog 來看 😃。</p><p>本文同步發表於 iT 邦幫忙：<a href="https://ithelp.ithome.com.tw/articles/10227474" target="_blank" rel="noopener">重新認識 CSS - overflow</a></p><p>「重新認識 CSS」系列文章發文於：</p><ul><li><a href="https://ithelp.ithome.com.tw/users/20117586/ironman/2617" target="_blank" rel="noopener">iT 邦幫忙</a></li><li><a href="https://titangene.github.io/tags/it-%E9%90%B5%E4%BA%BA%E8%B3%BD/">Titangene Blog</a></li></ul></blockquote><h2 id="overflow-的情境"><a class="header-anchor" href="#overflow-的情境"></a>overflow 的情境</h2><p>通常 block box 的內容僅限於 box 的 content edge。在某些情況下，box 可能會 overflow (溢出)，代表 box 的部分或全部內容都位於 box 的外面，例如：</p><ul><li>一行文字不換行，導致 line box 比 block box 還要寬</li><li>在 containing block 裡面的 block-level box 的寬度比 containing block 還寬 (也就是當元素的 <code>width</code> 屬性值設定大於 containing block 的寬度時會發生)</li><li>元素設定 <code>height</code> 屬性將 containing block 的高度設定成小於元素的內容高度 (也就是元素內容的高度大於 containing block 的高度，containing block 的高度由 <code>height</code> 屬性決定，而不是內容高度決定)</li><li>descendant box 設定 <code>position: absolute</code> 時超出 containing block</li><li>descendant box 將 <code>margin</code> 設為負值時超出 containing block</li><li>設定 <code>text-indent</code> 屬性導致第一行 text 縮排超出 containing block</li></ul><p>下面根據上面這幾個狀況分別舉例，如以下範例：</p><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">h3</span>&gt;</span>一行文字不換行<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"containing-block"</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"inner not-wrap"</span>&gt;</span>Lorem ipsum dolor sit, amet consectetur elit.<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">h3</span>&gt;</span>裡面的 block-level box 太寬<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"containing-block"</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"inner box-too-wide"</span>&gt;</span>block-level box is too wide<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">h3</span>&gt;</span>內容太高<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"containing-block"</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"inner height-exceeds"</span>&gt;</span>element's height exceeds<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">h3</span>&gt;</span>絕對定位<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"containing-block"</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"inner absolute"</span>&gt;</span>absolute<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">h3</span>&gt;</span>margin 設為負值<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"containing-block"</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"inner negative-margins"</span>&gt;</span>negative margins<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">h3</span>&gt;</span>text-indent 屬性讓第一行 text 縮排超出<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"containing-block"</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"inner text-indent"</span>&gt;</span>'text-indent' property<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br></code></pre></td></tr></table></figure><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-class">.containing-block</span> &#123;<br>  <span class="hljs-attribute">width</span>: <span class="hljs-number">200px</span>;<br>  <span class="hljs-attribute">height</span>: <span class="hljs-number">40px</span>;<br>  <span class="hljs-attribute">outline</span>: <span class="hljs-number">2px</span> solid;<br>  <span class="hljs-attribute">background-color</span>: lightgray;<br>&#125;<br><span class="hljs-selector-class">.inner</span> &#123;<br>  <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#8bf</span>;<br>&#125;<br><span class="hljs-selector-class">.not-wrap</span> &#123;<br>  <span class="hljs-attribute">white-space</span>: nowrap;<br>&#125;<br><span class="hljs-selector-class">.box-too-wide</span> &#123;<br>  <span class="hljs-attribute">width</span>: <span class="hljs-number">250px</span>;<br>  <span class="hljs-attribute">height</span>: <span class="hljs-number">30px</span>;<br>&#125;<br><span class="hljs-selector-class">.height-exceeds</span> &#123;<br>  <span class="hljs-attribute">height</span>: <span class="hljs-number">60px</span>;<br>&#125;<br><span class="hljs-selector-class">.absolute</span> &#123;<br>  <span class="hljs-attribute">width</span>: <span class="hljs-number">60px</span>;<br>  <span class="hljs-attribute">height</span>: <span class="hljs-number">30px</span>;<br>  <span class="hljs-attribute">position</span>: absolute;<br>  <span class="hljs-attribute">left</span>: <span class="hljs-number">190px</span>;<br>&#125;<br><span class="hljs-selector-class">.negative-margins</span> &#123;<br>  <span class="hljs-attribute">margin-right</span>: -<span class="hljs-number">50px</span>;<br>&#125;<br><span class="hljs-selector-class">.text-indent</span> &#123;<br>  <span class="hljs-attribute">text-indent</span>: <span class="hljs-number">11.5rem</span>;<br>&#125;<br></code></pre></td></tr></table></figure><p>Demo：<a href="https://codepen.io/titangene/pen/zYYrZOe" target="_blank" rel="noopener">Codepen 連結</a></p><p><img src="../images/css-overflow/2019-10-12-20-31-01.png" alt=""></p><iframe height="731" style="width:100%" scrolling="no" title="overflow 情境" src="https://codepen.io/titangene/embed/zYYrZOe?height=731&theme-id=dark&default-tab=css,result" frameborder="no" allowtransparency="true" allowfullscreen>See the Pen <a href="https://codepen.io/titangene/pen/zYYrZOe" target="_blank" rel="noopener">overflow 情境</a> by Titangene (<a href="https://codepen.io/titangene" target="_blank" rel="noopener">@titangene</a>) on <a href="https://codepen.io" target="_blank" rel="noopener">CodePen</a>.</iframe><h2 id="overflow-屬性"><a class="header-anchor" href="#overflow-屬性"></a><code>overflow</code> 屬性</h2><p>下面是 <code>overflow</code> 屬性的定義表：</p><p><img src="../images/css-overflow/2019-10-12-20-37-09.png" alt=""></p><p>此屬性指定 block container 元素的內容 overflow 元素 box 時是否被裁切。它會影響所有元素內容的裁切，但其 containing block 是該元素的 viewport 或 ancestor 的任何 descendant 元素 (及其各自的內容和 descendant) 除外。值具有以下含義：</p><ul><li><code>visible</code>：內容沒有被裁切，也就是可以在 block box 外呈現</li><li><code>hidden</code>：內容被裁切，並且不應提供捲動 UI 來查看裁切區域之外的內容</li><li><code>scroll</code>：內容已被裁切，並且如果 UA 使用螢幕上可見的捲動機制 (例如：scroll bar 或 panner)，則無論該內容是否有內容，都應在 box 上顯示該機制被裁切。這避免了滾動條在動態環境中出現和消失的任何問題。指定此值且目標 medium 為 <code>print</code> 時，可能會列印出 overflow 的內容。在 table box 上使用時，此值與 <code>visible</code> 具有相同的含義</li><li><code>auto</code>：此值的行為取決於 UA，但應導致為 overflow 的 box 提供捲動機制。在 table box 上使用時，此值與 <code>visible</code> 具有相同的含義</li></ul><p>資料來源：</p><ul><li><a href="https://ithelp.ithome.com.tw/articles/10224932" target="_blank" rel="noopener">話說 Overflow 是什麼呢？ - 每天來點 CSS Specification - iT 邦幫忙</a></li><li><a href="https://www.w3.org/TR/CSS22/visufx.html" target="_blank" rel="noopener">CSS 2.2 - 11. Visual effects</a></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;../images/cover/css.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;&lt;p&gt;本篇將介紹 CSS 的 &lt;code&gt;overflow&lt;/code&gt; 屬性。&lt;/p&gt;
     
     </summary>
     

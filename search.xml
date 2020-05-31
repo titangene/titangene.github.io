@@ -20,48 +20,15 @@
       
         <tags>
             
-            <tag> w3HexSchool </tag>
-            
             <tag> Jest </tag>
             
             <tag> Unit Testing </tag>
+            
+            <tag> w3HexSchool </tag>
             
             <tag> JavaScript </tag>
             
             <tag> Babel </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>Jest：建置測試環境 (包含 Babel)</title>
-      <link href="/article/jest-typescript.html"/>
-      <url>/article/jest-typescript.html</url>
-      
-        <content type="html"><![CDATA[<p><img src="../images/cover/jest.jpg" alt=""></p><p>最近在學習單元測試，而 Jest 是在前端蠻常見的測試框架，可透過建立測試來確保自己寫的程式碼是否符合需求，而且當改動程式碼時，才能確保是否因不小心而產生的 bug，測試能讓我更有信心的去重構程式碼。</p><a id="more"></a><p>資料來源：</p><ul><li><a href="https://jestjs.io/docs/en/getting-started" target="_blank" rel="noopener">Getting Started · Jest</a></li><li><a href="https://jestjs.io/docs/en/cli" target="_blank" rel="noopener">Jest CLI Options · Jest</a></li><li><a href="https://jestjs.io/docs/en/configuration" target="_blank" rel="noopener">Configuring Jest · Jest</a></li></ul>]]></content>
-      
-      
-      <categories>
-          
-          <category> Testing </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> w3HexSchool </tag>
-            
-            <tag> Jest </tag>
-            
-            <tag> TypeScript </tag>
-            
-            <tag> Node.js </tag>
-            
-            <tag> Unit Testing </tag>
             
         </tags>
       
@@ -183,9 +150,9 @@
       
         <tags>
             
-            <tag> w3HexSchool </tag>
-            
             <tag> Node.js </tag>
+            
+            <tag> w3HexSchool </tag>
             
             <tag> JavaScript </tag>
             
@@ -220,9 +187,9 @@
       
         <tags>
             
-            <tag> w3HexSchool </tag>
-            
             <tag> Node.js </tag>
+            
+            <tag> w3HexSchool </tag>
             
             <tag> JavaScript </tag>
             
