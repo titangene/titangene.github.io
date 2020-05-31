@@ -4,6 +4,39 @@
   
     
     <entry>
+      <title>Jest + TypeScript：建置測試環境</title>
+      <link href="/article/jest-typescript.html"/>
+      <url>/article/jest-typescript.html</url>
+      
+        <content type="html"><![CDATA[<p><img src="../images/cover/jest-typescript.jpg" alt=""></p><p>TypeScript 是 JavaScript 的 typed superset，提供強大的型別檢查系統，讓你在編譯時期就能即時發現錯誤，而不是到了 runtime 才發生未知的 bug。上次介紹了 <a href="https://titangene.github.io/article/jest-build-test-env.html">Jest + Babel 的測試環境建置</a>，這次來介紹 Jest + TypeScript 的測試環境建置過程。</p><a id="more"></a><p>下面來介紹如何建置 Jest + TypeScript 的測試開發環境。</p><h1 id="建立開發環境"><a class="header-anchor" href="#建立開發環境"></a>建立開發環境</h1><h2 id="建立-npm-專案"><a class="header-anchor" href="#建立-npm-專案"></a>建立 npm 專案</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">$</span><span class="bash"> npm init -y</span><br></code></pre></td></tr></table></figure><h2 id="安裝-TypeScript"><a class="header-anchor" href="#安裝-TypeScript"></a>安裝 TypeScript</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">$</span><span class="bash"> yarn add -D typescript</span><br></code></pre></td></tr></table></figure><p>或</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">$</span><span class="bash"> npm install -D typescript</span><br></code></pre></td></tr></table></figure><h2 id="安裝與-Node-js-和-TypeScript-相關的環境"><a class="header-anchor" href="#安裝與-Node-js-和-TypeScript-相關的環境"></a>安裝與 Node.js 和 TypeScript 相關的環境</h2><ul><li><a href="https://github.com/TypeStrong/ts-node" target="_blank" rel="noopener"><code>ts-node</code></a>：Node.js 的 TypeScript 執行環境和 REPL，且支援 source map<ul><li>不用手動執行 <code>tsc</code> 編譯 TypeScript 檔案，就能直接像是使用 <code>node</code> 指令那樣，直接透過 <code>ts-node</code> 指令來編譯並執行 TypeScript 檔案</li></ul></li><li><a href="https://github.com/remy/nodemon" target="_blank" rel="noopener"><code>nodemon</code></a>：提供 watch 模式的 <code>node</code><ul><li>當 <code>nodemon</code> 檢測到指定目錄中的檔案有變更時，就會重新啟動 Node 應用程式</li></ul></li><li><a href="https://www.npmjs.com/package/@types/node" target="_blank" rel="noopener"><code>@types/node</code></a>：Node.js 的型別定義檔</li></ul><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">$</span><span class="bash"> yarn add -D ts-node nodemon @types/node</span><br></code></pre></td></tr></table></figure><p>或</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">$</span><span class="bash"> npm install -D ts-node nodemon @types/node</span><br></code></pre></td></tr></table></figure><h2 id="安裝與-Jest-和-TS-相關的環境"><a class="header-anchor" href="#安裝與-Jest-和-TS-相關的環境"></a>安裝與 Jest 和 TS 相關的環境</h2><ul><li><a href="https://github.com/facebook/jest" target="_blank" rel="noopener"><code>jest</code></a>：JavaScript 測試框架</li><li><a href="https://github.com/kulshekhar/ts-jest" target="_blank" rel="noopener"><code>ts-jest</code></a>：用於 Jest preprocessor 的 TypeScript preprocessor<ul><li>支援 Jest 的 source map</li><li>可讓你使用 Jest 來測試用 TypeScript 寫的專案</li><li>支援 TS 的所有功能，包括型別檢查</li></ul></li><li><a href="https://www.npmjs.com/package/@types/jest" target="_blank" rel="noopener"><code>@types/jest</code></a>：Jest 的型別定義檔</li></ul><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">$</span><span class="bash"> yarn add -D jest ts-jest @types/jest</span><br></code></pre></td></tr></table></figure><p>或</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">$</span><span class="bash"> npm install -D jest ts-jest @types/jest</span><br></code></pre></td></tr></table></figure><h2 id="設定-package-json"><a class="header-anchor" href="#設定-package-json"></a>設定 <code>package.json</code></h2><p>在 <code>package.json</code> 加上下面內容：</p><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs json">&#123;<br>  <span class="hljs-attr">"scripts"</span>: &#123;<br>    <span class="hljs-attr">"start"</span>: <span class="hljs-string">"ts-node src/main.ts"</span>,<br>    <span class="hljs-attr">"dev"</span>: <span class="hljs-string">"nodemon --watch 'src/**/*.ts' --exec ts-node src/main.ts"</span>,<br>    <span class="hljs-attr">"build"</span>: <span class="hljs-string">"tsc"</span>,<br>    <span class="hljs-attr">"test"</span>: <span class="hljs-string">"jest --coverage"</span><br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure><h2 id="設定-jest-config-js"><a class="header-anchor" href="#設定-jest-config-js"></a>設定 <code>jest.config.js</code></h2><p>Jest 的預設是可以不用配置任何檔案就能執行測試，但 Jest 的預設是使用 Babel 來處理 <code>.ts</code> (和 <code>.tsx</code> ) 檔案 <sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>，而 Babel 不會對 <code>.ts</code> 檔案進行編譯處理，所以就不會進行型別檢查。而 <code>ts-jest</code> 就能幫你處理 TS 該做的這些事。</p><blockquote><p>在 <a href="https://kulshekhar.github.io/ts-jest/user/babel7-or-ts" target="_blank" rel="noopener">Babel7 or TypeScript | ts-jest</a> 這篇文章內有提到為何不要用 <code>@babel/preset-typescript</code>，而要用 <code>ts-jest</code> 的原因。</p><p>所以若要開發 TypeScript，不建議使用 Babel，建議用 <code>tsc</code> 來編譯 TypeScript。</p></blockquote><p>為了要使用 <code>ts-jest</code> 來 transpile TypeScript，請執行以下指令來建立 Jest 的配置檔案 <code>jest.config.js</code>：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">$</span><span class="bash"> npx ts-jest config:init</span><br></code></pre></td></tr></table></figure><p>此指令建立的 <code>jest.config.js</code> 檔案內容如下：</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-built_in">module</span>.exports = &#123;<br>  preset: <span class="hljs-string">'ts-jest'</span>,<br>  testEnvironment: <span class="hljs-string">'node'</span>,<br>&#125;;<br></code></pre></td></tr></table></figure><p>但我自己自訂了一些配置：</p><ul><li><code>coverageDirectory</code>：Jest 輸出的 coverage 檔案要放在哪個目錄<ul><li>預設：<code>undefined</code></li></ul></li><li><code>preset</code>：設定 preset<ul><li>預設：<code>undefined</code></li><li>preset 應指向 root 目錄上具有 <code>jest-preset.json</code> 或 <code>jest-preset.js</code> 檔案的 npm 模組</li></ul></li><li><code>testEnvironment</code>：用於測試的測試環境<ul><li>預設：<code>&quot;jsdom&quot;</code> (類似瀏覽器的環境)</li><li>若要建置 node service，可用 <code>&quot;node&quot;</code> 來使用類似 node 的環境</li></ul></li><li><code>testRegex</code>：Jest 只執行 match 此 pattern 的測試檔案<ul><li>預設：<code>(/__tests__/.*|(\\.|/)(test|spec))\\.[jt]sx?$</code><ul><li>即在 <code>__tests__</code> 目錄內的 <code>.js</code>、<code>.jsx</code>、<code>.ts</code> 和 <code>.tsx</code> 檔，以及帶有 <code>.test</code> 或 <code>.spec</code> 後綴的任何檔案，例如：<code>sum.test.ts</code> 或 <code>sum.spec.ts</code></li></ul></li><li>Jest 會用 <code>testRegex</code> 配置的 pattern 來嘗試 match 測試檔案的絕對路徑</li></ul></li></ul><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-built_in">module</span>.exports = &#123;<br>  coverageDirectory: <span class="hljs-string">"coverage"</span>,<br>  preset: <span class="hljs-string">'ts-jest'</span>,<br>  testEnvironment: <span class="hljs-string">"node"</span>,<br>  testRegex: <span class="hljs-string">"(/__tests__/.*|(\\.|/)(test|spec))\\.tsx?$"</span><br>&#125;;<br></code></pre></td></tr></table></figure><blockquote><p>更多 Jest 配置詳情可參閱 <a href="https://jestjs.io/docs/en/configuration" target="_blank" rel="noopener">Configuring Jest · Jest</a>。</p></blockquote><h1 id="設定-tsconfig-json"><a class="header-anchor" href="#設定-tsconfig-json"></a>設定 <code>tsconfig.json</code></h1><p>自己手動建立 <code>tsconfig.json</code>：</p><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs json">&#123;<br>  <span class="hljs-attr">"compilerOptions"</span>: &#123;<br>    <span class="hljs-attr">"target"</span>: <span class="hljs-string">"es6"</span>,<br>    <span class="hljs-attr">"module"</span>: <span class="hljs-string">"commonjs"</span>,<br>    <span class="hljs-attr">"outDir"</span>: <span class="hljs-string">"dist"</span>,<br>    <span class="hljs-attr">"strict"</span>: <span class="hljs-literal">true</span>,<br>    <span class="hljs-attr">"sourceMap"</span>: <span class="hljs-literal">true</span>,<br>    <span class="hljs-attr">"esModuleInterop"</span>: <span class="hljs-literal">true</span><br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure><p>當然你也可以用 <code>tsc --init</code> 指令來建立 <code>tsconfig.json</code>。</p><blockquote><p>更多 <code>tsconfig.json</code> 配置詳情可參閱 <a href="https://www.typescriptlang.org/tsconfig" target="_blank" rel="noopener">TypeScript: TSConfig Reference - Docs on every TSConfig option</a>。</p></blockquote><h1 id="寫範例程式碼"><a class="header-anchor" href="#寫範例程式碼"></a>寫範例程式碼</h1><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-comment">// src/sum.ts</span><br><span class="hljs-keyword">type</span> sumType = <span class="hljs-function">(<span class="hljs-params">a: <span class="hljs-built_in">number</span>, b: <span class="hljs-built_in">number</span></span>) =&gt;</span> <span class="hljs-built_in">number</span>;<br><span class="hljs-keyword">const</span> sum: sumType = <span class="hljs-function">(<span class="hljs-params">a, b</span>) =&gt;</span> a + b;<br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> sum;<br></code></pre></td></tr></table></figure><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-comment">// src/main.ts</span><br><span class="hljs-keyword">import</span> sum <span class="hljs-keyword">from</span> <span class="hljs-string">'./sum'</span>;<br><br><span class="hljs-built_in">console</span>.log(sum(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>));<br></code></pre></td></tr></table></figure><p>執行 <code>main.js</code>：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">$</span><span class="bash"> yarn start</span><br>yarn run v1.21.1<br><span class="hljs-meta">$</span><span class="bash"> ts-node src/main.ts</span><br>3<br>Done in 4.71s.<br></code></pre></td></tr></table></figure><p>或</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">$</span><span class="bash"> npm run start</span><br><br><span class="hljs-meta">&gt;</span><span class="bash"> jest-typescript-101@1.0.0 start /home/titan/project/jest/jest-typescript-101</span><br><span class="hljs-meta">&gt;</span><span class="bash"> ts-node src/main.ts</span><br><br>3<br></code></pre></td></tr></table></figure><h1 id="建立測試"><a class="header-anchor" href="#建立測試"></a>建立測試</h1><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-comment">// src/__tests__/sum.test.ts</span><br><span class="hljs-keyword">import</span> sum <span class="hljs-keyword">from</span> <span class="hljs-string">'../sum'</span>;<br><br>test(<span class="hljs-string">'adds 1 + 2 to equal 3'</span>, <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> &#123;<br>  <span class="hljs-comment">// Arrange</span><br>  <span class="hljs-keyword">let</span> x: <span class="hljs-built_in">number</span> = <span class="hljs-number">1</span>, y: <span class="hljs-built_in">number</span> = <span class="hljs-number">2</span>;<br>  <span class="hljs-keyword">let</span> expected: <span class="hljs-built_in">number</span> = <span class="hljs-number">3</span>;<br><br>  <span class="hljs-comment">// Act</span><br>  <span class="hljs-keyword">let</span> actual: <span class="hljs-built_in">number</span> = sum(x, y);<br><br>  <span class="hljs-comment">// Assert</span><br>  expect(actual).toBe(expected);<br>&#125;);<br></code></pre></td></tr></table></figure><h1 id="執行測試"><a class="header-anchor" href="#執行測試"></a>執行測試</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">$</span><span class="bash"> yarn <span class="hljs-built_in">test</span></span><br></code></pre></td></tr></table></figure><p>或</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">$</span><span class="bash"> npm run <span class="hljs-built_in">test</span></span><br></code></pre></td></tr></table></figure><p>測試通過：</p><p><img src="../images/jest-typescript/2020-05-31-23-23-21.png" alt=""></p><p>資料來源：</p><ul><li><a href="https://kulshekhar.github.io/ts-jest/" target="_blank" rel="noopener">ts-jest</a></li><li><a href="https://github.com/TypeStrong/ts-node" target="_blank" rel="noopener">ts-node</a></li><li><a href="https://github.com/remy/nodemon" target="_blank" rel="noopener">nodemon</a></li><li><a href="https://jestjs.io/docs/en/getting-started" target="_blank" rel="noopener">Getting Started · Jest</a></li><li><a href="https://jestjs.io/docs/en/cli" target="_blank" rel="noopener">Jest CLI Options · Jest</a></li><li><a href="https://jestjs.io/docs/en/configuration" target="_blank" rel="noopener">Configuring Jest · Jest</a></li><li><a href="https://www.typescriptlang.org/tsconfig" target="_blank" rel="noopener">TypeScript: TSConfig Reference - Docs on every TSConfig option</a></li></ul><hr class="footnotes-sep"><section class="footnotes"><ol class="footnotes-list"><li id="fn1" class="footnote-item"><p><a href="https://jestjs.io/blog/2019/01/25/jest-24-refreshing-polished-typescript-friendly#typescript-support" target="_blank" rel="noopener">Jest 24: 💅 Refreshing, Polished, TypeScript-friendly · Jest</a> <a href="#fnref1" class="footnote-backref">↩︎</a></p></li></ol></section>]]></content>
+      
+      
+      <categories>
+          
+          <category> Testing </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> w3HexSchool </tag>
+            
+            <tag> Jest </tag>
+            
+            <tag> TypeScript </tag>
+            
+            <tag> Node.js </tag>
+            
+            <tag> Unit Testing </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Jest：建置測試環境 (包含 Babel)</title>
       <link href="/article/jest-build-test-env.html"/>
       <url>/article/jest-build-test-env.html</url>
@@ -20,11 +53,11 @@
       
         <tags>
             
+            <tag> w3HexSchool </tag>
+            
             <tag> Jest </tag>
             
             <tag> Unit Testing </tag>
-            
-            <tag> w3HexSchool </tag>
             
             <tag> JavaScript </tag>
             
@@ -150,9 +183,9 @@
       
         <tags>
             
-            <tag> Node.js </tag>
-            
             <tag> w3HexSchool </tag>
+            
+            <tag> Node.js </tag>
             
             <tag> version manager </tag>
             
@@ -187,9 +220,9 @@
       
         <tags>
             
-            <tag> Node.js </tag>
-            
             <tag> w3HexSchool </tag>
+            
+            <tag> Node.js </tag>
             
             <tag> version manager </tag>
             
@@ -220,9 +253,9 @@
       
         <tags>
             
-            <tag> w3HexSchool </tag>
-            
             <tag> 深入 Git </tag>
+            
+            <tag> w3HexSchool </tag>
             
         </tags>
       
@@ -247,9 +280,9 @@
       
         <tags>
             
-            <tag> w3HexSchool </tag>
-            
             <tag> 深入 Git </tag>
+            
+            <tag> w3HexSchool </tag>
             
         </tags>
       
@@ -274,9 +307,9 @@
       
         <tags>
             
-            <tag> w3HexSchool </tag>
-            
             <tag> 深入 Git </tag>
+            
+            <tag> w3HexSchool </tag>
             
         </tags>
       
@@ -301,9 +334,9 @@
       
         <tags>
             
-            <tag> w3HexSchool </tag>
-            
             <tag> 深入 Git </tag>
+            
+            <tag> w3HexSchool </tag>
             
         </tags>
       
@@ -328,9 +361,9 @@
       
         <tags>
             
-            <tag> w3HexSchool </tag>
-            
             <tag> 深入 Git </tag>
+            
+            <tag> w3HexSchool </tag>
             
         </tags>
       
@@ -355,9 +388,9 @@
       
         <tags>
             
-            <tag> w3HexSchool </tag>
-            
             <tag> 深入 Git </tag>
+            
+            <tag> w3HexSchool </tag>
             
         </tags>
       
@@ -382,9 +415,9 @@
       
         <tags>
             
-            <tag> w3HexSchool </tag>
-            
             <tag> 深入 Git </tag>
+            
+            <tag> w3HexSchool </tag>
             
         </tags>
       
@@ -434,9 +467,9 @@
       
         <tags>
             
-            <tag> w3HexSchool </tag>
-            
             <tag> 深入 Git </tag>
+            
+            <tag> w3HexSchool </tag>
             
         </tags>
       
