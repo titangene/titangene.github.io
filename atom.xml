@@ -39,11 +39,11 @@
     
       <category term="Jest" scheme="https://titangene.github.io/tags/jest/"/>
     
+      <category term="Unit Testing" scheme="https://titangene.github.io/tags/unit-testing/"/>
+    
       <category term="TypeScript" scheme="https://titangene.github.io/tags/typescript/"/>
     
       <category term="Node.js" scheme="https://titangene.github.io/tags/node-js/"/>
-    
-      <category term="Unit Testing" scheme="https://titangene.github.io/tags/unit-testing/"/>
     
   </entry>
   
@@ -70,11 +70,11 @@
     
       <category term="Jest" scheme="https://titangene.github.io/tags/jest/"/>
     
-      <category term="Unit Testing" scheme="https://titangene.github.io/tags/unit-testing/"/>
-    
       <category term="JavaScript" scheme="https://titangene.github.io/tags/javascript/"/>
     
       <category term="Babel" scheme="https://titangene.github.io/tags/babel/"/>
+    
+      <category term="Unit Testing" scheme="https://titangene.github.io/tags/unit-testing/"/>
     
   </entry>
   
@@ -190,11 +190,11 @@
     
       <category term="w3HexSchool" scheme="https://titangene.github.io/tags/w3hexschool/"/>
     
+      <category term="JavaScript" scheme="https://titangene.github.io/tags/javascript/"/>
+    
       <category term="Node.js" scheme="https://titangene.github.io/tags/node-js/"/>
     
       <category term="version manager" scheme="https://titangene.github.io/tags/version-manager/"/>
-    
-      <category term="JavaScript" scheme="https://titangene.github.io/tags/javascript/"/>
     
       <category term="CLI" scheme="https://titangene.github.io/tags/cli/"/>
     
@@ -225,11 +225,11 @@
     
       <category term="w3HexSchool" scheme="https://titangene.github.io/tags/w3hexschool/"/>
     
+      <category term="JavaScript" scheme="https://titangene.github.io/tags/javascript/"/>
+    
       <category term="Node.js" scheme="https://titangene.github.io/tags/node-js/"/>
     
       <category term="version manager" scheme="https://titangene.github.io/tags/version-manager/"/>
-    
-      <category term="JavaScript" scheme="https://titangene.github.io/tags/javascript/"/>
     
       <category term="CLI" scheme="https://titangene.github.io/tags/cli/"/>
     
