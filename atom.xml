@@ -128,13 +128,13 @@
     
       <category term="w3HexSchool" scheme="https://titangene.github.io/tags/w3hexschool/"/>
     
+      <category term="CLI" scheme="https://titangene.github.io/tags/cli/"/>
+    
       <category term="Sass" scheme="https://titangene.github.io/tags/sass/"/>
     
       <category term="CSS" scheme="https://titangene.github.io/tags/css/"/>
     
       <category term="Dart Sass" scheme="https://titangene.github.io/tags/dart-sass/"/>
-    
-      <category term="CLI" scheme="https://titangene.github.io/tags/cli/"/>
     
   </entry>
   
@@ -161,11 +161,11 @@
     
       <category term="JavaScript" scheme="https://titangene.github.io/tags/javascript/"/>
     
-      <category term="CLI" scheme="https://titangene.github.io/tags/cli/"/>
-    
       <category term="version manager" scheme="https://titangene.github.io/tags/version-manager/"/>
     
       <category term="Node.js" scheme="https://titangene.github.io/tags/node-js/"/>
+    
+      <category term="CLI" scheme="https://titangene.github.io/tags/cli/"/>
     
       <category term="npm" scheme="https://titangene.github.io/tags/npm/"/>
     
@@ -196,11 +196,11 @@
     
       <category term="JavaScript" scheme="https://titangene.github.io/tags/javascript/"/>
     
-      <category term="CLI" scheme="https://titangene.github.io/tags/cli/"/>
-    
       <category term="version manager" scheme="https://titangene.github.io/tags/version-manager/"/>
     
       <category term="Node.js" scheme="https://titangene.github.io/tags/node-js/"/>
+    
+      <category term="CLI" scheme="https://titangene.github.io/tags/cli/"/>
     
   </entry>
   
@@ -223,9 +223,9 @@
       <category term="Git" scheme="https://titangene.github.io/categories/git/"/>
     
     
-      <category term="深入 Git" scheme="https://titangene.github.io/tags/%E6%B7%B1%E5%85%A5-git/"/>
-    
       <category term="w3HexSchool" scheme="https://titangene.github.io/tags/w3hexschool/"/>
+    
+      <category term="深入 Git" scheme="https://titangene.github.io/tags/%E6%B7%B1%E5%85%A5-git/"/>
     
   </entry>
   
@@ -248,9 +248,9 @@
       <category term="Git" scheme="https://titangene.github.io/categories/git/"/>
     
     
-      <category term="深入 Git" scheme="https://titangene.github.io/tags/%E6%B7%B1%E5%85%A5-git/"/>
-    
       <category term="w3HexSchool" scheme="https://titangene.github.io/tags/w3hexschool/"/>
+    
+      <category term="深入 Git" scheme="https://titangene.github.io/tags/%E6%B7%B1%E5%85%A5-git/"/>
     
   </entry>
   
@@ -273,9 +273,9 @@
       <category term="Git" scheme="https://titangene.github.io/categories/git/"/>
     
     
-      <category term="深入 Git" scheme="https://titangene.github.io/tags/%E6%B7%B1%E5%85%A5-git/"/>
-    
       <category term="w3HexSchool" scheme="https://titangene.github.io/tags/w3hexschool/"/>
+    
+      <category term="深入 Git" scheme="https://titangene.github.io/tags/%E6%B7%B1%E5%85%A5-git/"/>
     
   </entry>
   
@@ -298,9 +298,9 @@
       <category term="Git" scheme="https://titangene.github.io/categories/git/"/>
     
     
-      <category term="深入 Git" scheme="https://titangene.github.io/tags/%E6%B7%B1%E5%85%A5-git/"/>
-    
       <category term="w3HexSchool" scheme="https://titangene.github.io/tags/w3hexschool/"/>
+    
+      <category term="深入 Git" scheme="https://titangene.github.io/tags/%E6%B7%B1%E5%85%A5-git/"/>
     
   </entry>
   
@@ -323,9 +323,9 @@
       <category term="Git" scheme="https://titangene.github.io/categories/git/"/>
     
     
-      <category term="深入 Git" scheme="https://titangene.github.io/tags/%E6%B7%B1%E5%85%A5-git/"/>
-    
       <category term="w3HexSchool" scheme="https://titangene.github.io/tags/w3hexschool/"/>
+    
+      <category term="深入 Git" scheme="https://titangene.github.io/tags/%E6%B7%B1%E5%85%A5-git/"/>
     
   </entry>
   
@@ -348,9 +348,9 @@
       <category term="Git" scheme="https://titangene.github.io/categories/git/"/>
     
     
-      <category term="深入 Git" scheme="https://titangene.github.io/tags/%E6%B7%B1%E5%85%A5-git/"/>
-    
       <category term="w3HexSchool" scheme="https://titangene.github.io/tags/w3hexschool/"/>
+    
+      <category term="深入 Git" scheme="https://titangene.github.io/tags/%E6%B7%B1%E5%85%A5-git/"/>
     
   </entry>
   
@@ -373,9 +373,9 @@
       <category term="Git" scheme="https://titangene.github.io/categories/git/"/>
     
     
-      <category term="深入 Git" scheme="https://titangene.github.io/tags/%E6%B7%B1%E5%85%A5-git/"/>
-    
       <category term="w3HexSchool" scheme="https://titangene.github.io/tags/w3hexschool/"/>
+    
+      <category term="深入 Git" scheme="https://titangene.github.io/tags/%E6%B7%B1%E5%85%A5-git/"/>
     
   </entry>
   
@@ -421,9 +421,9 @@
       <category term="Git" scheme="https://titangene.github.io/categories/git/"/>
     
     
-      <category term="深入 Git" scheme="https://titangene.github.io/tags/%E6%B7%B1%E5%85%A5-git/"/>
-    
       <category term="w3HexSchool" scheme="https://titangene.github.io/tags/w3hexschool/"/>
+    
+      <category term="深入 Git" scheme="https://titangene.github.io/tags/%E6%B7%B1%E5%85%A5-git/"/>
     
   </entry>
   

@@ -190,24 +190,6 @@ var customSearch;
 				indexName: ALGOLIA_INDEX_NAME,
 				imagePath: "/images/"
 			});
-		} else if (SEARCH_SERVICE === 'azure') {
-			customSearch = new AzureSearch({
-				serviceName: AZURE_SERVICE_NAME,
-				indexName: AZURE_INDEX_NAME,
-				queryKey: AZURE_QUERY_KEY,
-				imagePath: "/images/"
-			});
-		} else if (SEARCH_SERVICE === 'baidu') {
-			customSearch = new BaiduSearch({
-				apiId: BAIDU_API_ID,
-				imagePath: "/images/"
-			});
 		}
-	});
-
-	$('.post-list').masonry({
-		itemSelector: '.post-wrapper',
-		percentPosition: true,
-		transitionDuration: 0
 	});
 })(jQuery);
