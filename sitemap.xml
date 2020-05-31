@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://titangene.github.io/article/jest-typescript.html</loc>
+    
+    <lastmod>2020-05-31T13:56:39.116Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://titangene.github.io/article/jest-build-test-env.html</loc>
     
-    <lastmod>2020-05-24T16:24:49.857Z</lastmod>
+    <lastmod>2020-05-31T13:56:26.944Z</lastmod>
     
   </url>
   
