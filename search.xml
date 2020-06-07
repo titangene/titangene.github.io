@@ -4,6 +4,37 @@
   
     
     <entry>
+      <title>Jest：Matcher &amp; Assertion</title>
+      <link href="/article/jest-matcher-assertion.html"/>
+      <url>/article/jest-matcher-assertion.html</url>
+      
+        <content type="html"><![CDATA[<p><img src="../images/cover/jest.jpg" alt=""></p><p>Assertion (斷言) 就要測試程式碼的執行結果是否符合預期，如果結果一致，代表測試通過，否則 assertion 就會拋出錯誤，代表測試失敗。而 Jest 提供多種 matcher，能讓你 assert 程式碼執行結果的正確性。</p><a id="more"></a><blockquote><p>之前介紹了如何建制 Jest 測試環境，還沒安裝環境的可參閱：</p><ul><li><a href="https://titangene.github.io/article/jest-build-test-env.html">Jest：建置測試環境 (包含 Babel) | Titangene Blog</a></li><li><a href="https://titangene.github.io/article/jest-typescript.html">Jest + TypeScript：建置測試環境 | Titangene Blog</a></li></ul></blockquote><p>下面介紹 Jest 提供的各種 matcher：</p><h1 id="通用-Matchers"><a class="header-anchor" href="#通用-Matchers"></a>通用 Matchers</h1><p><code>expect()</code> 回傳一個 “期望 (expectation)” 的物件</p><p>當 Jest 執行時，它會追蹤所有失敗的 matcher，以便列印錯誤訊息：</p><ul><li><code>.toBe()</code> 是 matcher，使用 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is" target="_blank" rel="noopener"><code>Object.is()</code></a> 來測試 exact equality (精確相等)</li><li><code>.toEqual()</code>：檢查物件的值，遞迴的檢查物件或陣列的每個 field</li><li><code>.not</code>：matcher 的相反</li></ul><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs javascript">test(<span class="hljs-string">'two plus two is four'</span>, () =&gt; &#123;<br>  expect(<span class="hljs-number">2</span> + <span class="hljs-number">2</span>).toBe(<span class="hljs-number">4</span>);<br>&#125;);<br><br>test(<span class="hljs-string">'object assignment'</span>, () =&gt; &#123;<br>  <span class="hljs-keyword">const</span> data = &#123;<span class="hljs-attr">one</span>: <span class="hljs-number">1</span>&#125;;<br>  data[<span class="hljs-string">'two'</span>] = <span class="hljs-number">2</span>;<br>  expect(data).toEqual(&#123;<span class="hljs-attr">one</span>: <span class="hljs-number">1</span>, <span class="hljs-attr">two</span>: <span class="hljs-number">2</span>&#125;);<br>&#125;);<br><br>test(<span class="hljs-string">'adding positive numbers is not zero'</span>, () =&gt; &#123;<br>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> a = <span class="hljs-number">1</span>; a &lt; <span class="hljs-number">10</span>; a++) &#123;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> b = <span class="hljs-number">1</span>; b &lt; <span class="hljs-number">10</span>; b++) &#123;<br>      expect(a + b).not.toBe(<span class="hljs-number">0</span>);<br>    &#125;<br>  &#125;<br>&#125;);<br></code></pre></td></tr></table></figure><h1 id="Truthiness-真實性"><a class="header-anchor" href="#Truthiness-真實性"></a>Truthiness (真實性)</h1><p>在測試中，有時需要區分 <code>undefined</code>、<code>null</code> 和 <code>false</code>，但有時你又不需要區分。Jest 包含一些 helper，便於確認想要的內容：</p><ul><li><code>toBeNull</code> 只 match <code>null</code></li><li><code>toBeUndefined</code> 只 match <code>undefined</code></li><li><code>toBeDefined</code> 與 <code>toBeUndefined</code> 相反</li><li><code>toBeTruthy</code> match 任何 <code>if</code> 陳述句為 true</li><li><code>toBeFalsy</code> match 任何 <code>if</code> 陳述句為 false</li></ul><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs javascript">test(<span class="hljs-string">'null'</span>, () =&gt; &#123;<br>  <span class="hljs-keyword">const</span> n = <span class="hljs-literal">null</span>;<br>  expect(n).toBeNull();<br>  expect(n).not.toBeUndefined();<br>  expect(n).toBeDefined();<br>  expect(n).not.toBeTruthy();<br>  expect(n).toBeFalsy();<br>&#125;);<br><br>test(<span class="hljs-string">'zero'</span>, () =&gt; &#123;<br>  <span class="hljs-keyword">const</span> z = <span class="hljs-number">0</span>;<br>  expect(z).not.toBeNull();<br>  expect(z).toBeDefined();<br>  expect(z).not.toBeUndefined();<br>  expect(z).not.toBeTruthy();<br>  expect(z).toBeFalsy();<br>&#125;);<br></code></pre></td></tr></table></figure><h1 id="Numbers"><a class="header-anchor" href="#Numbers"></a>Numbers</h1><p>大多數的比較數字都有 matcher equivalents (等價物)：</p><ul><li><code>toBeGreaterThan()</code>：比較 <code>received &gt; expected</code></li><li><code>toBeGreaterThanOrEqual()</code>：比較 <code>received &gt;= expected</code></li><li><code>toBeLessThan()</code>：比較 <code>received &lt; expected</code></li><li><code>toBeLessThanOrEqual()</code>：比較 <code>received &lt;= expected</code></li></ul><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs javascript">test(<span class="hljs-string">'two plus two'</span>, () =&gt; &#123;<br>  <span class="hljs-keyword">const</span> value = <span class="hljs-number">2</span> + <span class="hljs-number">2</span>;<br>  expect(value).toBeGreaterThan(<span class="hljs-number">3</span>);<br>  expect(value).toBeGreaterThanOrEqual(<span class="hljs-number">3.5</span>);<br>  expect(value).toBeLessThan(<span class="hljs-number">5</span>);<br>  expect(value).toBeLessThanOrEqual(<span class="hljs-number">4.5</span>);<br><br>  <span class="hljs-comment">// toBe 和 toEqual 等價於數字</span><br>  expect(value).toBe(<span class="hljs-number">4</span>);<br>  expect(value).toEqual(<span class="hljs-number">4</span>);<br>&#125;);<br></code></pre></td></tr></table></figure><p>對於浮點數相等，請使用 <code>toBeCloseTo()</code> 而不是 <code>toEqual()</code>，因為你不希望測試依賴於微小的捨入誤差 (rounding error)：</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs javascript">test(<span class="hljs-string">'adding floating point numbers'</span>, () =&gt; &#123;<br>  <span class="hljs-keyword">const</span> value = <span class="hljs-number">0.1</span> + <span class="hljs-number">0.2</span>;<br>  <span class="hljs-comment">// expect(value).toBe(0.3);        由於舍入錯誤無法運作</span><br>  expect(value).toBeCloseTo(<span class="hljs-number">0.3</span>); <span class="hljs-comment">// 可運作</span><br>&#125;);<br></code></pre></td></tr></table></figure><h1 id="Strings"><a class="header-anchor" href="#Strings"></a>Strings</h1><p>可用 <code>toMatch()</code> 根據 regex 檢查字串：</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs javascript">test(<span class="hljs-string">'there is no I in team'</span>, () =&gt; &#123;<br>  expect(<span class="hljs-string">'team'</span>).not.toMatch(<span class="hljs-regexp">/I/</span>);<br>&#125;);<br><br>test(<span class="hljs-string">'but there is a "stop" in Christoph'</span>, () =&gt; &#123;<br>  expect(<span class="hljs-string">'Christoph'</span>).toMatch(<span class="hljs-regexp">/stop/</span>);<br>&#125;);<br></code></pre></td></tr></table></figure><h1 id="Arrays-和-iterables"><a class="header-anchor" href="#Arrays-和-iterables"></a>Arrays 和 iterables</h1><p>可用 <code>toContain()</code> 來檢查陣列或可迭代物件是否包含特定項目：</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> shoppingList = [<br>  <span class="hljs-string">'diapers'</span>,<br>  <span class="hljs-string">'kleenex'</span>,<br>  <span class="hljs-string">'trash bags'</span>,<br>  <span class="hljs-string">'paper towels'</span>,<br>  <span class="hljs-string">'beer'</span>,<br>];<br><br>test(<span class="hljs-string">'the shopping list has beer on it'</span>, () =&gt; &#123;<br>  expect(shoppingList).toContain(<span class="hljs-string">'beer'</span>);<br>  expect(<span class="hljs-keyword">new</span> <span class="hljs-built_in">Set</span>(shoppingList)).toContain(<span class="hljs-string">'beer'</span>);<br>&#125;);<br></code></pre></td></tr></table></figure><h1 id="Exceptions"><a class="header-anchor" href="#Exceptions"></a>Exceptions</h1><p>若要測試特定函數在呼叫時是否拋出錯誤，請使用 <code>toThrow()</code>：</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">compileAndroidCode</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">'you are using the wrong JDK'</span>);<br>&#125;<br><br>test(<span class="hljs-string">'compiling android goes as expected'</span>, () =&gt; &#123;<br>  expect(compileAndroidCode).toThrow();<br>  expect(compileAndroidCode).toThrow(<span class="hljs-built_in">Error</span>);<br><br>  <span class="hljs-comment">// 還可以使用確切的錯誤訊息或 regexp</span><br>  expect(compileAndroidCode).toThrow(<span class="hljs-string">'you are using the wrong JDK'</span>);<br>  expect(compileAndroidCode).toThrow(<span class="hljs-regexp">/JDK/</span>);<br>&#125;);<br></code></pre></td></tr></table></figure><blockquote><p>更多 matcher 可參閱 Jest 社群維護的 <a href="https://github.com/jest-community/jest-extended" target="_blank" rel="noopener">jest-community/jest-extended</a>。</p></blockquote><p>資料來源：<a href="https://jestjs.io/docs/en/using-matchers" target="_blank" rel="noopener">Using Matchers · Jest</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Testing </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> w3HexSchool </tag>
+            
+            <tag> Jest </tag>
+            
+            <tag> Node.js </tag>
+            
+            <tag> Unit Testing </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Jest + TypeScript：建置測試環境</title>
       <link href="/article/jest-typescript.html"/>
       <url>/article/jest-typescript.html</url>
@@ -24,11 +55,11 @@
             
             <tag> Jest </tag>
             
+            <tag> Node.js </tag>
+            
             <tag> Unit Testing </tag>
             
             <tag> TypeScript </tag>
-            
-            <tag> Node.js </tag>
             
         </tags>
       
@@ -57,11 +88,11 @@
             
             <tag> Jest </tag>
             
+            <tag> Unit Testing </tag>
+            
             <tag> JavaScript </tag>
             
             <tag> Babel </tag>
-            
-            <tag> Unit Testing </tag>
             
         </tags>
       
@@ -185,11 +216,11 @@
             
             <tag> w3HexSchool </tag>
             
-            <tag> JavaScript </tag>
-            
             <tag> Node.js </tag>
             
             <tag> version manager </tag>
+            
+            <tag> JavaScript </tag>
             
             <tag> CLI </tag>
             
@@ -222,11 +253,11 @@
             
             <tag> w3HexSchool </tag>
             
-            <tag> JavaScript </tag>
-            
             <tag> Node.js </tag>
             
             <tag> version manager </tag>
+            
+            <tag> JavaScript </tag>
             
             <tag> CLI </tag>
             
@@ -253,9 +284,9 @@
       
         <tags>
             
-            <tag> 深入 Git </tag>
-            
             <tag> w3HexSchool </tag>
+            
+            <tag> 深入 Git </tag>
             
         </tags>
       
@@ -280,9 +311,9 @@
       
         <tags>
             
-            <tag> 深入 Git </tag>
-            
             <tag> w3HexSchool </tag>
+            
+            <tag> 深入 Git </tag>
             
         </tags>
       
@@ -307,9 +338,9 @@
       
         <tags>
             
-            <tag> 深入 Git </tag>
-            
             <tag> w3HexSchool </tag>
+            
+            <tag> 深入 Git </tag>
             
         </tags>
       
@@ -334,9 +365,9 @@
       
         <tags>
             
-            <tag> 深入 Git </tag>
-            
             <tag> w3HexSchool </tag>
+            
+            <tag> 深入 Git </tag>
             
         </tags>
       
@@ -361,9 +392,9 @@
       
         <tags>
             
-            <tag> 深入 Git </tag>
-            
             <tag> w3HexSchool </tag>
+            
+            <tag> 深入 Git </tag>
             
         </tags>
       
@@ -388,9 +419,9 @@
       
         <tags>
             
-            <tag> 深入 Git </tag>
-            
             <tag> w3HexSchool </tag>
+            
+            <tag> 深入 Git </tag>
             
         </tags>
       
@@ -415,9 +446,9 @@
       
         <tags>
             
-            <tag> 深入 Git </tag>
-            
             <tag> w3HexSchool </tag>
+            
+            <tag> 深入 Git </tag>
             
         </tags>
       
@@ -467,9 +498,9 @@
       
         <tags>
             
-            <tag> 深入 Git </tag>
-            
             <tag> w3HexSchool </tag>
+            
+            <tag> 深入 Git </tag>
             
         </tags>
       
@@ -1339,9 +1370,9 @@
             
             <tag> GCP </tag>
             
-            <tag> Load Balancer </tag>
-            
             <tag> HTTP </tag>
+            
+            <tag> Load Balancer </tag>
             
         </tags>
       
@@ -1370,9 +1401,9 @@
             
             <tag> GCP </tag>
             
-            <tag> Kubernetes </tag>
-            
             <tag> Load Balancer </tag>
+            
+            <tag> Kubernetes </tag>
             
         </tags>
       
