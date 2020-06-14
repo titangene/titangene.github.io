@@ -4,6 +4,37 @@
   
     
     <entry>
+      <title>Jest：Describe &amp; Test case</title>
+      <link href="/article/jest-describe-test-case.html"/>
+      <url>/article/jest-describe-test-case.html</url>
+      
+        <content type="html"><![CDATA[<p><img src="../images/cover/jest.jpg" alt=""></p><p>上次介紹了 <a href="https://titangene.github.io/article/jest-matcher-assertion.html">Jest 提供的 matcher</a>，可讓你驗證程式碼是否符合預期，而這次來說明如何透過 <code>describe</code> 和 <code>test</code> 區塊來組織測試案例。當需求變多時，可針對需求來分類測試案例，將相關的測試放在同一個群組區塊內，此時就會用到 Jest 提供的 <code>describe</code> 和 <code>test</code> 區塊。</p><a id="more"></a><ul><li><code>test</code> 區塊：即測試案例 (test case)，使用 matcher 驗證程式執行結果是否符合預期</li><li><code>describe</code> 區塊：將多個相關的 <code>test</code> 區塊放在一起，便於組織測試案例</li></ul><div class="info"><h1 id="系列文章"><a class="header-anchor" href="#系列文章"></a>系列文章</h1><p>環境建制：</p><ul><li><a href="https://titangene.github.io/article/jest-build-test-env.html">Jest：建置測試環境 (包含 Babel)</a></li><li><a href="https://titangene.github.io/article/jest-typescript.html">Jest + TypeScript：建置測試環境</a></li></ul><p>使用：</p><ul><li><a href="https://titangene.github.io/article/jest-matcher-assertion.html">Jest：Matcher &amp; Assertion</a></li><li><a href="https://titangene.github.io/article/jest-describe-test-case.html">Jest：Describe &amp; Test case</a> (本文)</li></ul></div><p>下面範例都會用數學運算的範例來說明：</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> addition = <span class="hljs-function">(<span class="hljs-params">x, y</span>) =&gt;</span> &#123;<br>  <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span>(x) === <span class="hljs-string">'number'</span> &amp;&amp; <span class="hljs-keyword">typeof</span>(y) === <span class="hljs-string">'number'</span>)<br>   <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> CustomError(<span class="hljs-string">'請輸入數字'</span>);<br>  <span class="hljs-keyword">return</span> x + y;<br>&#125;;<br><span class="hljs-keyword">const</span> subtraction = <span class="hljs-function">(<span class="hljs-params">x, y</span>) =&gt;</span> &#123;<br>  <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span>(x) === <span class="hljs-string">'number'</span> &amp;&amp; <span class="hljs-keyword">typeof</span>(y) === <span class="hljs-string">'number'</span>)<br>   <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> CustomError(<span class="hljs-string">'請輸入數字'</span>);<br>  <span class="hljs-keyword">return</span> x - y;<br>&#125;;<br></code></pre></td></tr></table></figure><h1 id="describe-區塊"><a class="header-anchor" href="#describe-區塊"></a><code>describe</code> 區塊</h1><h2 id="describe-name-fn"><a class="header-anchor" href="#describe-name-fn"></a><code>describe(name, fn)</code></h2><p>argument：</p><ul><li><code>name</code>：描素此 <code>describe</code> 區塊的敘述</li><li><code>fn</code>：包含 <code>test</code> 區塊的函數</li></ul><p>用來將多個相關的 <code>test</code> 區塊放在同一個 <code>describe</code> 區塊內，以便於將測試組織成群組。例如：</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs javascript">describe(<span class="hljs-string">'數學運算'</span>, () =&gt; &#123;<br>  test(<span class="hljs-string">'加法運算'</span>, () =&gt; &#123;<br>    expect(addition(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>)).toBe(<span class="hljs-number">3</span>);<br>  &#125;);<br>  <br>  test(<span class="hljs-string">'減法運算'</span>, () =&gt; &#123;<br>    expect(subtraction(<span class="hljs-number">3</span>, <span class="hljs-number">1</span>)).toBe(<span class="hljs-number">2</span>);<br>  &#125;);<br>&#125;);<br></code></pre></td></tr></table></figure><p>但寫測試不一定要用 <code>describe</code> 區塊，也可以不用將 <code>test</code> 區塊包在 <code>describe</code> 區塊內，而是直接寫在測試檔上，但建議你使用 <code>describe</code> 區塊。</p><p>也可以巢狀使用 <code>describe</code> 區塊：</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><code class="hljs javascript">describe(<span class="hljs-string">'數學運算'</span>, () =&gt; &#123;<br>  describe(<span class="hljs-string">'加法運算'</span>, () =&gt; &#123;<br>    describe(<span class="hljs-string">'傳入非數字值'</span>, () =&gt; &#123;<br>      test(<span class="hljs-string">'傳入布林值應拋出 CustomError'</span>, () =&gt; &#123;<br>        expect(addition(<span class="hljs-literal">true</span>, <span class="hljs-number">2</span>)).toThrow(CustomError);<br>      &#125;);<br><br>      test(<span class="hljs-string">'傳入字串值應拋出 CustomError'</span>, () =&gt; &#123;<br>        expect(addition(<span class="hljs-string">'a'</span>, <span class="hljs-number">1</span>)).toThrow(CustomError);<br>      &#125;);<br>    &#125;);<br>    <br>    describe(<span class="hljs-string">'傳入數字值'</span>, () =&gt; &#123;<br>      test(<span class="hljs-string">'應回傳正確的運算結果'</span>, () =&gt; &#123;<br>        expect(addition(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>)).toBe(<span class="hljs-number">3</span>);<br>      &#125;);<br>    &#125;);<br>  &#125;);<br><br>  describe(<span class="hljs-string">'減法運算'</span>, () =&gt; &#123;<br>    describe(<span class="hljs-string">'傳入非數字值'</span>, () =&gt; &#123;<br>      test(<span class="hljs-string">'傳入布林值應拋出 CustomError'</span>, () =&gt; &#123;<br>        expect(subtraction(<span class="hljs-literal">true</span>, <span class="hljs-number">2</span>)).toThrow(CustomError);<br>      &#125;);<br><br>      test(<span class="hljs-string">'傳入字串值應拋出 CustomError'</span>, () =&gt; &#123;<br>        expect(subtraction(<span class="hljs-string">'a'</span>, <span class="hljs-number">1</span>)).toThrow(CustomError);<br>      &#125;);<br>    &#125;);<br>    <br>    describe(<span class="hljs-string">'傳入數字值'</span>, () =&gt; &#123;<br>      test(<span class="hljs-string">'應回傳正確的運算結果'</span>, () =&gt; &#123;<br>        expect(subtraction(<span class="hljs-number">3</span>, <span class="hljs-number">1</span>)).toBe(<span class="hljs-number">2</span>);<br>      &#125;);<br>    &#125;);<br>  &#125;);<br>&#125;);<br></code></pre></td></tr></table></figure><h2 id="describe-only-name-fn"><a class="header-anchor" href="#describe-only-name-fn"></a><code>describe.only(name, fn)</code></h2><p>alias：<code>fdescribe(name, fn)</code></p><p>讓測試只跑使用 <code>describe.only()</code> 的 <code>describe</code> 區塊。</p><p>例如：</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs javascript">describe.only(<span class="hljs-string">'數學運算'</span>, () =&gt; &#123;<br>  test(<span class="hljs-string">'加法運算'</span>, () =&gt; &#123;<br>    expect(addition(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>)).toBe(<span class="hljs-number">3</span>);<br>  &#125;);<br>  <br>  test(<span class="hljs-string">'減法運算'</span>, () =&gt; &#123;<br>    expect(subtraction(<span class="hljs-number">3</span>, <span class="hljs-number">1</span>)).toBe(<span class="hljs-number">2</span>);<br>  &#125;);<br>&#125;);<br><br>describe(<span class="hljs-string">'其他'</span>, () =&gt; &#123;<br>  <span class="hljs-comment">// 此區塊的測試會被略過</span><br>&#125;);<br></code></pre></td></tr></table></figure><h2 id="describe-skip-name-fn"><a class="header-anchor" href="#describe-skip-name-fn"></a><code>describe.skip(name, fn)</code></h2><p>alias：<code>xdescribe(name, fn)</code></p><p>不想執行指定的 <code>describe</code> 區塊可用 <code>describe.skip()</code>。</p><p>例如：</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs javascript">describe(<span class="hljs-string">'數學運算'</span>, () =&gt; &#123;<br>  test(<span class="hljs-string">'加法運算'</span>, () =&gt; &#123;<br>    expect(addition(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>)).toBe(<span class="hljs-number">3</span>);<br>  &#125;);<br>  <br>  test(<span class="hljs-string">'減法運算'</span>, () =&gt; &#123;<br>    expect(subtraction(<span class="hljs-number">3</span>, <span class="hljs-number">1</span>)).toBe(<span class="hljs-number">2</span>);<br>  &#125;);<br>&#125;);<br><br>describe.skip(<span class="hljs-string">'其他'</span>, () =&gt; &#123;<br>  <span class="hljs-comment">// 略過此區塊的測試</span><br>&#125;);<br></code></pre></td></tr></table></figure><h1 id="test-區塊"><a class="header-anchor" href="#test-區塊"></a><code>test</code> 區塊</h1><h2 id="test-name-fn-timeout"><a class="header-anchor" href="#test-name-fn-timeout"></a><code>test(name, fn, timeout)</code></h2><p>alias：<code>it(name, fn, timeout)</code></p><p>argument：</p><ul><li><code>name</code>：測試名稱</li><li><code>fn</code>：包含要測試的期望函數</li><li><code>timeout</code> (可選)：測試終止之前要等待的時間 (單位毫秒)，預設為 5 秒</li></ul><p>測試檔案內一定要有 <code>test</code> 區塊才能測試程式。</p><p>剛剛有提到，不一定要 <code>describe</code> 區塊，可直接在測試檔內放 <code>test</code> 區塊即可。例如：</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs javascript">test(<span class="hljs-string">'加法運算'</span>, () =&gt; &#123;<br>  expect(addition(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>)).toBe(<span class="hljs-number">3</span>);<br>&#125;);<br></code></pre></td></tr></table></figure><h2 id="test-only-name-fn-timeout"><a class="header-anchor" href="#test-only-name-fn-timeout"></a><code>test.only(name, fn, timeout)</code></h2><p>alias：<code>it.only(name, fn, timeout)</code> 和 <code>fit(name, fn, timeout)</code></p><p>在 debug 測試檔內的測試時，通常只需要執行一部分的測試，此時就可以將那些 <code>test</code> 區塊加上 <code>.only</code> 來指定要執行哪些測試，其餘的測試都會被略過。</p><blockquote><p>註：<code>timeout</code> argument 跟 <code>test()</code> 一樣，所以不再次重複說明。</p></blockquote><p>例如：</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs javascript">test.only(<span class="hljs-string">'加法運算'</span>, () =&gt; &#123;<br>  expect(addition(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>)).toBe(<span class="hljs-number">3</span>);<br>&#125;);<br><br>test(<span class="hljs-string">'其他運算'</span>, () =&gt; &#123;<br>  <span class="hljs-comment">// 略過此區塊的測試</span><br>&#125;);<br></code></pre></td></tr></table></figure><div class="info"><p><code>test.only</code> 只會在 debug 階段使用，不建議 commit 至 Git 版本控制中，記得要在 debug 後刪掉 <code>.only</code>。</p></div><h2 id="test-skip-name-fn"><a class="header-anchor" href="#test-skip-name-fn"></a><code>test.skip(name, fn)</code></h2><p>alias：<code>it.skip(name, fn)</code> 或 <code>xit(name, fn)</code> 或 <code>xtest(name, fn)</code></p><p>若要跳過一些 <code>test</code> 區塊的測試，可用 <code>test.skip()</code>。</p><p>例如：</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs javascript">test(<span class="hljs-string">'加法運算'</span>, () =&gt; &#123;<br>  expect(addition(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>)).toBe(<span class="hljs-number">3</span>);<br>&#125;);<br><br>test.skip(<span class="hljs-string">'其他運算'</span>, () =&gt; &#123;<br>  <span class="hljs-comment">// 略過此區塊的測試</span><br>&#125;);<br></code></pre></td></tr></table></figure><p>若不想執行某 <code>test</code> 區塊的測試，雖然可將該測試註解掉，但建議用 <code>test.skip</code>，因為只少會保留原本的縮排和顯示程式碼 highlight。</p><h2 id="test-todo-name"><a class="header-anchor" href="#test-todo-name"></a><code>test.todo(name)</code></h2><p>alias：<code>it.todo(name)</code></p><p>規劃要寫的測試 (寫在 <code>name</code> argument 上) 可用 <code>test.todo()</code>，這些測試會在摘要輸出中 highlight 顯示，以便提醒你還有多少測試還沒寫。</p><p>若提供 test callback 函數，<code>test.todo()</code> 會拋出錯誤。若你已實作了該測試，且該測試已出錯，而你不想執行此測試，請改用 <code>test.skip()</code>。</p><p>例如：</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> add = <span class="hljs-function">(<span class="hljs-params">a, b</span>) =&gt;</span> a + b;<br><br>test.todo(<span class="hljs-string">'add should be associative'</span>);<br></code></pre></td></tr></table></figure><p>資料來源：</p><ul><li><a href="https://jestjs.io/docs/en/api" target="_blank" rel="noopener">Globals · Jest</a></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> Testing </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> w3HexSchool </tag>
+            
+            <tag> Jest </tag>
+            
+            <tag> Node.js </tag>
+            
+            <tag> Unit Testing </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Jest：Matcher &amp; Assertion</title>
       <link href="/article/jest-matcher-assertion.html"/>
       <url>/article/jest-matcher-assertion.html</url>
@@ -284,9 +315,9 @@
       
         <tags>
             
-            <tag> w3HexSchool </tag>
-            
             <tag> 深入 Git </tag>
+            
+            <tag> w3HexSchool </tag>
             
         </tags>
       
@@ -311,9 +342,9 @@
       
         <tags>
             
-            <tag> w3HexSchool </tag>
-            
             <tag> 深入 Git </tag>
+            
+            <tag> w3HexSchool </tag>
             
         </tags>
       
@@ -338,9 +369,9 @@
       
         <tags>
             
-            <tag> w3HexSchool </tag>
-            
             <tag> 深入 Git </tag>
+            
+            <tag> w3HexSchool </tag>
             
         </tags>
       
@@ -365,9 +396,9 @@
       
         <tags>
             
-            <tag> w3HexSchool </tag>
-            
             <tag> 深入 Git </tag>
+            
+            <tag> w3HexSchool </tag>
             
         </tags>
       
@@ -392,9 +423,9 @@
       
         <tags>
             
-            <tag> w3HexSchool </tag>
-            
             <tag> 深入 Git </tag>
+            
+            <tag> w3HexSchool </tag>
             
         </tags>
       
@@ -419,9 +450,9 @@
       
         <tags>
             
-            <tag> w3HexSchool </tag>
-            
             <tag> 深入 Git </tag>
+            
+            <tag> w3HexSchool </tag>
             
         </tags>
       
@@ -446,9 +477,9 @@
       
         <tags>
             
-            <tag> w3HexSchool </tag>
-            
             <tag> 深入 Git </tag>
+            
+            <tag> w3HexSchool </tag>
             
         </tags>
       
@@ -498,9 +529,9 @@
       
         <tags>
             
-            <tag> w3HexSchool </tag>
-            
             <tag> 深入 Git </tag>
+            
+            <tag> w3HexSchool </tag>
             
         </tags>
       
