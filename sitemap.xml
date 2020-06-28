@@ -2,23 +2,37 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://titangene.github.io/article/jest-build-test-env.html</loc>
+    <loc>https://titangene.github.io/article/jest-async-test.html</loc>
     
-    <lastmod>2020-06-21T15:57:49.157Z</lastmod>
+    <lastmod>2020-06-28T15:56:05.854Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://titangene.github.io/article/jest-matcher-assertion.html</loc>
+    <loc>https://titangene.github.io/article/jest-build-test-env.html</loc>
     
-    <lastmod>2020-06-21T15:57:16.964Z</lastmod>
+    <lastmod>2020-06-28T14:07:43.421Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://titangene.github.io/article/jest-describe-test-case.html</loc>
     
-    <lastmod>2020-06-21T15:57:11.412Z</lastmod>
+    <lastmod>2020-06-28T14:07:35.609Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://titangene.github.io/article/jest-matcher-assertion.html</loc>
+    
+    <lastmod>2020-06-28T14:07:19.145Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://titangene.github.io/article/jest-typescript.html</loc>
+    
+    <lastmod>2020-06-28T14:07:10.125Z</lastmod>
     
   </url>
   
@@ -26,13 +40,6 @@
     <loc>https://titangene.github.io/article/jest-setup-teardown.html</loc>
     
     <lastmod>2020-06-21T15:56:07.894Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://titangene.github.io/article/jest-typescript.html</loc>
-    
-    <lastmod>2020-05-31T16:17:18.711Z</lastmod>
     
   </url>
   
