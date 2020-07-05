@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://titangene.github.io/article/jest-mock-function.html</loc>
+    
+    <lastmod>2020-07-05T15:56:21.249Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://titangene.github.io/article/jest-async-test.html</loc>
     
-    <lastmod>2020-06-28T15:56:05.854Z</lastmod>
+    <lastmod>2020-06-28T15:59:53.353Z</lastmod>
     
   </url>
   
