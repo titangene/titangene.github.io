@@ -4,6 +4,41 @@
   
     
     <entry>
+      <title>Jest：Timer Mocks</title>
+      <link href="/article/jest-timer-mocks.html"/>
+      <url>/article/jest-timer-mocks.html</url>
+      
+        <content type="html"><![CDATA[<p><img src="../images/cover/jest.jpg" alt=""></p><p>常用的 native timer 包括 <code>setTimeout</code>、<code>setInterval</code>、<code>clearTimeout</code>、<code>clearInterval</code> 等，用到這些 timer 的函數可以說是依賴於真實流逝的時間。如果 timer 要跑幾秒後才會觸發，或是要確認某函數是否在固定週期內被呼叫幾次，你不可能真的去等待 timer 跑完才能驗證結果吧，那根本是浪費時間。所以應該要使用 mock 函數來 mock 掉那些 timer 函數，透過 Jest 提供的功能來控制時間，其中就有時間快轉的功能，減少測試要等待的時間。</p><a id="more"></a><blockquote><p>其他 Jest 相關文章可參閱 <a href="https://titangene.github.io/tags/jest/">Jest 系列文章</a>。</p></blockquote><h1 id="啟動-fake-timer"><a class="header-anchor" href="#啟動-fake-timer"></a>啟動 fake timer</h1><p>要在 Jest 使用 mock 過的 timer，可透過呼叫 <code>jest.useFakeTimers()</code> 來啟動 fake timer，之後就可以用 fake timer 來控制時間。</p><p>假設有一個 <code>timerGame()</code> 函數，呼叫該函數時，會先列印 <code>'Ready....go!'</code>，接著至少過了 1 秒後才會列印 <code>&quot;Time's up -- stop!&quot;</code>，並且呼叫傳入的 callback：</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">// src/timerGame.js</span><br><span class="hljs-keyword">export</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">timerGame</span>(<span class="hljs-params">callback</span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Ready....go!'</span>);<br>  setTimeout(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> &#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"Time's up -- stop!"</span>);<br>    callback &amp;&amp; callback();<br>  &#125;, <span class="hljs-number">1000</span>);<br>&#125;<br></code></pre></td></tr></table></figure><p>如果測試這樣寫：</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">// __tests__/timerGame.test.js</span><br><span class="hljs-keyword">import</span> &#123; timerGame &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">'../src/timerGame'</span>;<br><br>jest.useFakeTimers();<br><br>describe(<span class="hljs-string">'執行一次 timer'</span>, () =&gt; &#123;<br>  it(<span class="hljs-string">'等待 1 秒後結束遊戲'</span>, () =&gt; &#123;<br>    timerGame();<br><br>    expect(setTimeout).toBeCalledTimes(<span class="hljs-number">1</span>);<br>    expect(setTimeout).lastCalledWith(expect.any(<span class="hljs-built_in">Function</span>), <span class="hljs-number">1000</span>);<br>  &#125;);<br>&#125;);<br></code></pre></td></tr></table></figure><p>測試只有測到 <code>timerGame()</code> 的以下內容：</p><ul><li><code>setTimeout</code> 被呼叫幾次 (即 <code>toBeCalledTimes(number)</code> )</li><li>最後一次呼叫 <code>setTimeout</code> 的 argument 為何 (即 <code>lastCalledWith(arg1, arg2, ...)</code> )：<ul><li>第一個 argument 可以是任何函數</li><li>第二個 argument 一定是 <code>1000</code> 豪秒</li></ul></li></ul><p>所以 <code>timerGame()</code> 內的 <code>console.log(&quot;Time's up -- stop!&quot;)</code> 那行都還沒執行就測試通過了 (所以才只輸出 <code>'Ready....go!'</code> 這行)。</p><p>若在一個檔案或 <code>describe</code> 區塊中執行多個測試，就可在每個測試之前手動呼叫 <code>jest.useFakeTimers()</code>，或是使用 <code>beforeEach</code> 之類的 <a href="https://titangene.github.io/article/jest-setup-teardown.html">setup 函數</a>。否則會讓內部使用的 timer 未被 reset。</p><p>如果沒有 reset timer，可能會像這個測試一樣很奇怪：</p><ul><li>第一個 <code>it</code> 區塊的測試很正常，只呼叫一次 <code>timerGame()</code>，所以 <code>setTimeout</code> 只被呼叫過一次</li><li>但第二個 <code>it</code> 區塊的測試被第一個 <code>it</code> 區塊使用的 <code>setTimeout</code> 所污染，明明 <code>timerGame()</code> 只呼叫過一次，竟然 assert <code>setTimeout</code> 不是被呼叫過一次 ，而是兩次</li></ul><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">// __tests__/resetTimer.test.js</span><br><span class="hljs-keyword">import</span> &#123; timerGame &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">'../src/timerGame'</span>;<br><br>describe(<span class="hljs-string">'每個測試都只呼叫一次 `timerGame()`'</span>, () =&gt; &#123;<br>  describe(<span class="hljs-string">'未在每個測試執行前 reset timer'</span>, () =&gt; &#123;<br>    <span class="hljs-comment">// 不建議直接在 `describe` 區塊內呼叫 `jest.useFakeTimers()`</span><br>    <span class="hljs-comment">// 應在 Setup and Teardown 時 reset timer</span><br>    jest.useFakeTimers();<br><br>    it(<span class="hljs-string">'setTimeout 的呼叫次數應為 1 次'</span>, () =&gt; &#123;<br>      timerGame();<br><br>      expect(setTimeout).toBeCalledTimes(<span class="hljs-number">1</span>);<br>      expect(setTimeout).lastCalledWith(expect.any(<span class="hljs-built_in">Function</span>), <span class="hljs-number">1000</span>);<br>    &#125;);<br><br>    it(<span class="hljs-string">'setTimeout 的呼叫次數應為 2 次，setTimeout 的呼叫次數會因前面的測試未 reset timer 而影響'</span>, () =&gt; &#123;<br>      timerGame();<br><br>      expect(setTimeout).not.toBeCalledTimes(<span class="hljs-number">1</span>);<br>      expect(setTimeout).toBeCalledTimes(<span class="hljs-number">2</span>);<br>    &#125;);<br>  &#125;);<br>&#125;);<br></code></pre></td></tr></table></figure><p>所以應在 setup (即 <code>beforeEach()</code> ) 和 teardown (即 <code>afterEach()</code> ) 時 reset timer：</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">// __tests__/resetTimer.test.js</span><br><span class="hljs-keyword">import</span> &#123; timerGame &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">'../src/timerGame'</span>;<br><br><span class="hljs-comment">// 不建議在測試檔案的全域使用 `jest.useFakeTimers()`</span><br><span class="hljs-comment">// 應在 Setup and Teardown 時 reset timer</span><br><span class="hljs-comment">// jest.useFakeTimers();</span><br><br>describe(<span class="hljs-string">'每個測試都只呼叫一次 `timerGame()`'</span>, () =&gt; &#123;<br>  describe(<span class="hljs-string">'有在每個測試執行前 reset timer'</span>, () =&gt; &#123;<br>    beforeEach(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> &#123;<br>      jest.useFakeTimers();<br>    &#125;);<br><br>    it(<span class="hljs-string">'setTimeout 的呼叫次數應為 1 次'</span>, () =&gt; &#123;<br>      timerGame();<br><br>      expect(setTimeout).toBeCalledTimes(<span class="hljs-number">1</span>);<br>      expect(setTimeout).lastCalledWith(expect.any(<span class="hljs-built_in">Function</span>), <span class="hljs-number">1000</span>);<br>    &#125;);<br><br>    it(<span class="hljs-string">'setTimeout 的呼叫次數應為 1 次，setTimeout 的呼叫次數不會受前面的測試影響'</span>, () =&gt; &#123;<br>      timerGame();<br><br>      expect(setTimeout).toBeCalledTimes(<span class="hljs-number">1</span>);<br>    &#125;);<br><br>    afterEach(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> &#123;<br>      jest.clearAllTimers();<br>    &#125;);<br>  &#125;);<br>&#125;);<br></code></pre></td></tr></table></figure><div class="info"><h2 id="使用-jest-useFakeTimers-的建議"><a class="header-anchor" href="#使用-jest-useFakeTimers-的建議"></a>使用 <code>jest.useFakeTimers()</code> 的建議</h2><p>不應在以下位置使用 <code>jest.useFakeTimers()</code>：</p><ul><li>測試檔案的全域呼叫</li><li>直接在 <code>describe</code> 區塊內呼叫</li></ul><p>建議在 <a href="https://titangene.github.io/article/jest-setup-teardown.html">setup 和 teardown</a> 時 reset timer。當然可以放在 <code>it</code> 或 <code>test</code> 區塊內，或是在 setup 和 teardown 呼叫，但需重複寫很多次，很麻煩。</p></div><p>下面是 <code>jest.useFakeTimers(implementation?: 'modern' | 'legacy')</code> 的介紹：</p><ul><li>指定 Jest 使用 fake 的標準 timer 函數，包括：<ul><li><code>setTimeout</code></li><li><code>setInterval</code></li><li><code>clearTimeout</code></li><li><code>clearInterval</code></li><li><code>nextTick</code></li><li><code>setImmediate</code></li><li><code>clearImmediate</code></li></ul></li><li>若使用 <code>'modern'</code> 作為 argument，則會使用 <a href="https://github.com/sinonjs/fake-timers" target="_blank" rel="noopener">@sinonjs/fake-timers</a> 來作為 implementation，而不是 Jest 自己的 fake timer</li><li>也可 mock 其他 timer，例如：<code>Date</code></li><li><code>'modern'</code> 是 Jest 27 的預設行為 (目前我使用的環境是 Jest 25，所以是用 <code>legacy</code> )</li><li>回傳用於 chaining 的 <code>jest</code> 物件</li></ul><p>上面提到的 <code>'modern'</code> 和 <code>legacy</code> 是 <code>jest.config.js</code> 內的 <code>timers</code> config：</p><ul><li>預設為 <code>&quot;real&quot;</code></li><li>設為 <code>&quot;legacy&quot;</code> 或 <code>&quot;fake&quot;</code> 時，允許對函數使用 fake timer。當程式碼設定了不想在測試中等待的 long timeout，fake timer 就很好用</li><li>設為 <code>&quot;modern&quot;</code> 時，會將 <a href="https://github.com/sinonjs/fake-timers" target="_blank" rel="noopener"><code>@sinonjs/fake-timers</code></a> 作為實作，而不是 Jest 自己的舊實作。Jest 27 會預設此設定</li></ul><p>在 Jest 15 開始才將 <code>timers</code> config 預設成 <code>&quot;real&quot;</code>。可透過在配置中指定 <code>timers: &quot;fake&quot;</code> 或呼叫 <code>jest.useRealTimers()</code> 和 <code>jest.useFakeTimers()</code> 全域開關來覆蓋此設定。</p><h1 id="執行所有-timer"><a class="header-anchor" href="#執行所有-timer"></a>執行所有 timer</h1><p>若要測試 assert 在 1 秒後呼叫 callback，可在測試中使用 Jest 的 timer 控制 API <code>jest.runAllTimers()</code> 來快轉時間：</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">// __tests__/timerGame.test.js</span><br>describe(<span class="hljs-string">'執行所有 timer'</span>, () =&gt; &#123;<br>  it(<span class="hljs-string">'1 秒後呼叫 callback'</span>, () =&gt; &#123;<br>    jest.useFakeTimers();<br><br>    <span class="hljs-keyword">const</span> callback = jest.fn();<br><br>    timerGame(callback);<br><br>    <span class="hljs-comment">// 此時 callback 應該還沒被呼叫</span><br>    expect(callback).not.toBeCalled();<br><br>    <span class="hljs-comment">// 快轉直到執行完所有 timer</span><br>    jest.runAllTimers();<br><br>    <span class="hljs-comment">// 現在 callback 已被呼叫</span><br>    expect(callback).toBeCalled();<br>    expect(callback).toBeCalledTimes(<span class="hljs-number">1</span>);<br>  &#125;);<br>&#125;);<br></code></pre></td></tr></table></figure><div class="info"><p><code>jest.runAllTimers()</code>：</p><ul><li>用盡 macro-task queue (即由 <code>setTimeout()</code>、<code>setInterval()</code> 和 <code>setImmediate()</code> 排隊 (queued) 的所有 task) 和 micro-task queue (通常會透過 <code>process.nextTick</code> interfaced 至 node)</li><li>呼叫此 API 時，會執行所有 pending macro-tasks 和 micro-tasks。若這些 task 本身安排了 (schedule) 新 task，這些 task 就會不斷的耗盡 (exhausted)，直到 queue 中沒有其他 task 為止</li><li>通常在測試期間同步執行 <code>setTimeout</code> 很有用，以便同步 assert 某些行為，但這些行為只會在 <code>setTimeout()</code> 或 <code>setInterval()</code> 的 callback 執行後才發生</li></ul></div><h1 id="執行-pending-timer"><a class="header-anchor" href="#執行-pending-timer"></a>執行 pending timer</h1><p>假設有遞迴的 timer，會在自己的 callback 中設定一個新的 timer。若執行所有 timer 就會變成無限迴圈，所以不能用像是 <code>jest.runAllTimers()</code>，但可用 <code>jest.runOnlyPendingTimers()</code>：</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">// src/infiniteTimerGame.js</span><br><span class="hljs-keyword">export</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">infiniteTimerGame</span>(<span class="hljs-params">callback</span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Ready....go!'</span>);<br><br>  setTimeout(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> &#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"Time's up! 5 seconds before the next game starts..."</span>);<br>    callback &amp;&amp; callback();<br><br>    <span class="hljs-comment">// 在 5 秒內安排下一場比賽</span><br>    setTimeout(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> &#123;<br>      infiniteTimerGame(callback);<br>    &#125;, <span class="hljs-number">5000</span>);<br>  &#125;, <span class="hljs-number">1000</span>);<br>&#125;<br></code></pre></td></tr></table></figure><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">// __tests__/infiniteTimerGame.test.js</span><br><span class="hljs-keyword">import</span> &#123; infiniteTimerGame &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">'../src/infiniteTimerGame'</span>;<br><br>describe(<span class="hljs-string">'infiniteTimerGame'</span>, () =&gt; &#123;<br>  test(<span class="hljs-string">'在 1 秒後安排 5 秒 timer'</span>, () =&gt; &#123;<br>    jest.useFakeTimers();<br><br>    <span class="hljs-keyword">const</span> callback = jest.fn();<br>    infiniteTimerGame(callback);<br><br>    <span class="hljs-comment">// 此時應該只有呼叫一次 `setTimeout` 才能在 1 秒內安排遊戲結束</span><br>    expect(setTimeout).toBeCalledTimes(<span class="hljs-number">1</span>);<br>    expect(setTimeout).lastCalledWith(expect.any(<span class="hljs-built_in">Function</span>), <span class="hljs-number">1000</span>);<br><br>    <span class="hljs-comment">// 快轉並只耗盡當前 pending timer</span><br>    <span class="hljs-comment">// (但此過程中不會建立任何新的 timer)</span><br>    jest.runOnlyPendingTimers();<br><br>    <span class="hljs-comment">// 此時，1 秒的 timer 應該觸發了 callback</span><br>    expect(callback).toBeCalled();<br><br>    <span class="hljs-comment">// 並且應該已建立一個新的 timer，可在 5 秒內開始遊戲</span><br>    expect(setTimeout).toBeCalledTimes(<span class="hljs-number">2</span>);<br>    expect(setTimeout).lastCalledWith(expect.any(<span class="hljs-built_in">Function</span>), <span class="hljs-number">5000</span>);<br>  &#125;);<br>&#125;);<br></code></pre></td></tr></table></figure><h1 id="依時間-advance-提前-timer"><a class="header-anchor" href="#依時間-advance-提前-timer"></a>依時間 advance (提前) timer</h1><p><code>jest.advanceTimersByTime(msToRun)</code>：</p><ul><li>Jest 22.0.0 將 <code>runTimersToTime()</code> (但還可以當作 alias 使用) 重新命名成 <code>advanceTimersByTime()</code></li><li>只會執行 macro task queue (即由 <code>setTimeout()</code> 或 <code>setInterval()</code> 和 <code>setImmediate()</code> 排隊 (queued) 的所有 task)</li><li>呼叫時，所有 timer 都會被提前 <code>msToRun</code> 豪秒</li><li>透過 <code>setTimeout()</code> 或 <code>setInterval()</code> 排隊 (queued)，並在此時間範圍 (time frame) 內執行的所有 pending “macro-tasks” 都會被執行</li><li>如果這些是 macro-tasks 計劃 (schedule) 在同一時間範圍內執行的新 macro-tasks，就會一直執行這些 macro-tasks，直到 queue 中沒有其他應該在 <code>msToRun</code> 毫秒內執行的 macro-tasks 為止</li></ul><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">// __tests__/advanceTimersByTime.test.js</span><br>describe(<span class="hljs-string">'Advance Timers by Time'</span>, () =&gt; &#123;<br>  it(<span class="hljs-string">'1 秒後透過 `advanceTimersByTime` 呼叫 callback'</span>, () =&gt; &#123;<br>    <span class="hljs-keyword">const</span> callback = jest.fn();<br>    timerGame(callback);<br><br>    <span class="hljs-comment">// 此時 callback 應該還沒被呼叫</span><br>    expect(callback).not.toBeCalled();<br><br>    <span class="hljs-comment">// 快轉直到執行完所有 timer</span><br>    jest.advanceTimersByTime(<span class="hljs-number">1000</span>);<br><br>    <span class="hljs-comment">// 現在 callback 已被呼叫</span><br>    expect(callback).toBeCalled();<br>    expect(callback).toHaveBeenCalledTimes(<span class="hljs-number">1</span>);<br>  &#125;);<br>&#125;);<br></code></pre></td></tr></table></figure><p>可用 <code>jest.clearAllTimers()</code> 從 timer 系統中刪除所有 pending timer，也就是若 scheduled (安排了) 任何 timer (但尚未執行)，可被清除並永遠沒有機會執行它們。</p><h1 id="其他"><a class="header-anchor" href="#其他"></a>其他</h1><ul><li><code>jest.useRealTimers()</code><ul><li>指定 Jest 使用標準 timer 函數的實際版本</li><li>回傳用於 chaining 的 <code>jest</code> 物件</li></ul></li><li><code>jest.runAllTicks()</code>：<ul><li>耗盡 micro-task queue (通常會透過 <code>process.nextTick</code> interfaced 至 node)</li><li>呼叫此 API 時，會執行透過 <code>process.nextTick</code> 排隊 (queued) 的所有 pending micro-tasks</li><li>若這些 micro-tasks 安排了 (schedule) 新 task，這些 task 就會不斷的耗盡 (exhausted)，直到 queue 中沒有其他 micro-tasks 為止</li></ul></li><li><code>jest.runAllImmediates()</code>：<ul><li>耗盡由 <code>setImmediate()</code> 排隊 (queued) 的所有 tasks</li><li>注意：使用 modern fake timers implementation 時，此函數不可用</li></ul></li><li><code>jest.runOnlyPendingTimers()</code>：<ul><li>只執行當前 pending macro-tasks (即只執行 <code>setTimeout()</code> 或 <code>setInterval()</code> 至目前為止已 queued (排隊) 的 task)</li><li>若任何當前 pending macro-tasks 安排了 (schedule) 新 task，這些新 task 就不會透過 <code>jest.runOnlyPendingTimers()</code> 呼叫執行</li></ul></li><li><code>jest.advanceTimersToNextTimer(steps?)</code>：<ul><li>將所有 timer 提前所需的毫秒數，以便只執行下一個 timeouts/intervals</li><li>可提供 <code>steps</code> arg，執行下一次 timeouts/intervals 的 <code>steps</code> 數</li></ul></li><li><code>jest.getTimerCount()</code>：<ul><li>回傳仍在執行的 fake timer 數量</li></ul></li><li><code>jest.setSystemTime()</code>：<ul><li>設定 fake timer 使用的當前系統時間</li><li>模擬使用者在 program 執行時變更系統時鐘</li><li>會影響當前時間，但不會導致像是 timers to fire (定時觸發)</li><li>會完全照原樣觸發 (fire)，而無需呼叫 <code>jest.setSystemTime()</code></li><li>注意：此函數只在使用 modern fake timers implementation 時可用</li></ul></li><li><code>jest.getRealSystemTime()</code>：<ul><li>在 mock 時間時，也會 mock <code>Date.now()</code></li><li>若想存取實際的當前時間，可 invoke 此函數</li><li>注意：此函數只在使用 modern fake timers implementation 時可用</li></ul></li><li><code>jest.setTimeout(timeout)</code>：<ul><li>設定測試和 hook 之前/之後的預設 timeout interval (單位為豪秒)</li><li>會影響從中呼叫此函數的測試檔案</li><li>若未呼叫此方法，預設 timeout interval 為 5 秒</li><li>注意：若要為所有測試檔案設定 timeout，可在 <code>setupFilesAfterEnv</code> 中設定</li></ul></li><li><code>jest.retryTimes(numTestRetries)</code>：<ul><li>n 次執行失敗的測試，直到它們通過或直到最大重試次數用完為止</li><li>只適用於 <a href="https://github.com/facebook/jest/tree/master/packages/jest-circus" target="_blank" rel="noopener"><code>jest-circus</code></a></li><li>回傳用於 chaining 的 <code>jest</code> 物件</li></ul></li></ul><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs javascript">jest.retryTimes(<span class="hljs-number">3</span>);<br>test(<span class="hljs-string">'will fail'</span>, () =&gt; &#123;<br>  expect(<span class="hljs-literal">true</span>).toBe(<span class="hljs-literal">false</span>);<br>&#125;);<br></code></pre></td></tr></table></figure><p>資料來源：</p><ul><li><a href="https://jestjs.io/docs/en/timer-mocks" target="_blank" rel="noopener">Timer Mocks · Jest</a></li><li><a href="https://jestjs.io/blog/2016/09/01/jest-15.html" target="_blank" rel="noopener">Jest 15.0: New Defaults for Jest · Jest</a></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> Testing </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> w3HexSchool </tag>
+            
+            <tag> Jest </tag>
+            
+            <tag> JavaScript </tag>
+            
+            <tag> Unit Testing </tag>
+            
+            <tag> mock </tag>
+            
+            <tag> timer </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Jest：Snapshot 測試</title>
       <link href="/article/jest-snapshot-testing.html"/>
       <url>/article/jest-snapshot-testing.html</url>
@@ -284,13 +319,13 @@
       
         <tags>
             
-            <tag> w3HexSchool </tag>
-            
             <tag> Sass </tag>
             
             <tag> CSS </tag>
             
             <tag> Dart Sass </tag>
+            
+            <tag> w3HexSchool </tag>
             
         </tags>
       
@@ -315,13 +350,13 @@
       
         <tags>
             
-            <tag> w3HexSchool </tag>
-            
             <tag> Sass </tag>
             
             <tag> CSS </tag>
             
             <tag> Dart Sass </tag>
+            
+            <tag> w3HexSchool </tag>
             
         </tags>
       
@@ -348,8 +383,6 @@
             
             <tag> Dart </tag>
             
-            <tag> w3HexSchool </tag>
-            
             <tag> Sass </tag>
             
             <tag> CSS </tag>
@@ -357,6 +390,8 @@
             <tag> Dart Sass </tag>
             
             <tag> CLI </tag>
+            
+            <tag> w3HexSchool </tag>
             
         </tags>
       
@@ -381,9 +416,9 @@
       
         <tags>
             
-            <tag> w3HexSchool </tag>
-            
             <tag> CLI </tag>
+            
+            <tag> w3HexSchool </tag>
             
             <tag> JavaScript </tag>
             
@@ -418,9 +453,9 @@
       
         <tags>
             
-            <tag> w3HexSchool </tag>
-            
             <tag> CLI </tag>
+            
+            <tag> w3HexSchool </tag>
             
             <tag> JavaScript </tag>
             
@@ -451,9 +486,9 @@
       
         <tags>
             
-            <tag> 深入 Git </tag>
-            
             <tag> w3HexSchool </tag>
+            
+            <tag> 深入 Git </tag>
             
         </tags>
       
@@ -478,9 +513,9 @@
       
         <tags>
             
-            <tag> 深入 Git </tag>
-            
             <tag> w3HexSchool </tag>
+            
+            <tag> 深入 Git </tag>
             
         </tags>
       
@@ -505,9 +540,9 @@
       
         <tags>
             
-            <tag> 深入 Git </tag>
-            
             <tag> w3HexSchool </tag>
+            
+            <tag> 深入 Git </tag>
             
         </tags>
       
@@ -532,9 +567,9 @@
       
         <tags>
             
-            <tag> 深入 Git </tag>
-            
             <tag> w3HexSchool </tag>
+            
+            <tag> 深入 Git </tag>
             
         </tags>
       
@@ -559,9 +594,9 @@
       
         <tags>
             
-            <tag> 深入 Git </tag>
-            
             <tag> w3HexSchool </tag>
+            
+            <tag> 深入 Git </tag>
             
         </tags>
       
@@ -586,9 +621,9 @@
       
         <tags>
             
-            <tag> 深入 Git </tag>
-            
             <tag> w3HexSchool </tag>
+            
+            <tag> 深入 Git </tag>
             
         </tags>
       
@@ -613,9 +648,9 @@
       
         <tags>
             
-            <tag> 深入 Git </tag>
-            
             <tag> w3HexSchool </tag>
+            
+            <tag> 深入 Git </tag>
             
         </tags>
       
@@ -665,9 +700,9 @@
       
         <tags>
             
-            <tag> 深入 Git </tag>
-            
             <tag> w3HexSchool </tag>
+            
+            <tag> 深入 Git </tag>
             
         </tags>
       
@@ -1796,9 +1831,9 @@
       
         <tags>
             
-            <tag> Hexo </tag>
-            
             <tag> Markdown </tag>
+            
+            <tag> Hexo </tag>
             
         </tags>
       
