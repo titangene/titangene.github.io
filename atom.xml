@@ -322,9 +322,9 @@
     
       <category term="Jest" scheme="https://titangene.github.io/tags/jest/"/>
     
-      <category term="Node.js" scheme="https://titangene.github.io/tags/node-js/"/>
-    
       <category term="Unit Testing" scheme="https://titangene.github.io/tags/unit-testing/"/>
+    
+      <category term="Node.js" scheme="https://titangene.github.io/tags/node-js/"/>
     
       <category term="TypeScript" scheme="https://titangene.github.io/tags/typescript/"/>
     
@@ -355,11 +355,11 @@
     
       <category term="JavaScript" scheme="https://titangene.github.io/tags/javascript/"/>
     
+      <category term="Unit Testing" scheme="https://titangene.github.io/tags/unit-testing/"/>
+    
       <category term="Node.js" scheme="https://titangene.github.io/tags/node-js/"/>
     
       <category term="Babel" scheme="https://titangene.github.io/tags/babel/"/>
-    
-      <category term="Unit Testing" scheme="https://titangene.github.io/tags/unit-testing/"/>
     
   </entry>
   
