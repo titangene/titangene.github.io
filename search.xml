@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>推薦 Chrome Extension：新分頁篇</title>
+      <link href="/article/recommend-chrome-extension-2.html"/>
+      <url>/article/recommend-chrome-extension-2.html</url>
+      
+        <content type="html"><![CDATA[<p><img src="../images/cover/chrome-extension.jpg" alt=""></p><p>本篇推薦一些我常用的 Chrome Extension，包含隨機風景照的新分頁、隨機小知識的新分頁，以及能列出訂閱技術文章的新分頁。</p><a id="more"></a><blockquote><p>其他推薦 Chrome Extension 相關文章可參閱 <a href="https://titangene.github.io/tags/chrome-extension/">推薦 Chrome Extension 系列文章</a>。</p></blockquote><h1 id="新分頁"><a class="header-anchor" href="#新分頁"></a>新分頁</h1><p>「起始分頁」就是當你打新分頁時，顯示的那個分頁。</p><p>預設的新分頁很簡潔<s>簡陋</s>，有 Google 搜尋、常用頁面。沒了…</p><p><img src="../images/recommend-chrome-extension-2/2020-08-16-21-39-06.png" alt=""></p><p>當然你可以點擊右下角的「自訂」來設定背景、快速鍵 (設定捷徑、常看的網站)、顏色和主題：</p><p><img src="../images/recommend-chrome-extension-2/2020-08-16-21-42-40.png" alt=""></p><p>每次只能看純顏色的背景，或是一樣的背景圖，看膩了還要自己換！</p><p>有沒有會幫你自動換漂亮風景照的工具？那我最推的就是「Unsplash Instant」。</p><h2 id="Unsplash-Instant"><a class="header-anchor" href="#Unsplash-Instant"></a>Unsplash Instant</h2><p>下載連結：<a href="https://chrome.google.com/webstore/detail/unsplash-instant/pejkokffkapolfffcgbmdmhdelanoaih" target="_blank" rel="noopener">Unsplash Instant</a></p><p>功能：</p><ul><li>隨機照片：每次開新分頁都會看到不同的照片</li><li>下載照片：若看到喜歡的照片，可下載至電腦，甚至設為桌布</li></ul><p>Unsplash 是蠻有名的高解析度免費圖庫平台，每張照片採用的授權很自由，任何人都可將照片自由使用至任何目的 (免費下載和使用、用於商業和非商業目的、不需許可)。</p><p>而這個 extension 就是由 Unsplash 官方推出的！只要安裝此 extension，你開的新分頁就會是隨機漂亮的照片了！</p><p><img src="../images/recommend-chrome-extension-2/unsplash-instant.gif" alt=""></p><p>如果你不小心將快速開啟的新分頁關閉了，不用擔心，此 extension 有提供歷史紀錄，可以讓你看前兩張照片：</p><p><img src="../images/recommend-chrome-extension-2/2020-08-16-22-03-49.png" alt=""></p><p>若要下載照片，只要點擊右上角的「Download」即可。若要查看原照片連結，只要點擊左上角的 icon 即可跳至該連結。</p><p>剛剛介紹了美化的新分頁，那接著來介紹能讓你提昇開發技能的 extension。</p><h2 id="30-Seconds-of-Knowledge"><a class="header-anchor" href="#30-Seconds-of-Knowledge"></a>30 Seconds of Knowledge</h2><p>下載連結：<a href="https://chrome.google.com/webstore/detail/30-seconds-of-knowledge/mmgplondnjekobonklacmemikcnhklla" target="_blank" rel="noopener">30 Seconds of Knowledge</a></p><p>功能：</p><ul><li>提供多種程式語言的知識：包含 C++、CSS、JavaScript、PHP、Python、Ruby、React、Ramda、面試題等</li><li>隨機小知識：每次開新分頁都會看到不同的知識，就如其名，只需要 30 秒就能閱讀完並理解</li><li>儲存 snippet：若看到不錯的小知識，可儲存下來之後閱讀</li></ul><p><img src="../images/recommend-chrome-extension-2/2020-08-16-22-33-54.png" alt=""></p><p>儲存下來的 snippet 會放在右下角的選單 icon，裡面的第一個 icon：</p><p><img src="../images/recommend-chrome-extension-2/2020-08-16-22-46-33.png" alt=""></p><p>像下圖就是我儲存的 snippet：</p><p><img src="../images/recommend-chrome-extension-2/2020-08-16-22-48-07.png" alt=""></p><p>此 extension 也提供一些設定，包括：</p><ul><li>選擇要看的程式語言主題</li><li>主題：暗/亮</li><li>字體大小</li></ul><p><img src="../images/recommend-chrome-extension-2/2020-08-16-22-36-22.png" alt=""></p><p>若覺得小知識不能滿足你，你想訂閱更多文章和新的技術資訊，那「daily.dev」一定很適合你！</p><h2 id="daily-dev-News-for-Busy-Developers"><a class="header-anchor" href="#daily-dev-News-for-Busy-Developers"></a>daily.dev - News for Busy Developers</h2><p>下載連結：<a href="https://chrome.google.com/webstore/detail/dailydev-news-for-busy-de/jlmpjdjjbgclbocgajdjefcidcncaied" target="_blank" rel="noopener">daily.dev - News for Busy Developers</a></p><p>功能：</p><ul><li>隨時接收最新的文章和技術資訊：新文章都會列在新分頁上</li><li>可選擇要訂閱的網站或 tag</li><li><a href="https://github.com/dailydotdev/daily" target="_blank" rel="noopener">開源</a>：若有 bug，歡迎大家貢獻</li></ul><p><img src="../images/recommend-chrome-extension-2/2020-08-16-23-00-31.png" alt=""></p><p>左邊的選單可讓你選擇要訂閱的來源，可以是網站或 tag：</p><p><img src="../images/recommend-chrome-extension-2/2020-08-16-23-02-01.png" alt=""></p><p><img src="../images/recommend-chrome-extension-2/2020-08-16-23-11-22.png" alt=""></p><p>若有喜歡或是想稍後閱讀的文章，可加入書籤保存：</p><p><img src="../images/recommend-chrome-extension-2/2020-08-16-23-16-29.png" alt=""></p><p>像下圖就是我保存的文章：</p><p><img src="../images/recommend-chrome-extension-2/2020-08-16-23-19-53.png" alt=""></p><p>有一些是付費功能，例如：自己新增來源，可以是 blog 或 RSS 網址。歡迎大家把我的「Titangene Blog」的 RSS 網址訂閱起來 XD：<a href="https://titangene.github.io/atom.xml">https://titangene.github.io/atom.xml</a></p><p><img src="../images/recommend-chrome-extension-2/2020-08-16-23-04-48.png" alt=""></p><p><img src="../images/recommend-chrome-extension-2/2020-08-16-23-08-05.png" alt=""></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Tools </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> w3HexSchool </tag>
+            
+            <tag> Chrome </tag>
+            
+            <tag> Chrome Extension </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>推薦 Chrome Extension：Markdown &amp; 頁面主題篇</title>
       <link href="/article/recommend-chrome-extension-1.html"/>
       <url>/article/recommend-chrome-extension-1.html</url>
@@ -21,6 +50,8 @@
         <tags>
             
             <tag> Markdown </tag>
+            
+            <tag> w3HexSchool </tag>
             
             <tag> Chrome </tag>
             
