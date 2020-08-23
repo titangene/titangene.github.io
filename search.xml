@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>推薦 Chrome Extension：YouTube 篇</title>
+      <link href="/article/recommend-chrome-extension-3.html"/>
+      <url>/article/recommend-chrome-extension-3.html</url>
+      
+        <content type="html"><![CDATA[<p><img src="../images/cover/chrome-extension.jpg" alt=""></p><p>本篇推薦一些我常用的 Chrome Extension，包含自動重播 YouTube 影片，以及把 YouTube 影片變成漂浮視窗，能讓你邊看影片時還能邊看其他內容。</p><a id="more"></a><blockquote><p>其他推薦 Chrome Extension 相關文章可參閱 <a href="https://titangene.github.io/tags/chrome-extension/">推薦 Chrome Extension 系列文章</a>。</p></blockquote><h1 id="Looper-for-YouTube-自動重播"><a class="header-anchor" href="#Looper-for-YouTube-自動重播"></a>Looper for YouTube - 自動重播</h1><p>下載連結：<a href="https://chrome.google.com/webstore/detail/looper-for-youtube/iggpfpnahkgpnindfkdncknoldgnccdg" target="_blank" rel="noopener">Looper for YouTube - 自動重播</a></p><p>功能：</p><ul><li>自動重播 YouTube 影片</li><li>可自訂重播幾次</li><li>可自訂重播某片段</li><li>可自訂影片在重播時的畫質</li></ul><p>我常用 YouTube 來聽歌，若希望重播某首音樂來讓自己進入心流狀態，那此 extension 就能輕鬆達到這個需求，讓你不用手動重新播放 YouTube，專住在要做的事上。</p><p>按下「自動重播」就會無限次的自動重播該 YouTube 影片，此時 YouTube 播放清單的自動播放就會被禁用：</p><p><img src="../images/recommend-chrome-extension-3/2020-08-23-23-10-18.png" alt=""></p><p>也可自訂重播幾次，以及重播某片段：</p><p><img src="../images/recommend-chrome-extension-3/2020-08-23-23-11-28.png" alt=""></p><p>在選項內還有其他設定，包括影片在重播時的畫質：</p><p><img src="../images/recommend-chrome-extension-3/2020-08-23-23-12-43.png" alt=""></p><h1 id="Mini-Y"><a class="header-anchor" href="#Mini-Y"></a>Mini Y</h1><p>下載連結：<a href="https://chrome.google.com/webstore/detail/mini-y/acphfpihfjpgnihkgelafhmjeoodbehp" target="_blank" rel="noopener">Mini Y</a></p><p>功能：將 YouTube 影片變成漂浮視窗</p><p>你在播放 YouTube 影片時有以下需求嗎：</p><ul><li>邊看影片，邊看影片底下的敘述內容 (例如：音樂歌詞)</li><li>邊看影片，邊看影片底下的留言</li><li>邊看影片，邊看右側的推薦影片</li></ul><p>這個 extension 就解決了這些需求！</p><p>當你將畫面往下捲動，它會將 YouTube 影片變成漂浮視窗放在一側：</p><p><img src="../images/recommend-chrome-extension-3/2020-08-23-23-43-20.png" alt=""></p><p>而且你在 hover 該漂浮影片時，可讓你自由選擇漂浮視窗要改變的大小：</p><p><img src="../images/recommend-chrome-extension-3/2020-08-23-23-34-30.png" alt=""></p><p>而且還可隨意將漂浮視窗拖曳至你喜歡的位置：</p><p><img src="../images/recommend-chrome-extension-3/2020-08-23-23-37-38.png" alt=""></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Tools </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> w3HexSchool </tag>
+            
+            <tag> Chrome </tag>
+            
+            <tag> Chrome Extension </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>推薦 Chrome Extension：新分頁篇</title>
       <link href="/article/recommend-chrome-extension-2.html"/>
       <url>/article/recommend-chrome-extension-2.html</url>
