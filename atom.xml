@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://titangene.github.io/"/>
-  <updated>2020-08-23T15:50:50.798Z</updated>
+  <updated>2020-08-29T16:12:32.512Z</updated>
   <id>https://titangene.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>推薦 Chrome Extension：翻譯篇 - 新同文堂</title>
+    <link href="https://titangene.github.io/article/recommend-chrome-extension-4.html"/>
+    <id>https://titangene.github.io/article/recommend-chrome-extension-4.html</id>
+    <published>2020-08-29T16:13:20.000Z</published>
+    <updated>2020-08-29T16:12:32.512Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="../images/cover/chrome-extension.jpg" alt=""></p><p>本篇推薦我常用的 Chrome Extension，包含自動重播 YouTube 影片，以及把 YouTube 影片變成漂浮視窗，能讓你邊看影片時還能邊看其他內容。</p><a id="more"></a><blockquote><p>其他推薦 Chrome Extension 相關文章可參閱 <a href="https://titangene.github.io/tags/chrome-extension/">推薦 Chrome Extension 系列文章</a>。</p></blockquote><p><a href="https://chrome.google.com/webstore/detail/google-translate/aapbdbdomjkkjkaonfhkkikfgjllcleb" target="_blank" rel="noopener">Google 翻譯</a> Extension 沒什麼好介紹的，大家都很熟悉了，但有一些缺點：</p><ul><li>近期的英翻中大多都是中國用語，與我們日常使用的用語不同</li><li>只能簡中轉成繁中，但無法將中國用語轉成台灣用語</li></ul><p>雖然常看這些用語已經能在腦中自動翻譯了，但在閱讀上還是會有一些不習慣。</p><p>如果網頁能自動轉換成台灣用語那就太好啦！而「新同文堂」就能解決這個問題！</p><h1 id="新同文堂"><a class="header-anchor" href="#新同文堂"></a>新同文堂</h1><p>下載連結：<a href="https://chrome.google.com/webstore/detail/new-tong-wen-tang/ldmgbgaoglmaiblpnphffibpbfchjaeg" target="_blank" rel="noopener">新同文堂</a></p><p>功能：</p><ul><li>自訂指定的簡中用語轉成繁中用語</li><li>開啟任何/指定頁面都能自動將中國用語轉成台灣用語</li></ul><p>「一般設定」內有很多可以選項設定，包括是否啟動自動轉換、標點符號轉換、字型轉換…等：</p><p><img src="../images/recommend-chrome-extension-4/2020-08-29-23-35-52.png" alt=""></p><p>「自訂轉換規則」則是可自訂哪些網站是否要套用繁簡轉換的規則：</p><p><img src="../images/recommend-chrome-extension-4/2020-08-29-23-38-34.png" alt=""></p><p>而「自訂詞彙」就是可依你習換的用語來設定：</p><p><img src="../images/recommend-chrome-extension-4/2020-08-29-23-41-26.png" alt=""></p><p>像下面就是我自訂的詞彙，歡迎大家匯入使用：</p><script src="https://gist.github.com/titangene/8f015e54607f74bef8bf985fd426005f.js"></script><p>另外，也可參考其他人的設定：</p><ul><li><a href="https://github.com/doggy8088/newtongwen-settings" target="_blank" rel="noopener">doggy8088/newtongwen-settings</a></li><li><a href="https://github.com/pjchender/cn2tw4programmer/blob/master/src/terms/_newTongWenTang.json" target="_blank" rel="noopener">cn2tw4programmer/_newTongWenTang.json at master · pjchender/cn2tw4programmer</a></li></ul><p>實際用起來會像下圖這樣，上面是原本的中國用語，下面是透過新同文堂自動轉為台灣用語：</p><p><img src="../images/recommend-chrome-extension-4/2020-08-30-00-00-10.png" alt=""></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;../images/cover/chrome-extension.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;&lt;p&gt;本篇推薦我常用的 Chrome Extension，包含自動重播 YouTube 影片，以及把 YouTube 影片變成漂浮視窗，能讓你邊看影片時還能邊看其他內容。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Tools" scheme="https://titangene.github.io/categories/tools/"/>
+    
+    
+      <category term="w3HexSchool" scheme="https://titangene.github.io/tags/w3hexschool/"/>
+    
+      <category term="Chrome" scheme="https://titangene.github.io/tags/chrome/"/>
+    
+      <category term="Chrome Extension" scheme="https://titangene.github.io/tags/chrome-extension/"/>
+    
+  </entry>
   
   <entry>
     <title>推薦 Chrome Extension：YouTube 篇</title>
@@ -407,9 +434,9 @@
     
       <category term="Jest" scheme="https://titangene.github.io/tags/jest/"/>
     
-      <category term="Unit Testing" scheme="https://titangene.github.io/tags/unit-testing/"/>
-    
       <category term="Node.js" scheme="https://titangene.github.io/tags/node-js/"/>
+    
+      <category term="Unit Testing" scheme="https://titangene.github.io/tags/unit-testing/"/>
     
       <category term="TypeScript" scheme="https://titangene.github.io/tags/typescript/"/>
     
@@ -440,11 +467,11 @@
     
       <category term="JavaScript" scheme="https://titangene.github.io/tags/javascript/"/>
     
-      <category term="Unit Testing" scheme="https://titangene.github.io/tags/unit-testing/"/>
-    
       <category term="Node.js" scheme="https://titangene.github.io/tags/node-js/"/>
     
       <category term="Babel" scheme="https://titangene.github.io/tags/babel/"/>
+    
+      <category term="Unit Testing" scheme="https://titangene.github.io/tags/unit-testing/"/>
     
   </entry>
   
@@ -602,31 +629,6 @@
       <category term="Node.js" scheme="https://titangene.github.io/tags/node-js/"/>
     
       <category term="version manager" scheme="https://titangene.github.io/tags/version-manager/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>淺入 Git：detached HEAD</title>
-    <link href="https://titangene.github.io/article/git-detached-head.html"/>
-    <id>https://titangene.github.io/article/git-detached-head.html</id>
-    <published>2020-04-12T15:54:32.000Z</published>
-    <updated>2020-04-12T15:55:04.000Z</updated>
-    
-    <content type="html"><![CDATA[<p><img src="../images/cover/git.jpg" alt=""></p><p>在 Git 的世界中，想回到過去，也許你會用 <code>git checkout</code> 跳至某個過去的 commit，但 Git 會提醒你正在「detached HEAD」狀態。那 detached <code>HEAD</code> 是什麼？它能做什麼？要怎麼離開 detached <code>HEAD</code> 狀態？</p><a id="more"></a><h2 id="前言"><a class="header-anchor" href="#前言"></a>前言</h2><p>在之前的 <a href="https://titangene.github.io/article/git-head-ref.html">深入 Git：<code>HEAD</code> refs</a> 有談到 <code>HEAD</code> 通常會指向當前分支，而當前分支通常會指向該分支頂端的 commit (也就是該分支最新的 commit)。不過再某些情況下，會發生 <code>HEAD</code> 不是指向分支，而是指向某個 commit，而這個狀態的 <code>HEAD</code> 就被稱為「detached HEAD」。</p><p>下面會用以下 Git 歷史紀錄作為範例來說明 detached <code>HEAD</code>。本專案內有四個檔案，分別是 <code>a</code>、<code>b</code>、<code>c</code> 和 <code>d</code>，我為每個檔案分別建立了一個 commit：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">$</span><span class="bash"> ls</span><br>a  b  c  d<br><br><span class="hljs-meta">$</span><span class="bash"> git <span class="hljs-built_in">log</span> --oneline --graph --decorate</span><br>* 71e5770 (HEAD -&gt; master, origin/master) feat: d<br>* c3a31ea feat: c<br>* b757c26 feat: b<br>* 3b7be17 feat: a<br></code></pre></td></tr></table></figure><h2 id="路人甲發生的情境"><a class="header-anchor" href="#路人甲發生的情境"></a>路人甲發生的情境</h2><p>下面是路人甲發生的情境，讓我們來看這個情境發生了什麼？</p><p>現在 <code>HEAD</code> 指向 <code>master</code> 分支，而 <code>master</code> 分支指向名為 <code>e2f2a4</code> 的 commit：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">$</span><span class="bash"> git <span class="hljs-built_in">log</span> --oneline --graph --decorate</span><br>* 71e5770 (HEAD -&gt; master, origin/master) feat: d<br>* c3a31ea feat: c<br>* b757c26 feat: b<br>* 3b7be17 feat: a<br><br><span class="hljs-meta">$</span><span class="bash"> cat .git/HEAD</span><br>ref: refs/heads/master<br><span class="hljs-meta">$</span><span class="bash"> cat .git/refs/heads/master</span><br>71e57702f208a7c463a2b5cd069ea47cdbed9eba<br></code></pre></td></tr></table></figure><p>路人甲可能想回到過去的 commit，於是使用了 <code>git checkout &lt;commit&gt;</code> 跳至指定的 commit，假設要 checkout 至名為 <code>b757c26</code> 的 commit 就會看到以下訊息：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">$</span><span class="bash"> git checkout b757c26</span><br>Note: checking out 'b757c26'.<br><br>You are in 'detached HEAD' state. You can look around, make experimental<br>changes and commit them, and you can discard any commits you make in this<br>state without impacting any branches by performing another checkout.<br><br>If you want to create a new branch to retain commits you create, you may<br>do so (now or later) by using -b with the checkout command again. Example:<br><br>  git checkout -b &lt;new-branch-name&gt;<br><br>HEAD is now at b757c26 feat: b<br></code></pre></td></tr></table></figure><div class="warning"><p>假設路人甲很少注意看 Git 提供的訊息，所以忽略了「detached HEAD」的提醒訊息。</p></div><p>路人甲只想確定自己是不是回到過去，於是執行 <code>git log</code> 來察看，的確看到 <code>HEAD</code> 指向 <code>b757c26</code> 這個 commit：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">$</span><span class="bash"> git <span class="hljs-built_in">log</span> --oneline --graph --decorate</span><br>* b757c26 (HEAD) feat: b<br>* 3b7be17 feat: a<br></code></pre></td></tr></table></figure><p>所以心滿意足的開始基於 <code>7e347a4</code> 這個 commit 開始建立兩個新的 commit：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">$</span><span class="bash"> <span class="hljs-built_in">echo</span> <span class="hljs-string">"test1"</span> &gt; test1</span><br><span class="hljs-meta">$</span><span class="bash"> git add test1</span><br><span class="hljs-meta">$</span><span class="bash"> git commit -m <span class="hljs-string">"feat: test1"</span></span><br>[detached HEAD 3936d06] feat: test1<br> 1 file changed, 0 insertions(+), 0 deletions(-)<br> create mode 100644 test1<br><br><span class="hljs-meta">$</span><span class="bash"> <span class="hljs-built_in">echo</span> <span class="hljs-string">"test2"</span> &gt; test2</span><br><span class="hljs-meta">$</span><span class="bash"> git add test2</span><br><span class="hljs-meta">$</span><span class="bash"> git commit -m <span class="hljs-string">"feat: test2"</span></span><br>[detached HEAD 845992a] feat: test2<br> 1 file changed, 1 insertion(+)<br> create mode 100644 test2<br></code></pre></td></tr></table></figure><p>所以現在 <code>git log</code> 變成這樣：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">$</span><span class="bash"> git <span class="hljs-built_in">log</span> --oneline --graph --decorate</span><br>* 845992a (HEAD) feat: test2<br>* 9fd0924 feat: test1<br>* b757c26 feat: b<br>* 3b7be17 feat: a<br></code></pre></td></tr></table></figure><p>當路人甲建立完 commit 後，突然想回到之前的 <code>master</code> 分支，所以執行 <code>git checkout master</code>：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">$</span><span class="bash"> git checkout master</span><br>Warning: you are leaving 2 commits behind, not connected to<br>any of your branches:<br><br>  845992a feat: test2<br>  9fd0924 feat: test1<br><br>If you want to keep them by creating a new branch, this may be a good time<br>to do so with:<br><br> git branch &lt;new-branch-name&gt; 845992a<br><br>Switched to branch 'master'<br>Your branch is up to date with 'origin/master'.<br></code></pre></td></tr></table></figure><p>回到 <code>master</code> 分支後，路人甲看 <code>git log</code> 變成下面這樣馬上傻眼，心想：「剛剛的那兩個 commit 呢？怎麼不見了！怎麼辦啊！還找的回來嗎？」：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">$</span><span class="bash"> git <span class="hljs-built_in">log</span> --oneline --graph --decorate</span><br>* 71e5770 (HEAD -&gt; master, origin/master) feat: d<br>* c3a31ea feat: c<br>* b757c26 feat: b<br>* 3b7be17 feat: a<br></code></pre></td></tr></table></figure><p>好，看到這個故事，你應該會發現，其實 Git 一直不停的在輸出訊息提醒你：</p><ul><li>在 checkout 至某個 commit 時，會提醒你正在「detached HEAD」狀態</li><li>在「detached HEAD」狀態建立 commit 時，會像這樣提醒你：<code>[detached HEAD 845992a] feat: test2</code></li><li>在「detached HEAD」狀態建立 commit 後，checkout 回分支時，會像這樣提醒你：<code>Warning: you are leaving 2 commits behind</code></li></ul><p>所以看輸出訊息很重要！</p><div class="info"><p>我曾經就是那個不看輸出訊息的路人甲 XD</p></div><h2 id="此狀態有何用"><a class="header-anchor" href="#此狀態有何用"></a>此狀態有何用</h2><p>那「detached HEAD」狀態到底能做什麼？</p><p>如果在 detached <code>HEAD</code> 狀態時建立的 commit 是實驗性的，那的確可以直接 checkout 至任何分支，把那些 commit 都丟棄 (但 Git 不會馬上刪除，會自動等到 Git GC 來回收，所以還救的回來)，這代表你放棄了在 detached <code>HEAD</code> 狀態下所做的任何 commit，而且這些操作都不會影響任何分支。</p><p>那如果是像路人甲的情境那樣，你想保留那些 commit，那可以在該 commit 上建立 ref，讓該 ref 指向該 commit，ref 可以是分支或 tag。</p><p>建立 ref 有很多種方式，下面會介紹幾種處理的方式。</p><h2 id="資料來源"><a class="header-anchor" href="#資料來源"></a>資料來源</h2><ul><li><a href="https://git-scm.com/docs/git-checkout" target="_blank" rel="noopener">Git - git-checkout Documentation</a></li><li><a href="https://git-scm.com/book/en/v2/Git-Branching-Remote-Branches" target="_blank" rel="noopener">Git Branching - Remote Branches | Pro Git, 2/e</a></li></ul>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;img src=&quot;../images/cover/git.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;&lt;p&gt;在 Git 的世界中，想回到過去，也許你會用 &lt;code&gt;git checkout&lt;/code&gt; 跳至某個過去的 commit，但 Git 會提醒你正在「detached HEAD」狀態。那 detached &lt;code&gt;HEAD&lt;/code&gt; 是什麼？它能做什麼？要怎麼離開 detached &lt;code&gt;HEAD&lt;/code&gt; 狀態？&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="Git" scheme="https://titangene.github.io/categories/git/"/>
-    
-    
-      <category term="w3HexSchool" scheme="https://titangene.github.io/tags/w3hexschool/"/>
-    
-      <category term="深入 Git" scheme="https://titangene.github.io/tags/%E6%B7%B1%E5%85%A5-git/"/>
     
   </entry>
   
