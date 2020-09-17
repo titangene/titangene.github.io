@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>JavaScript 之旅 (2)：Array.prototype.includes()</title>
+      <link href="/article/javascript-array-includes.html"/>
+      <url>/article/javascript-array-includes.html</url>
+      
+        <content type="html"><![CDATA[<p><img src="../images/cover/javascript.jpg" alt=""></p><p>常會有找出陣列中是否包含某元素的需求，過去會使用 <code>Array.prototype.indexOf()</code> 來處理，但在 ES2016 (ES7) 提供了 <code>Array.prototype.includes()</code> 新的 Array method，更方便好用，那這兩個差在哪？解決過去的哪些問題？讓我們從 ECMAScript spec 中一探究竟吧。</p><a id="more"></a><blockquote><p>本文同步發表於 iT 邦幫忙：<a href="https://ithelp.ithome.com.tw/articles/10238101" target="_blank" rel="noopener">JavaScript 之旅 (2)：Array.prototype.includes()</a></p><p>「JavaScript 之旅」系列文章發文於：</p><ul><li><a href="https://ithelp.ithome.com.tw/users/20117586/ironman/3607" target="_blank" rel="noopener">iT 邦幫忙</a></li><li><a href="https://titangene.github.io/tags/it-%E9%90%B5%E4%BA%BA%E8%B3%BD/">Titangene Blog</a></li></ul></blockquote><h1 id="過去的-Array-prototype-indexOf"><a class="header-anchor" href="#過去的-Array-prototype-indexOf"></a>過去的 <code>Array.prototype.indexOf()</code></h1><p>若要確定陣列內是否包含某元素，過去常見的作法是使用 <code>Array.prototype.indexOf()</code>，你應該有看過這幾種寫法：</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> array = [<span class="hljs-string">'JS'</span>, <span class="hljs-string">'ECMA'</span>, <span class="hljs-string">'TC39'</span>];<br><span class="hljs-keyword">let</span> searchElement = <span class="hljs-string">'ECMA'</span>;<br><br><span class="hljs-built_in">console</span>.log(array.indexOf(searchElement) !== <span class="hljs-number">-1</span>);  <span class="hljs-comment">// true</span><br><span class="hljs-built_in">console</span>.log(array.indexOf(searchElement) &gt;= <span class="hljs-number">0</span>);    <span class="hljs-comment">// true</span><br><br><span class="hljs-keyword">if</span> (~array.indexOf(searchElement)) &#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'找到啦！'</span>);  <span class="hljs-comment">// 找到啦！</span><br>&#125; <span class="hljs-keyword">else</span> &#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'找不到 QQ'</span>);<br>&#125;<br></code></pre></td></tr></table></figure><p>利用 <code>Array.prototype.indexOf()</code> 回傳的 index 來確定陣列內是否包含該元素：</p><ul><li>回傳 <code>-1</code> 代表陣列內沒有該元素</li><li>否則就是找到的元素的 index 值</li></ul><p>但這些寫法有一些問題：</p><ul><li>不直覺：需透過 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf" target="_blank" rel="noopener"><code>Array.prototype.indexOf()</code></a> 來問該元素在陣列中第一次被找到的 index 為何，然後使用比較運算子 (即 <code>===</code>、<code>&gt;=</code> 等) 或位元運算子 (即 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Bitwise_NOT" target="_blank" rel="noopener"><code>~</code></a> ) 來確定該元素是否存在</li><li>寫法不統一：每個人對於比較運算子的使用習慣不同，有些人會用 <code>!== -1</code>，有些人會用 <code>&gt;= 0</code> … 等，但明明都是一樣的行為</li><li>不適用於 <code>NaN</code>：因為 <code>Array.prototype.indexOf()</code> 是用嚴格相等來比較，而 <code>NaN !== NaN</code> ( <code>NaN</code> 本來就不等於自己)，所以你無法在陣列中找出 <code>NaN</code></li></ul><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-built_in">console</span>.log([<span class="hljs-literal">NaN</span>].indexOf(<span class="hljs-literal">NaN</span>) !== <span class="hljs-number">-1</span>);  <span class="hljs-comment">// false</span><br></code></pre></td></tr></table></figure><h1 id="現代的-Array-prototype-includes"><a class="header-anchor" href="#現代的-Array-prototype-includes"></a>現代的 <code>Array.prototype.includes()</code></h1><p>於是在 ES2016 (ES7) 提供了 <code>Array.prototype.includes()</code> 新的 Array method，不用管陣列的 index，直接就會回傳是否包含該元素的 Boolean 值，<code>true</code> 代表包含，<code>false</code> 則代表不包含，非常直覺又方便：</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> array = [<span class="hljs-string">'JS'</span>, <span class="hljs-string">'ECMA'</span>, <span class="hljs-string">'TC39'</span>];<br><span class="hljs-keyword">let</span> searchElement = <span class="hljs-string">'ECMA'</span>;<br><br><span class="hljs-built_in">console</span>.log(array.includes(searchElement));  <span class="hljs-comment">// true</span><br></code></pre></td></tr></table></figure><p>而且也可以解決 <code>NaN</code> 的問題：</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-built_in">console</span>.log([<span class="hljs-literal">NaN</span>].includes(<span class="hljs-literal">NaN</span>));  <span class="hljs-comment">// true</span><br></code></pre></td></tr></table></figure><blockquote><p>後面會解釋 <code>Array.prototype.includes()</code> 是如何解決 <code>NaN</code> 的問題，spec 其實都有告訴你！</p></blockquote><p>另外為了一致性，<code>Array.prototype.includes()</code> 的參數用法跟 <code>Array.prototype.indexOf()</code> 的一樣，下面是他們的語法：</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-built_in">Array</span>.prototype.indexOf(searchElement[, fromIndex])<br><span class="hljs-built_in">Array</span>.prototype.includes(searchElement[, fromIndex])<br></code></pre></td></tr></table></figure><blockquote><p>註：<code>[, fromIndex]</code> 中的 <code>[]</code> 不是代表陣列，在語法表示法中代表的是可選參數，而 <code>Array.prototype.includes()</code> 和 <code>Array.prototype.indexOf()</code> 的可選參數 <code>fromIndex</code> 預設為 <code>0</code>，代表會從陣列的最前面開始尋找符合的元素。</p></blockquote><p>兩者實際使用的行為一樣 (除了剛剛提到的 <code>NaN</code> 之外)：</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> array = [<span class="hljs-string">'JS'</span>, <span class="hljs-string">'ECMA'</span>, <span class="hljs-string">'TC39'</span>, <span class="hljs-string">'JS'</span>, <span class="hljs-string">'ECMA'</span>];<br><span class="hljs-keyword">let</span> searchElement = <span class="hljs-string">'JS'</span>;<br><br><span class="hljs-built_in">console</span>.log(array.indexOf(searchElement, <span class="hljs-number">2</span>) !== <span class="hljs-number">-1</span>);  <span class="hljs-comment">// true</span><br><span class="hljs-built_in">console</span>.log(array.includes(searchElement, <span class="hljs-number">2</span>));  <span class="hljs-comment">// true</span><br></code></pre></td></tr></table></figure><blockquote><p>關於為什麼 <code>includes()</code> 要命名成 <code>includes</code>，而不是 <code>has</code> 或 <code>contains</code>，可參閱 <a href="https://github.com/tc39/Array.prototype.includes#faqs" target="_blank" rel="noopener">tc39/Array.prototype.includes 的 FAQ</a>。</p></blockquote><h1 id="spec-定義"><a class="header-anchor" href="#spec-定義"></a>spec 定義</h1><h2 id="Array-prototype-indexOf-的-spec-定義"><a class="header-anchor" href="#Array-prototype-indexOf-的-spec-定義"></a><code>Array.prototype.indexOf()</code> 的 spec 定義</h2><p>先來看看 <a href="http://www.ecma-international.org/ecma-262/#sec-array.prototype.indexof" target="_blank" rel="noopener"><code>Array.prototype.indexOf()</code></a> 在 spec 的定義：</p><p><img src="../images/javascript-array-includes/2020-09-16-23-44-03.png" alt=""></p><p>大致上就是從陣列中找出與 <code>searchElement</code> match 的元素，用嚴格相等比較 (Strict Equality Comparison) 來確認 <code>searchElement</code> 是否與陣列中的某元素相同。</p><blockquote><p>在 spec 定義的 1~6 步驟明確說明，何時才會真正開始從陣列中尋找 match 的元素，在某些條件下會直接回傳 <code>-1</code>，例如：陣列的 length 等於 0，或是 <code>fromIndex</code> 的值大於陣列的 length 的時候。</p></blockquote><h2 id="Array-prototype-includes-的-spec-定義"><a class="header-anchor" href="#Array-prototype-includes-的-spec-定義"></a><code>Array.prototype.includes()</code> 的 spec 定義</h2><p>接著來看 <a href="http://www.ecma-international.org/ecma-262/#sec-array.prototype.includes" target="_blank" rel="noopener"><code>Array.prototype.includes()</code></a> 在 spec 的定義：</p><p><img src="../images/javascript-array-includes/2020-09-16-23-55-16.png" alt=""></p><p>大致上的定義和 <code>Array.prototype.indexOf()</code> 非常像，但有一些不同：</p><ul><li>回傳值變成 Boolean 值，而不是 index 值 (型別為 Number)</li><li>在比對 <code>searchElement</code> 是否 match 陣列中的元素時，使用的是 SameValueZero 演算法，而不是嚴格相等比較<ul><li>透過 SameValueZero 演算法可以找出陣列中的 <code>NaN</code> 元素</li></ul></li><li>不會跳過空缺的陣列元素 (即 empty slot)，而是視為 <code>undefined</code> (所以 <code>Array.prototype.indexOf()</code> 會跳過 empty slot，因為它在 spec 定義的步驟 9.a，只要沒有該 property 就會直接跳過，繼續比對下一個元素)</li></ul><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> array = <span class="hljs-built_in">Array</span>(<span class="hljs-number">3</span>);<br><br><span class="hljs-built_in">console</span>.log(array);                   <span class="hljs-comment">// [empty × 3]</span><br><br><span class="hljs-built_in">console</span>.log(array.indexOf() !== <span class="hljs-number">-1</span>);  <span class="hljs-comment">// false</span><br><span class="hljs-built_in">console</span>.log(array.includes());        <span class="hljs-comment">// true</span><br><br><span class="hljs-built_in">console</span>.log(array.indexOf(<span class="hljs-literal">undefined</span>) !== <span class="hljs-number">-1</span>);  <span class="hljs-comment">// false</span><br><span class="hljs-built_in">console</span>.log(array.includes(<span class="hljs-literal">undefined</span>));        <span class="hljs-comment">// true</span><br></code></pre></td></tr></table></figure><p>看完 <code>Array.prototype.indexOf()</code> 和 <code>Array.prototype.includes()</code> 的定義之後，讓我們更深入看前者使用的嚴格相等比較 (Strict Equality Comparison) 和後者使用的 SameValueZero 演算法在 spec 中是如何定義的。</p><h2 id="嚴格相等比較-vs-SameValueZero"><a class="header-anchor" href="#嚴格相等比較-vs-SameValueZero"></a>嚴格相等比較 vs. SameValueZero</h2><h3 id="嚴格相等比較-的-spec-定義"><a class="header-anchor" href="#嚴格相等比較-的-spec-定義"></a>嚴格相等比較 的 spec 定義</h3><p>先來看 <code>Array.prototype.indexOf()</code> 使用的<a href="http://www.ecma-international.org/ecma-262/#sec-strict-equality-comparison" target="_blank" rel="noopener">嚴格相等比較 (Strict Equality Comparison)</a> 在 spec 的定義：</p><p><img src="../images/javascript-array-includes/2020-09-17-00-29-43.png" alt=""></p><p>嚴格相等比較會先比較型別是否相同，不同就回傳 <code>false</code>。</p><p>然後，如果型別是 <code>Number</code> 或 <code>BigInt</code> 就會直接進行值的比較。<a href="http://www.ecma-international.org/ecma-262/#sec-numeric-types-number-equal" target="_blank" rel="noopener"><code>Number::equal</code></a> 的定義如下：</p><p><img src="../images/javascript-array-includes/2020-09-17-00-34-22.png" alt=""></p><blockquote><p>在步驟 1 和 2 提到，只要值是 <code>NaN</code> 就會回傳 <code>false</code>，這就是 <code>NaN</code> 不等於 <code>NaN</code> 的原因</p></blockquote><p>回到嚴格相等比較的步驟 3：否則，其他型別會使用 <a href="http://www.ecma-international.org/ecma-262/#sec-samevaluenonnumeric" target="_blank" rel="noopener">SameValueNonNumeric</a> 演算法，spec 的定義如下：</p><p><img src="../images/javascript-array-includes/2020-09-17-00-35-30.png" alt=""></p><ul><li>值為 <code>null</code> 或 <code>undefined</code> 時會回傳 <code>true</code></li><li><code>String</code> 型別就比對字串</li><li><code>Boolean</code>、<code>Symbol</code> 和 <code>Object</code> 型別都是比較值是否相同 (但 Object 型別的值必須是同一個參考)</li></ul><p>如果元素的型別為 <code>Object</code>，值看起來相同，但參考不同時，<code>Array.prototype.indexOf()</code> 和 <code>Array.prototype.includes()</code> 都會找不到一樣的元素 (ECMAScript 表示：啊就真的不一樣啊)：</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> array = [&#123;<span class="hljs-attr">id</span>: <span class="hljs-number">1</span>&#125;, &#123;<span class="hljs-attr">id</span>: <span class="hljs-number">2</span>&#125;, &#123;<span class="hljs-attr">id</span>: <span class="hljs-number">3</span>&#125;];<br><br><span class="hljs-built_in">console</span>.log(array.indexOf(&#123;<span class="hljs-attr">id</span>: <span class="hljs-number">2</span>&#125;) !== <span class="hljs-number">-1</span>);  <span class="hljs-comment">// false</span><br><span class="hljs-built_in">console</span>.log(array.includes(&#123;<span class="hljs-attr">id</span>: <span class="hljs-number">2</span>&#125;));        <span class="hljs-comment">// false</span><br></code></pre></td></tr></table></figure><p>如果是同一個物件參考，就會找到 match 的元素：</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> item = &#123;<span class="hljs-attr">id</span>: <span class="hljs-number">2</span>&#125;;<br><span class="hljs-keyword">let</span> array = [&#123;<span class="hljs-attr">id</span>: <span class="hljs-number">1</span>&#125;, item, &#123;<span class="hljs-attr">id</span>: <span class="hljs-number">3</span>&#125;];<br><br><span class="hljs-built_in">console</span>.log(array.indexOf(item) !== <span class="hljs-number">-1</span>);  <span class="hljs-comment">// true</span><br><span class="hljs-built_in">console</span>.log(array.includes(item));        <span class="hljs-comment">// true</span><br></code></pre></td></tr></table></figure><h3 id="SameValueZero-的-spec-定義"><a class="header-anchor" href="#SameValueZero-的-spec-定義"></a>SameValueZero 的 spec 定義</h3><p>接著來看 <code>Array.prototype.includes()</code> 使用的 SameValueZero 演算法在 spec 的定義：</p><p><img src="../images/javascript-array-includes/2020-09-17-13-11-51.png" alt=""></p><p>步驟 1 和嚴格相等比較一樣，會先比較型別是否相同，不同就回傳 <code>false</code>。</p><p>然後，如果型別是 <code>Number</code> 或 <code>BigInt</code> 就會進行 <code>Type(x)::sameValueZero(x, y)</code> 來比較。那 <code>Type(x)::sameValueZero(x, y)</code> 是啥？其實在 spec 內定義，<code>Number</code> 或 <code>BigInt</code> 型別都是 ECMAScript 內建的 Numeric 型別，而每種內建型別會定義很多 operations，其中的就是 <code>T::sameValueZero(x, y)</code>：</p><p><img src="../images/javascript-array-includes/2020-09-17-13-19-43.png" alt=""></p><blockquote><p>註：因為表格有太多內容了，所以我把這次不會提到的內容都變成 <code>...</code> 了。</p></blockquote><p>接著往下找就會看到詳細的定義：</p><p><img src="../images/javascript-array-includes/2020-09-17-13-21-34.png" alt=""></p><blockquote><p>在步驟 1 提到，只要兩個比較的值都是 <code>NaN</code>，就會回傳 <code>true</code>，這就是 <code>Array.prototype.includes()</code> 解決 <code>NaN</code> 不等於 <code>NaN</code> 這個問題的步驟。</p></blockquote><p>回到嚴格相等比較的步驟 3：否則，使用 <a href="http://www.ecma-international.org/ecma-262/#sec-samevaluenonnumeric" target="_blank" rel="noopener">SameValueNonNumeric</a> 演算法，因為上面提到了，就不重複說明囉。</p><h1 id="polyfill"><a class="header-anchor" href="#polyfill"></a>polyfill</h1><p>下面是 MDN 提供的 polyfill，若跟 spec 相比可以發現簡化一些東西，但大致上的結果會相同：</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">// ref: https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Array/includes#Polyfill</span><br><span class="hljs-keyword">if</span> (!<span class="hljs-built_in">Array</span>.prototype.includes) &#123;<br>  <span class="hljs-built_in">Object</span>.defineProperty(<span class="hljs-built_in">Array</span>.prototype, <span class="hljs-string">'includes'</span>, &#123;<br>    value: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">searchElement, fromIndex</span>) </span>&#123;<br><br>      <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span> == <span class="hljs-literal">null</span>) &#123;<br>        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">TypeError</span>(<span class="hljs-string">'"this" is null or not defined'</span>);<br>      &#125;<br><br>      <span class="hljs-comment">// 1. Let O be ? ToObject(this value).</span><br>      <span class="hljs-keyword">var</span> o = <span class="hljs-built_in">Object</span>(<span class="hljs-keyword">this</span>);<br><br>      <span class="hljs-comment">// 2. Let len be ? LengthOfArrayLike(O)</span><br>      <span class="hljs-comment">//    即 Let len be ? ToLength(? Get(O, "length")).</span><br>      <span class="hljs-keyword">var</span> len = o.length &gt;&gt;&gt; <span class="hljs-number">0</span>;<br><br>      <span class="hljs-comment">// 3. If len is 0, return false.</span><br>      <span class="hljs-keyword">if</span> (len === <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br><br>      <span class="hljs-comment">// 4. Let n be ? ToInteger(fromIndex).</span><br>      <span class="hljs-comment">// 5. Assert: If fromIndex is undefined, this n is 0.</span><br>      <span class="hljs-keyword">var</span> n = fromIndex | <span class="hljs-number">0</span>;<br><br>      <span class="hljs-comment">// 6. If n &gt;= 0, then</span><br>      <span class="hljs-comment">//   a. Let k be n.</span><br>      <span class="hljs-comment">// 7. Else n &lt; 0,</span><br>      <span class="hljs-comment">//   a. Let k be len + n.</span><br>      <span class="hljs-comment">//   b. If k &lt; 0, set k to 0.</span><br>      <span class="hljs-keyword">var</span> k = <span class="hljs-built_in">Math</span>.max(n &gt;= <span class="hljs-number">0</span> ? n : len - <span class="hljs-built_in">Math</span>.abs(n), <span class="hljs-number">0</span>);<br><br>      <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sameValueZero</span>(<span class="hljs-params">x, y</span>) </span>&#123;<br>        <span class="hljs-keyword">return</span> (<br>          x === y || (<br>            <span class="hljs-keyword">typeof</span> x === <span class="hljs-string">'number'</span> &amp;&amp; <span class="hljs-keyword">typeof</span> y === <span class="hljs-string">'number'</span> &amp;&amp;<br>            <span class="hljs-built_in">isNaN</span>(x) &amp;&amp; <span class="hljs-built_in">isNaN</span>(y)<br>          )<br>        );<br>      &#125;<br><br>      <span class="hljs-comment">// 8. Repeat, while k &lt; len</span><br>      <span class="hljs-keyword">while</span> (k &lt; len) &#123;<br>        <span class="hljs-comment">// a. Let elementK be the result of ? Get(O, ! ToString(k)).</span><br>        <span class="hljs-comment">// b. If SameValueZero(searchElement, elementK) is true, return true.</span><br>        <span class="hljs-keyword">if</span> (sameValueZero(o[k], searchElement)) <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>        <span class="hljs-comment">// c. Set k to k + 1.</span><br>        k++;<br>      &#125;<br><br>      <span class="hljs-comment">// 9. Return false</span><br>      <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>    &#125;<br>  &#125;);<br>&#125;<br></code></pre></td></tr></table></figure><blockquote><p>其他 polyfill：</p><ul><li><a href="https://github.com/zloirock/core-js/blob/master/packages/core-js/internals/array-includes.js" target="_blank" rel="noopener">core-js</a></li><li><a href="https://github.com/es-shims/array-includes/blob/main/implementation.js" target="_blank" rel="noopener">es-shims</a></li></ul></blockquote><h1 id="資料來源："><a class="header-anchor" href="#資料來源："></a>資料來源：</h1><ul><li><a href="https://github.com/tc39/Array.prototype.includes" target="_blank" rel="noopener">tc39/Array.prototype.includes</a></li><li><a href="https://tc39.es/ecma262/#sec-array.prototype.includes" target="_blank" rel="noopener">22.1.3.13 <code>Array.prototype.includes(searchElement[, fromIndex])</code> | ECMAScript 2021 Language Specification</a></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> JavaScript </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> IT 鐵人賽 </tag>
+            
+            <tag> ECMAScript </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>JavaScript 之旅 (1)：介紹 ECMA、ECMAScript、JavaScript 和 TC39</title>
       <link href="/article/javascript-ecmascript-tc39.html"/>
       <url>/article/javascript-ecmascript-tc39.html</url>
@@ -47,11 +74,11 @@
       
         <tags>
             
-            <tag> Vue.js </tag>
-            
             <tag> w3HexSchool </tag>
             
             <tag> GitLab </tag>
+            
+            <tag> Vue.js </tag>
             
             <tag> CI/CD </tag>
             
@@ -80,11 +107,11 @@
       
         <tags>
             
+            <tag> w3HexSchool </tag>
+            
             <tag> Vue.js </tag>
             
             <tag> Bootstrap </tag>
-            
-            <tag> w3HexSchool </tag>
             
         </tags>
       
@@ -536,9 +563,9 @@
             
             <tag> Unit Testing </tag>
             
-            <tag> Node.js </tag>
-            
             <tag> TypeScript </tag>
+            
+            <tag> Node.js </tag>
             
         </tags>
       
@@ -598,13 +625,13 @@
       
         <tags>
             
-            <tag> w3HexSchool </tag>
-            
             <tag> Sass </tag>
             
             <tag> CSS </tag>
             
             <tag> Dart Sass </tag>
+            
+            <tag> w3HexSchool </tag>
             
         </tags>
       
@@ -629,13 +656,13 @@
       
         <tags>
             
-            <tag> w3HexSchool </tag>
-            
             <tag> Sass </tag>
             
             <tag> CSS </tag>
             
             <tag> Dart Sass </tag>
+            
+            <tag> w3HexSchool </tag>
             
         </tags>
       
@@ -662,8 +689,6 @@
             
             <tag> Dart </tag>
             
-            <tag> w3HexSchool </tag>
-            
             <tag> Sass </tag>
             
             <tag> CSS </tag>
@@ -671,6 +696,8 @@
             <tag> Dart Sass </tag>
             
             <tag> CLI </tag>
+            
+            <tag> w3HexSchool </tag>
             
         </tags>
       
@@ -695,9 +722,9 @@
       
         <tags>
             
-            <tag> w3HexSchool </tag>
-            
             <tag> CLI </tag>
+            
+            <tag> w3HexSchool </tag>
             
             <tag> JavaScript </tag>
             
@@ -732,9 +759,9 @@
       
         <tags>
             
-            <tag> w3HexSchool </tag>
-            
             <tag> CLI </tag>
+            
+            <tag> w3HexSchool </tag>
             
             <tag> JavaScript </tag>
             
