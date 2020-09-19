@@ -130,9 +130,9 @@
             
             <tag> w3HexSchool </tag>
             
-            <tag> GitLab </tag>
-            
             <tag> Vue.js </tag>
+            
+            <tag> GitLab </tag>
             
             <tag> CI/CD </tag>
             
@@ -277,9 +277,9 @@
       
         <tags>
             
-            <tag> w3HexSchool </tag>
-            
             <tag> Markdown </tag>
+            
+            <tag> w3HexSchool </tag>
             
             <tag> Chrome </tag>
             
@@ -741,11 +741,11 @@
       
         <tags>
             
+            <tag> Dart </tag>
+            
             <tag> Sass </tag>
             
             <tag> CSS </tag>
-            
-            <tag> Dart </tag>
             
             <tag> Dart Sass </tag>
             
@@ -782,9 +782,9 @@
             
             <tag> JavaScript </tag>
             
-            <tag> Node.js </tag>
-            
             <tag> version manager </tag>
+            
+            <tag> Node.js </tag>
             
             <tag> npm </tag>
             
@@ -819,9 +819,9 @@
             
             <tag> JavaScript </tag>
             
-            <tag> Node.js </tag>
-            
             <tag> version manager </tag>
+            
+            <tag> Node.js </tag>
             
         </tags>
       
@@ -2191,9 +2191,9 @@
       
         <tags>
             
-            <tag> Markdown </tag>
-            
             <tag> Hexo </tag>
+            
+            <tag> Markdown </tag>
             
         </tags>
       
