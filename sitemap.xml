@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://titangene.github.io/article/javascript-object-keys-values-entries.html</loc>
+    
+    <lastmod>2020-09-19T08:30:51.267Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://titangene.github.io/article/javascript-exponentiation-operator.html</loc>
     
     <lastmod>2020-09-18T04:20:05.760Z</lastmod>
