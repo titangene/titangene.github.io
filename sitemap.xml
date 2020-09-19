@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://titangene.github.io/article/javascript-ecmascript-tc39.html</loc>
+    
+    <lastmod>2020-09-19T15:50:29.824Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://titangene.github.io/article/javascript-object-keys-values-entries.html</loc>
     
     <lastmod>2020-09-19T10:39:44.492Z</lastmod>
@@ -19,13 +26,6 @@
     <loc>https://titangene.github.io/article/javascript-array-includes.html</loc>
     
     <lastmod>2020-09-17T05:45:33.804Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://titangene.github.io/article/javascript-ecmascript-tc39.html</loc>
-    
-    <lastmod>2020-09-16T16:51:07.319Z</lastmod>
     
   </url>
   
