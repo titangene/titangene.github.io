@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://titangene.github.io/article/git--blob-object.html</loc>
+    
+    <lastmod>2020-09-20T07:11:52.950Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://titangene.github.io/article/javascript-string-padstart-padend.html</loc>
     
     <lastmod>2020-09-20T06:55:18.802Z</lastmod>
@@ -229,13 +236,6 @@
     <loc>https://titangene.github.io/article/git-commit-object.html</loc>
     
     <lastmod>2020-03-22T15:51:58.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://titangene.github.io/article/git--blob-object.html</loc>
-    
-    <lastmod>2020-03-16T03:20:40.000Z</lastmod>
     
   </url>
   
