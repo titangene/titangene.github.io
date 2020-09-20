@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://titangene.github.io/article/javascript-string-padstart-padend.html</loc>
+    
+    <lastmod>2020-09-20T06:55:18.802Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://titangene.github.io/article/javascript-object-keys-values-entries.html</loc>
     
     <lastmod>2020-09-20T05:43:13.088Z</lastmod>
