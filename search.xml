@@ -31,33 +31,6 @@
     
     
     <entry>
-      <title>JavaScript 之旅 (6)：Async Functions &amp; await expression (2)</title>
-      <link href="/article/javascript-async-await-2.html"/>
-      <url>/article/javascript-async-await-2.html</url>
-      
-        <content type="html"><![CDATA[<p><img src="../images/cover/javascript.jpg" alt=""></p><a id="more"></a><blockquote><p>本文同步發表於 iT 邦幫忙：<a href="https://ithelp.ithome.com.tw/articles/10240599" target="_blank" rel="noopener">JavaScript 之旅 (6)：Async Functions &amp; await expression (2)</a></p><p>「JavaScript 之旅」系列文章發文於：</p><ul><li><a href="https://ithelp.ithome.com.tw/users/20117586/ironman/3607" target="_blank" rel="noopener">iT 邦幫忙</a></li><li><a href="https://titangene.github.io/tags/it-%E9%90%B5%E4%BA%BA%E8%B3%BD/">Titangene Blog</a></li></ul></blockquote><h1 id="Async-Functions-await-expression"><a class="header-anchor" href="#Async-Functions-await-expression"></a>Async Functions &amp; await expression</h1><h2 id="認識-async-await"><a class="header-anchor" href="#認識-async-await"></a>認識 <code>async</code> / <code>await</code></h2><p>其實 async function 很像 Promise + Generator，怎麼說呢？</p><h2 id="錯誤處理"><a class="header-anchor" href="#錯誤處理"></a>錯誤處理</h2><p>Promise + Generator</p><h1 id="Spec-定義"><a class="header-anchor" href="#Spec-定義"></a>Spec 定義</h1><h1 id="資料來源"><a class="header-anchor" href="#資料來源"></a>資料來源</h1><ul><li><a href="https://github.com/tc39/ecmascript-asyncawait" target="_blank" rel="noopener">tc39/ecmascript-asyncawait: Async/await for ECMAScript</a></li></ul>]]></content>
-      
-      
-      <categories>
-          
-          <category> JavaScript </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> IT 鐵人賽 </tag>
-            
-            <tag> ECMAScript </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>JavaScript 之旅 (5)：String method - padStart &amp; padEnd</title>
       <link href="/article/javascript-string-padstart-padend.html"/>
       <url>/article/javascript-string-padstart-padend.html</url>
@@ -103,9 +76,9 @@
             
             <tag> IT 鐵人賽 </tag>
             
-            <tag> w3HexSchool </tag>
-            
             <tag> ECMAScript </tag>
+            
+            <tag> w3HexSchool </tag>
             
         </tags>
       
