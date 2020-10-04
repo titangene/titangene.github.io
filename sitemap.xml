@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://titangene.github.io/article/javascript-object-rest-spread-properties.html</loc>
+    
+    <lastmod>2020-10-04T15:08:57.551Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://titangene.github.io/article/javascript-promise-finally.html</loc>
     
     <lastmod>2020-09-27T13:37:24.820Z</lastmod>
