@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://titangene.github.io/article/javascript-promise-any-aggregateerror.html</loc>
+    
+    <lastmod>2020-10-18T12:59:11.813Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://titangene.github.io/article/javascript-bigint.html</loc>
     
     <lastmod>2020-10-08T01:15:34.666Z</lastmod>

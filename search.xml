@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>JavaScript 之旅 (27)：Promise.any() &amp; AggregateError</title>
+      <link href="/article/javascript-promise-any-aggregateerror.html"/>
+      <url>/article/javascript-promise-any-aggregateerror.html</url>
+      
+        <content type="html"><![CDATA[<p><img src="../images/cover/javascript.jpg" alt=""></p><p>本篇介紹 ES2021 (ES12) 提供的 <code>Promise.any()</code> 和 <code>AggregateError</code>。</p><a id="more"></a><blockquote><p>本文同步發表於 iT 邦幫忙：<a href="https://ithelp.ithome.com.tw/articles/10252463" target="_blank" rel="noopener">JavaScript 之旅 (27)：Promise.any() &amp; AggregateError</a></p><p>「JavaScript 之旅」系列文章發文於：</p><ul><li><a href="https://ithelp.ithome.com.tw/users/20117586/ironman/3607" target="_blank" rel="noopener">iT 邦幫忙</a></li><li><a href="https://titangene.github.io/tags/it-%E9%90%B5%E4%BA%BA%E8%B3%BD/">Titangene Blog</a></li></ul></blockquote><p>之前有介紹 ES2020 (ES11) 提供的 <code>Promise.allSettled()</code>，它不會發生短路，也就是都會等所有傳入的 Promise settled (即 fulfilled 或 rejected )，而本篇介紹的 <code>Promise.any()</code> 則是會因其中一個傳入的 Promise fulfilled 而發生短路。</p><p>例如：在 <code>Promise.any()</code> 傳入 3 的 Promise，只有第一個會立即 rejected，其餘的都會立即 fulfilled：</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> promise = <span class="hljs-built_in">Promise</span>.any([<br>  <span class="hljs-built_in">Promise</span>.reject(<span class="hljs-string">'Oops 1'</span>),<br>  <span class="hljs-built_in">Promise</span>.resolve(<span class="hljs-string">'OK 1'</span>),<br>  <span class="hljs-built_in">Promise</span>.resolve(<span class="hljs-string">'OK 2'</span>)<br>]);<br></code></pre></td></tr></table></figure><p>可以看到最後回傳的 Promise 會 fulfilled，因為 <code>Promise.any()</code> 只要其中一個 Promise fulfilled 就會發生短路，即會立即回傳該 Promise fulfilled：</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-built_in">console</span>.log(promise);<br><span class="hljs-comment">// Promise &#123;&lt;fulfilled&gt;: "OK 1"&#125;</span><br></code></pre></td></tr></table></figure><p>若所有傳入的 Promise 都 rejected，則會以 <code>AggregateError</code> rejected，並會保留所有 rejection reasons (即下面範例中的 <code>error.errors</code> )：</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-built_in">Promise</span>.any([<br>  <span class="hljs-built_in">Promise</span>.reject(<span class="hljs-string">'Oops 1'</span>),<br>  <span class="hljs-built_in">Promise</span>.reject(<span class="hljs-string">'Oops 2'</span>),<br>  <span class="hljs-built_in">Promise</span>.reject(<span class="hljs-string">'Oops 3'</span>)<br>])<br>.catch(<span class="hljs-function"><span class="hljs-params">error</span> =&gt;</span> &#123;<br>  <span class="hljs-built_in">console</span>.log(error <span class="hljs-keyword">instanceof</span> AggregateError);<br>  <span class="hljs-built_in">console</span>.log(error.errors);<br>  <span class="hljs-built_in">console</span>.log(error.message);<br>  <span class="hljs-built_in">console</span>.log(error.stack);<br>&#125;);<br><br><span class="hljs-comment">// true</span><br><span class="hljs-comment">// ["Oops 1", "Oops 2", "Oops 3"]</span><br><span class="hljs-comment">// All promises were rejected</span><br><span class="hljs-comment">// AggregateError: All promises were rejected</span><br></code></pre></td></tr></table></figure><p>另外，你也可以自行建立新的 <code>AggregateError</code> 物件：</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">// 語法：AggregateError(errors, message)</span><br><span class="hljs-keyword">new</span> AggregateError([errorA, errorB, errorC], <span class="hljs-string">'error message'</span>);<br></code></pre></td></tr></table></figure><h1 id="使用情境"><a class="header-anchor" href="#使用情境"></a>使用情境</h1><p><code>Promise.any()</code> 很適合用在一次處理多個非同步，並且抓出第一個 fulfilled 的 Promise，只有當全部都 rejected 才進行錯誤處理。</p><p>例如：同時發多個 request，看哪一個 endpoint 回應最快，然後把該 endpoint 紀錄下來。而且只有當所有 request 都發失敗時，才會進行錯誤處理：</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> Base_URL = <span class="hljs-string">'https://jsonplaceholder.typicode.com'</span>;<br><br><span class="hljs-keyword">let</span> promises = [<br>  fetch(<span class="hljs-string">`<span class="hljs-subst">$&#123;Base_URL&#125;</span>/posts/1`</span>).then(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> <span class="hljs-string">'post'</span>),<br>  fetch(<span class="hljs-string">`<span class="hljs-subst">$&#123;Base_URL&#125;</span>/todos/1`</span>).then(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> <span class="hljs-string">'todo'</span>),<br>  fetch(<span class="hljs-string">`<span class="hljs-subst">$&#123;Base_URL&#125;</span>/comments/1`</span>).then(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> <span class="hljs-string">'comment'</span>)<br>];<br><br><span class="hljs-keyword">try</span> &#123;<br>  <span class="hljs-keyword">const</span> first = <span class="hljs-keyword">await</span> <span class="hljs-built_in">Promise</span>.any(promises);<br>  <span class="hljs-built_in">console</span>.log(first);<br><br>  <span class="hljs-comment">// 紀錄 log...</span><br>  <span class="hljs-comment">// Logger.log(first);</span><br>&#125; <span class="hljs-keyword">catch</span> (error) &#123;<br>  <span class="hljs-built_in">console</span>.log(error.errors);<br><br>  <span class="hljs-comment">// 錯誤處理...</span><br>&#125;<br></code></pre></td></tr></table></figure><p>另一個適合的情境是你想<a href="https://ithelp.ithome.com.tw/articles/10250847" target="_blank" rel="noopener">動態 import</a> 一個模組，但有兩個來源可以 import，但你只需 import 最快的那一個即可，此時也很適合用 <code>Promise.any()</code>：</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> lodash = <span class="hljs-keyword">await</span> <span class="hljs-built_in">Promise</span>.any([<br>  <span class="hljs-keyword">import</span>(<span class="hljs-string">'https://primary.example.com/lodash'</span>),<br>  <span class="hljs-keyword">import</span>(<span class="hljs-string">'https://secondary.example.com/lodash'</span>),<br>]);<br></code></pre></td></tr></table></figure><h1 id="資料來源"><a class="header-anchor" href="#資料來源"></a>資料來源</h1><ul><li><a href="https://github.com/tc39/proposal-promise-any" target="_blank" rel="noopener">tc39/proposal-promise-any: ECMAScript proposal: Promise.any</a></li><li><a href="https://v8.dev/features/promise-combinators" target="_blank" rel="noopener">Promise combinators · V8</a></li><li><a href="https://2ality.com/2019/12/promise-any.html" target="_blank" rel="noopener">ECMAScript feature: <code>Promise.any()</code> | 2ality</a></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> JavaScript </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> IT 鐵人賽 </tag>
+            
+            <tag> ECMAScript </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>JavaScript 之旅 (22)：BigInt</title>
       <link href="/article/javascript-bigint.html"/>
       <url>/article/javascript-bigint.html</url>
@@ -238,11 +265,11 @@
       
         <tags>
             
-            <tag> Vue.js </tag>
-            
             <tag> w3HexSchool </tag>
             
             <tag> GitLab </tag>
+            
+            <tag> Vue.js </tag>
             
             <tag> CI/CD </tag>
             
@@ -271,11 +298,11 @@
       
         <tags>
             
+            <tag> w3HexSchool </tag>
+            
             <tag> Vue.js </tag>
             
             <tag> Bootstrap </tag>
-            
-            <tag> w3HexSchool </tag>
             
         </tags>
       
@@ -789,13 +816,13 @@
       
         <tags>
             
-            <tag> w3HexSchool </tag>
-            
             <tag> Sass </tag>
             
             <tag> CSS </tag>
             
             <tag> Dart Sass </tag>
+            
+            <tag> w3HexSchool </tag>
             
         </tags>
       
@@ -820,13 +847,13 @@
       
         <tags>
             
-            <tag> w3HexSchool </tag>
-            
             <tag> Sass </tag>
             
             <tag> CSS </tag>
             
             <tag> Dart Sass </tag>
+            
+            <tag> w3HexSchool </tag>
             
         </tags>
       
@@ -853,8 +880,6 @@
             
             <tag> Dart </tag>
             
-            <tag> w3HexSchool </tag>
-            
             <tag> Sass </tag>
             
             <tag> CSS </tag>
@@ -862,6 +887,8 @@
             <tag> Dart Sass </tag>
             
             <tag> CLI </tag>
+            
+            <tag> w3HexSchool </tag>
             
         </tags>
       
@@ -886,9 +913,9 @@
       
         <tags>
             
-            <tag> w3HexSchool </tag>
-            
             <tag> CLI </tag>
+            
+            <tag> w3HexSchool </tag>
             
             <tag> JavaScript </tag>
             
@@ -923,9 +950,9 @@
       
         <tags>
             
-            <tag> w3HexSchool </tag>
-            
             <tag> CLI </tag>
+            
+            <tag> w3HexSchool </tag>
             
             <tag> JavaScript </tag>
             
