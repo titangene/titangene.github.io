@@ -4,35 +4,6 @@
   
     
     <entry>
-      <title>在 Vue 中使用 Lottie 動畫</title>
-      <link href="/article/vue-lottie.html"/>
-      <url>/article/vue-lottie.html</url>
-      
-        <content type="html"><![CDATA[<p><img src="../images/cover/vue.jpg" alt=""></p><p>本篇介紹如何在 Vue 中使用 Lottie 動畫，順便練習將套件包成 Vue component。</p><a id="more"></a><p>Lottie 是 Airbnb 開源的跨平台動畫 library，設計師用 Adobe After Effects 製作動畫，匯出 JSON 檔給工程師，工程師透過 Lottie</p><p>可用於 Android、iOS、Web 和 Windows，</p><p>設計師用 Adobe After Effects 製作動畫，接著使用 After Effects 的 extension：<a href="https://exchange.adobe.com/creativecloud.details.12557.html" target="_blank" rel="noopener">Bodymovin</a>，將動畫轉成 JSON 檔匯出，這樣就能在 mobile 若網頁上原生渲染動畫。</p><p>可選擇在 web 的 SVG、Canvas 或 HTML 上渲染動畫</p><p>設計師提供動畫<br>工程師套用</p><ul><li>設計師可以放心做動畫，只要轉成 JSON 給工程師</li><li>工程師不用花時間實作動畫，直接套用設計師提供的 JSON</li></ul><div class="info"><p>本篇不會說明設計師要處理的部份，只會說明工程師拿到 JSON 的動畫檔時，要怎麼引入該 JSON 讓動畫動起來。</p></div><p>免費下載其他人分享的動畫：<a href="https://lottiefiles.com/" target="_blank" rel="noopener">LottieFiles - Free animation files built for Lottie</a></p><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"Home"</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">LottieAnimation</span></span><br><span class="hljs-tag">      <span class="hljs-attr">ref</span>=<span class="hljs-string">"loadingAnimation"</span></span><br><span class="hljs-tag">      <span class="hljs-attr">:animationData</span>=<span class="hljs-string">"loadingAnimationData"</span></span><br><span class="hljs-tag">    /&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"button"</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">"$refs.loadingAnimation.play()"</span>&gt;</span><br>      play<br>    <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"button"</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">"$refs.loadingAnimation.pause()"</span>&gt;</span><br>      pause<br>    <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"button"</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">"$refs.loadingAnimation.stop()"</span>&gt;</span><br>      stop<br>    <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span><br><br>&lt;&lt;script&gt;<br>import loadingAnimationData from '@/assets/animations/loading-usr.json';<br><br>export default &#123;<br>  data() &#123;<br>    return &#123;<br>      loadingAnimationData<br>    &#125;;<br>  &#125;<br>&#125;<br><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"LottieAnimation"</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">"animationContainer"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><br><span class="javascript"><span class="hljs-keyword">import</span> lottie <span class="hljs-keyword">from</span> <span class="hljs-string">'lottie-web'</span>;</span><br><br><span class="javascript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;</span><br><span class="actionscript">  name: <span class="hljs-string">'LottieAnimation'</span>,</span><br>  props: &#123;<br>    animationData: &#123;<br><span class="javascript">      type: <span class="hljs-built_in">Object</span>,</span><br><span class="actionscript">      required: <span class="hljs-literal">true</span></span><br>    &#125;,<br>    loop: &#123;<br><span class="javascript">      type: <span class="hljs-built_in">Boolean</span>,</span><br><span class="actionscript">      <span class="hljs-keyword">default</span>: <span class="hljs-literal">true</span></span><br>    &#125;,<br>    autoPlay: &#123;<br><span class="javascript">      type: <span class="hljs-built_in">Boolean</span>,</span><br><span class="actionscript">      <span class="hljs-keyword">default</span>: <span class="hljs-literal">true</span></span><br>    &#125;,<br>    rendererSettings: &#123;<br><span class="javascript">      type: <span class="hljs-built_in">Object</span>,</span><br><span class="javascript">      <span class="hljs-keyword">default</span>: <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> (&#123;&#125;)</span><br>    &#125;<br>  &#125;,<br>  data() &#123;<br><span class="actionscript">    <span class="hljs-keyword">return</span> &#123;</span><br><span class="actionscript">      animation: <span class="hljs-literal">null</span></span><br>    &#125;;<br>  &#125;,<br>  mounted() &#123;<br><span class="actionscript">    <span class="hljs-keyword">this</span>.animation = lottie.loadAnimation(&#123;</span><br><span class="actionscript">      container: <span class="hljs-keyword">this</span>.$refs.animationContainer,</span><br><span class="actionscript">      renderer: <span class="hljs-string">'svg'</span>,</span><br><span class="actionscript">      loop: <span class="hljs-keyword">this</span>.loop,</span><br><span class="actionscript">      autoplay: <span class="hljs-keyword">this</span>.autoPlay,</span><br><span class="actionscript">      animationData: <span class="hljs-keyword">this</span>.animationData,</span><br><span class="actionscript">      rendererSettings: <span class="hljs-keyword">this</span>.rendererSettings</span><br>    &#125;);<br><br><span class="actionscript">    <span class="hljs-keyword">this</span>.$emit(<span class="hljs-string">'animation-created'</span>, <span class="hljs-keyword">this</span>.animation);</span><br>  &#125;,<br>  beforeDestroy() &#123;<br><span class="actionscript">    <span class="hljs-keyword">this</span>.destroy();</span><br>  &#125;,<br>  methods: &#123;<br>    play() &#123;<br><span class="actionscript">      <span class="hljs-keyword">this</span>.animation?.play();</span><br>    &#125;,<br>    pause() &#123;<br><span class="actionscript">      <span class="hljs-keyword">this</span>.animation?.pause();</span><br>    &#125;,<br>    stop() &#123;<br><span class="actionscript">      <span class="hljs-keyword">this</span>.animation?.stop();</span><br>    &#125;,<br>    destroy() &#123;<br><span class="actionscript">      <span class="hljs-keyword">this</span>.animation?.destroy();</span><br>    &#125;<br>  &#125;<br>&#125;;<br><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">style</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">"scss"</span> <span class="hljs-attr">scoped</span>&gt;</span><br><span class="css"><span class="hljs-selector-class">.LottieAnimation</span> &#123;</span><br>  width: 100%;<br>  height: 100%;<br><br>  overflow: hidden;<br>&#125;<br><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span><br></code></pre></td></tr></table></figure>]]></content>
-      
-      
-      <categories>
-          
-          <category> web-dev </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> Vue.js </tag>
-            
-            <tag> w3HexSchool </tag>
-            
-            <tag> Animation </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>JavaScript 之旅 (27)：Promise.any() &amp; AggregateError</title>
       <link href="/article/javascript-promise-any-aggregateerror.html"/>
       <url>/article/javascript-promise-any-aggregateerror.html</url>
@@ -329,9 +300,9 @@
             
             <tag> Vue.js </tag>
             
-            <tag> Bootstrap </tag>
-            
             <tag> w3HexSchool </tag>
+            
+            <tag> Bootstrap </tag>
             
         </tags>
       
@@ -443,9 +414,9 @@
       
         <tags>
             
-            <tag> Markdown </tag>
-            
             <tag> w3HexSchool </tag>
+            
+            <tag> Markdown </tag>
             
             <tag> Chrome </tag>
             
@@ -781,11 +752,11 @@
             
             <tag> Jest </tag>
             
+            <tag> Node.js </tag>
+            
             <tag> Unit Testing </tag>
             
             <tag> TypeScript </tag>
-            
-            <tag> Node.js </tag>
             
         </tags>
       
@@ -816,11 +787,11 @@
             
             <tag> JavaScript </tag>
             
-            <tag> Unit Testing </tag>
-            
             <tag> Node.js </tag>
             
             <tag> Babel </tag>
+            
+            <tag> Unit Testing </tag>
             
         </tags>
       
